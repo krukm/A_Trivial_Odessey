@@ -11,4 +11,7 @@ angular.module('app').config(['$routeProvider', function($routeProvider) {
         .when('/battle-ground', {
             template: '<battle-ground></battle-ground>'
         })
+        .when('/victory', {
+            template: '<victory></victory>'
+        });
 }])
