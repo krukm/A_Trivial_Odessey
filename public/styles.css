@@ -3,6 +3,13 @@
     padding: 0;
 }
 
+div.answered .correct {
+    color: green;
+} 
+div.answered .incorrect {
+    color: red;
+}
 .h1__winner {
     font-family: 'Press Start 2P', cursive;
 }
+
