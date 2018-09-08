@@ -1,6 +1,6 @@
-.correct {
+div.answered .correct {
     color: green;
 } 
-.incorrect {
+div.answered .incorrect {
     color: red;
 }
