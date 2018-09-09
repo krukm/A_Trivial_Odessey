@@ -16,7 +16,7 @@ const battleGround = {
     </section>
     
     <footer>
-        
+
     </footer>
     `,
 
@@ -38,14 +38,31 @@ const battleGround = {
             // }
             // vm.answers = array2;
             vm.answers.sort(function(a,b){return 0.5 - Math.random()});
+
             console.log(vm.answers);
         })
+        // }
+
+        // vm.getAnotherQuestion = () => {
+
         // }
 
         vm.userChooseAnswer = (hit) => {
             console.log(hit);
             vm.answered = true;
-            // console.log(response.results[0].correct_answer);
+            if (hit === "Apollo") {
+                TriviaService.getEasyQuestions().then((response) => {
+                    vm.correctAnswer = response.results[1].correct_answer;
+                    vm.quizQuestion = response.results[1].question;
+                    vm.answers = response.results[1].incorrect_answers;
+                    vm.answers.push(response.results[1].correct_answer);
+
+                    vm.answers.sort(function(a,b){return 0.5 - Math.random()});
+
+                    console.log(vm.answers);
+                })
+            }
+    
             console.log(vm.correctAnswer);
         }
 
