@@ -1,11 +1,15 @@
 'use strict';
 
-function PlayerService () {
+function PlayerService() {
     const vm = this;
+
     vm.playerHealth = 3;
+    vm.battles = 0;
+    
 
     vm.resetPlayer = () => {
-        vm.playerHealth = 3;
+        vm.playerHealth = 3
+        vm.battles = 0;
     }
 }
 
