@@ -2,8 +2,10 @@
 
 const victory = {
     template: `
-    <h1>YOU WIN!!!</h1>
-    <button type="button" ng-click="resetGame();">Play again?</button>
+    <section class="section__victory">
+    <h1 class="h1__winner">YOU WIN!!!</h1>
+    <button class="button__play-again" type="button" ng-click="resetGame();">Play again?</button>
+    </section>
     `,
     controller: ['$location', 'PlayerService', function ($location, PlayerService) {
         const vm = this;
