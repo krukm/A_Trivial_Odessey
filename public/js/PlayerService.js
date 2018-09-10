@@ -2,10 +2,10 @@
 
 function PlayerService () {
     const vm = this;
-    let playerHealth = 3;
+    vm.playerHealth = 3;
 
     vm.resetPlayer = () => {
-        playerHealth = 3;
+        vm.playerHealth = 3;
     }
 }
 
