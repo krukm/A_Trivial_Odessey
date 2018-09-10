@@ -51,15 +51,19 @@ const battleGround = {
             console.log(hit);
             vm.answered = true;
             if (hit === "Apollo") {
+                vm.answered = false;
                 TriviaService.getEasyQuestions().then((response) => {
-                    vm.correctAnswer = response.results[1].correct_answer;
-                    vm.quizQuestion = response.results[1].question;
-                    vm.answers = response.results[1].incorrect_answers;
-                    vm.answers.push(response.results[1].correct_answer);
+                    vm.randomIndex = Math.floor(Math.random() * vm.answers.length)
+
+                    vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+                    vm.quizQuestion = response.results[vm.randomIndex].question;
+                    vm.answers = response.results[vm.randomIndex].incorrect_answers;
+                    vm.answers.push(response.results[vm.randomIndex].correct_answer);
 
                     vm.answers.sort(function(a,b){return 0.5 - Math.random()});
 
                     console.log(vm.answers);
+                    console.log(`Random index is ${vm.randomIndex}`);
                 })
             }
     
