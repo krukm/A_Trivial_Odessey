@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
-
 * {
     font-family: 'Press Start 2P', cursive;
 }
@@ -17,16 +16,17 @@ body {
 
 div.answered .correct {
     color: green;
-} 
+}
+
 div.answered .incorrect {
     color: red;
 }
+
 .h1__winner {
     text-align: center;
     animation: blinkingText 0.8s infinite;
     margin: 10rem;
 }
-
 
 .button__play-again {
     padding: 1rem;
@@ -53,12 +53,13 @@ div.answered .incorrect {
     justify-content: center;
 }
 
-form.answers label {
+form.answers button {
     margin: 0 10px;
     padding: 10px;
     border-radius: 3px;
     background: #FE533D;
     color: #fff;
+    border: none;
     /* font-size: 20px; */
 }
 
@@ -75,9 +76,19 @@ footer {
 }
 
 @keyframes blinkingText {
-    0% { color: #F83800; }
-    30% { color: #3CBCFC; }
-    50% { color: #007800; }
-    70% { color:#F83800; }
-    100% { color: #3CBCFC; }
+    0% {
+        color: #F83800;
+    }
+    30% {
+        color: #3CBCFC;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #F83800;
+    }
+    100% {
+        color: #3CBCFC;
+    }
 }

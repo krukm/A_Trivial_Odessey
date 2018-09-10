@@ -7,10 +7,9 @@ const battleGround = {
         <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
         <form class="answers"> 
             <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
-            <label ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
-                <input ng-click="$ctrl.userChooseAnswer(answer)" type="radio" ng-model="response" ng-value="answer">
+            <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer)" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                 {{ answer }}
-            </label>
+            </button>
             </div>
         </from>
     </section>
@@ -20,8 +19,9 @@ const battleGround = {
     </footer>
     `,
 
-    controller: ["TriviaService", function(TriviaService) {
+    controller: ["TriviaService", "PlayerService", function(TriviaService, PlayerService) {
         const vm = this;
+        vm.answerCounter = 0;
         vm.answered = false;
 
         // vm.getEasyTriviaQuestions = () => {
@@ -52,6 +52,7 @@ const battleGround = {
             console.log(hit);
             vm.answered = true;
             if (hit === vm.correctAnswer) {
+                vm.answerCounter += 1;
                 vm.answered = false;
                 TriviaService.getEasyQuestions().then((response) => {
                     vm.questions = response.results;
@@ -64,7 +65,16 @@ const battleGround = {
 
                     vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
 
-                    console.log(vm.questions.length);
+                    if (vm.answerCounter === 2) {
+                        vm.answerCounter = 0;
+                        PlayerService.battles += 1;
+                        if (PlayerService.battles === 3) {
+                            console.log(`move to medium difficulty`);
+                        }
+                    }
+                    console.log(`Counter = ${vm.answerCounter}`);
+                    console.log(`Battles counter = ${PlayerService.battles}`)
+                    console.log(`Length of array ${vm.questions.length}`);
                     console.log(`Random index is ${vm.randomIndex}`);
                 })
             }
