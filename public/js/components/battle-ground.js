@@ -2,6 +2,7 @@
 
 const battleGround = {
     template: `
+    <section class="section__health" id="id__health"></section>
     <section class="question__container">
         <div><img class="zues" src="./img/zues.png"></div>
         <section ng-if="$ctrl.answered === false">
@@ -27,16 +28,22 @@ const battleGround = {
     </footer>
     `,
 
-    controller: ["TriviaService", "PlayerService", function(TriviaService, PlayerService) {
+    controller: ["TriviaService", "PlayerService", "$location", function(TriviaService, PlayerService, $location) {
         const vm = this;
+        vm.id = "id__health";
         vm.answerCounter = 0;
+        vm.CorrectAnswers = 0;
+        vm.IncorrectAnswers = 0;
         vm.answered = false;
+
+        PlayerService.updateHealthDisplay(vm.id);
 
         // vm.getEasyTriviaQuestions = () => {
         TriviaService.getEasyQuestions().then((response) => {
                 vm.questions = response.results;
                 vm.correctAnswer = response.results[0].correct_answer;
                 vm.quizQuestion = response.results[0].question;
+                vm.quizQuestion.replace(/[^a-zA-Z ]/g, "");
                 vm.answers = response.results[0].incorrect_answers;
                 vm.answers.push(response.results[0].correct_answer);
                 // let array2 = [];
@@ -48,7 +55,7 @@ const battleGround = {
                 // vm.answers = array2;
                 vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
 
-                console.log(vm.answers);
+                console.log(vm.questions);
             })
             // }
 
@@ -59,26 +66,30 @@ const battleGround = {
         vm.userChooseAnswer = (hit) => {
             console.log(hit);
             vm.answered = true;
+            vm.answerCounter += 1;
             if (hit === vm.correctAnswer) {
-                vm.answerCounter += 1;
                 vm.answerText = "You answered correctly Great job!";
-
+                vm.CorrectAnswers++;
                 if (vm.answerCounter === 2) {
-                    vm.answerCounter = 0;
                     PlayerService.battles += 1;
                     if (PlayerService.battles === 3) {
                         console.log(`move to medium difficulty`);
                     }
+                    if (vm.CorrectAnswers === 2) {
+                        PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
+                        vm.CorrectAnswers = 0;
+                    }
                 }
-                console.log(`You answered correct`);
-                console.log(`Counter = ${vm.answerCounter}`);
-                console.log(`Battles counter = ${PlayerService.battles}`)
+                console.log(`Player health: ${PlayerService.playerHealth}, Correct Answer: ${vm.CorrectAnswers}`);
             } else {
                 vm.answerText = "You answered the question wrong! Try again!";
+                vm.IncorrectAnswers++;
+                if (vm.IncorrectAnswers === 2) {
+                    PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
+                    vm.IncorrectAnswers = 0;
+                }
+                console.log(`Player health: ${PlayerService.playerHealth}, Incorrect Answer: ${vm.IncorrectAnswers}`);
             }
-
-
-            console.log(vm.correctAnswer);
         }
 
         vm.nextQuestion = () => {
@@ -93,6 +104,10 @@ const battleGround = {
                 vm.answers.push(response.results[vm.randomIndex].correct_answer);
 
                 vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+
+                if (vm.answerCounter === 2) {
+                    $location.path("/map");
+                }
 
                 console.log(`Length of array ${vm.questions.length}`);
                 console.log(`Random index is ${vm.randomIndex}`);
