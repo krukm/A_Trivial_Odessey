@@ -8,6 +8,12 @@
     align-items: center;
 }
 
+div.answered .correct {
+    color: green;
+} 
+div.answered .incorrect {
+    color: red;
+}
 .h1__winner {
     text-align: center;
     animation: blinkingText 0.8s infinite;
