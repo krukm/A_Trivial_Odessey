@@ -109,21 +109,4 @@ footer {
 .img__heart {
     width: 3rem;
     height: 3rem;
-
-    0% {
-        color: #F83800;
-    }
-    30% {
-        color: #3CBCFC;
-    }
-    50% {
-        color: #007800;
-    }
-    70% {
-        color: #F83800;
-    }
-    100% {
-        color: #3CBCFC;
-    }
-
 }

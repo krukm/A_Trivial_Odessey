@@ -4,17 +4,23 @@ const battleGround = {
     template: `
     <section class="question__container">
         <div><img class="zues" src="./img/zues.png"></div>
-        <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
-        <section class="answers"> 
-            <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
-            <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer)" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
-                {{ answer }}
-            </button>
-            </div>
+        <section ng-if="$ctrl.answered === false">
+            <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
+            <section class="answers"> 
+                <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
+                <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer)" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                    {{ answer }}
+                </button>
+                </div>
+            </section>
+        </section>
+        <section class="text_container" ng-if="$ctrl.answered === true">
+            <p class="answer_text">{{ $ctrl.answerText }}</p>
+            <button class="next_question_button" ng-click="$ctrl.nextQuestion()">Next Question</button>
         </section>
     </section>
 
-    <button ng-click="$ctrl.nextQuestion()">Next Question</button>
+    
     
     <footer>
 
@@ -55,7 +61,7 @@ const battleGround = {
             vm.answered = true;
             if (hit === vm.correctAnswer) {
                 vm.answerCounter += 1;
-                vm.answered = false;
+                vm.answerText = "You answered correctly Great job!";
 
                 if (vm.answerCounter === 2) {
                     vm.answerCounter = 0;
@@ -68,7 +74,7 @@ const battleGround = {
                 console.log(`Counter = ${vm.answerCounter}`);
                 console.log(`Battles counter = ${PlayerService.battles}`)
             } else {
-                console.log(`Wrong answer`);
+                vm.answerText = "You answered the question wrong! Try again!";
             }
 
 
@@ -77,6 +83,7 @@ const battleGround = {
 
         vm.nextQuestion = () => {
             TriviaService.getEasyQuestions().then((response) => {
+                vm.answered = false;
                 vm.questions = response.results;
                 vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
 
