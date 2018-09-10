@@ -40,23 +40,24 @@ const battleGround = {
 
         // vm.getEasyTriviaQuestions = () => {
         TriviaService.getEasyQuestions().then((response) => {
-                vm.questions = response.results;
-                vm.correctAnswer = response.results[0].correct_answer;
-                vm.quizQuestion = response.results[0].question;
-                vm.quizQuestion.replace(/[^a-zA-Z ]/g, "");
-                vm.answers = response.results[0].incorrect_answers;
-                vm.answers.push(response.results[0].correct_answer);
-                // let array2 = [];
-                // while (vm.answers.length !== 0) {
-                //   let randomIndex = Math.floor(Math.random() * vm.answers.length);
-                //   array2.push(vm.answers[randomIndex]);
-                //   vm.answers.splice(randomIndex, 1);
-                // }
-                // vm.answers = array2;
-                vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+            vm.questions = response.results;
+            vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
+            vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+            vm.quizQuestion = response.results[vm.randomIndex].question;
+            vm.quizQuestion.replace(/[^a-zA-Z ]/g, "");
+            vm.answers = response.results[vm.randomIndex].incorrect_answers;
+            vm.answers.push(response.results[vm.randomIndex].correct_answer);
+            // let array2 = [];
+            // while (vm.answers.length !== 0) {
+            //   let randomIndex = Math.floor(Math.random() * vm.answers.length);
+            //   array2.push(vm.answers[randomIndex]);
+            //   vm.answers.splice(randomIndex, 1);
+            // }
+            // vm.answers = array2;
+            vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
 
-                console.log(vm.questions);
-            })
+            console.log(vm.questions);
+        });
             // }
 
         // vm.getAnotherQuestion = () => {
