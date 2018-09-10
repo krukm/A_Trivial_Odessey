@@ -13,6 +13,8 @@ const battleGround = {
             </div>
         </from>
     </section>
+
+    <button ng-click="$ctrl.nextQuestion()">Next Question</button>
     
     <footer>
 
@@ -54,34 +56,41 @@ const battleGround = {
             if (hit === vm.correctAnswer) {
                 vm.answerCounter += 1;
                 vm.answered = false;
-                TriviaService.getEasyQuestions().then((response) => {
-                    vm.questions = response.results;
-                    vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
 
-                    vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
-                    vm.quizQuestion = response.results[vm.randomIndex].question;
-                    vm.answers = response.results[vm.randomIndex].incorrect_answers;
-                    vm.answers.push(response.results[vm.randomIndex].correct_answer);
-
-                    vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
-
-                    if (vm.answerCounter === 2) {
-                        vm.answerCounter = 0;
-                        PlayerService.battles += 1;
-                        if (PlayerService.battles === 3) {
-                            console.log(`move to medium difficulty`);
-                        }
+                if (vm.answerCounter === 2) {
+                    vm.answerCounter = 0;
+                    PlayerService.battles += 1;
+                    if (PlayerService.battles === 3) {
+                        console.log(`move to medium difficulty`);
                     }
-                    console.log(`Counter = ${vm.answerCounter}`);
-                    console.log(`Battles counter = ${PlayerService.battles}`)
-                    console.log(`Length of array ${vm.questions.length}`);
-                    console.log(`Random index is ${vm.randomIndex}`);
-                })
+                }
+                console.log(`You answered correct`);
+                console.log(`Counter = ${vm.answerCounter}`);
+                console.log(`Battles counter = ${PlayerService.battles}`)
+            } else {
+                console.log(`Wrong answer`);
             }
+
 
             console.log(vm.correctAnswer);
         }
 
+        vm.nextQuestion = () => {
+            TriviaService.getEasyQuestions().then((response) => {
+                vm.questions = response.results;
+                vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
+
+                vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+                vm.quizQuestion = response.results[vm.randomIndex].question;
+                vm.answers = response.results[vm.randomIndex].incorrect_answers;
+                vm.answers.push(response.results[vm.randomIndex].correct_answer);
+
+                vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+
+                console.log(`Length of array ${vm.questions.length}`);
+                console.log(`Random index is ${vm.randomIndex}`);
+            })
+        }
 
 
 

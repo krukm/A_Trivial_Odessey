@@ -75,6 +75,17 @@ footer {
     padding: 100px;
 }
 
+
+/* Intro Component */
+
+.intro_container {
+    background: url(./img/underground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+}
+
 @keyframes blinkingText {
     0% {
         color: #F83800;
