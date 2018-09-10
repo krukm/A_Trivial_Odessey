@@ -82,6 +82,10 @@ footer {
     100% { color: #3CBCFC; }
 }
 
+canvas {
+    background-image: url('/public/img/map.png');
+}
+
 .section__health {
     display: flex;
     flex-direction: row;
