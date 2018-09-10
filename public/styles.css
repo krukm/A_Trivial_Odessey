@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 * {
     font-family: 'Press Start 2P', cursive;
 }
@@ -6,6 +8,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+body {
+    background: #101628;
+    font-family: 'Press Start 2P', cursive;
 }
 
 div.answered .correct {
@@ -20,9 +27,51 @@ div.answered .incorrect {
     margin: 10rem;
 }
 
+
 .button__play-again {
     padding: 1rem;
     border-radius: 0.25rem;
+}
+
+.question__container {
+    width: 50%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.question__container p.trivia__question {
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 3px;
+    /* font-size: 20px; */
+    color: #fff;
+    background: #FE533D;
+}
+
+.question__container form.answers {
+    display: flex;
+    justify-content: center;
+}
+
+form.answers label {
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 3px;
+    background: #FE533D;
+    color: #fff;
+    /* font-size: 20px; */
+}
+
+.question__container div img.zues {
+    height: 300px;
+    width: 300px;
+    border-radius: 3px;
+}
+
+footer {
+    /* height: 100px; */
+    background: #AC987B;
+    padding: 100px;
 }
 
 @keyframes blinkingText {
