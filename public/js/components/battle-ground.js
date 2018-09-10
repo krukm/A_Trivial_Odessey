@@ -17,7 +17,7 @@ const battleGround = {
         </section>
         <section class="text_container" ng-if="$ctrl.answered === true">
             <p class="answer_text">{{ $ctrl.answerText }}</p>
-            <button class="next_question_button" ng-click="$ctrl.nextQuestion()">Next Question</button>
+            <button class="next_question_button" ng-click="$ctrl.nextQuestion()">{{ $ctrl.button }}</button>
         </section>
     </section>
 
@@ -35,6 +35,7 @@ const battleGround = {
         vm.CorrectAnswers = 0;
         vm.IncorrectAnswers = 0;
         vm.answered = false;
+        vm.button = "Next Question"
 
         PlayerService.updateHealthDisplay(vm.id);
 
@@ -44,7 +45,6 @@ const battleGround = {
             vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
             vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
             vm.quizQuestion = response.results[vm.randomIndex].question;
-            vm.quizQuestion.replace(/[^a-zA-Z ]/g, "");
             vm.answers = response.results[vm.randomIndex].incorrect_answers;
             vm.answers.push(response.results[vm.randomIndex].correct_answer);
             // let array2 = [];
@@ -72,6 +72,7 @@ const battleGround = {
                 vm.answerText = "You answered correctly Great job!";
                 vm.CorrectAnswers++;
                 if (vm.answerCounter === 2) {
+                    vm.button = "Continue Story"
                     PlayerService.battles += 1;
                     if (PlayerService.battles === 3) {
                         console.log(`move to medium difficulty`);
