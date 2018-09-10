@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="/public/styles.css" type="text/css" rel="stylesheet">
 </head>
+
 <body>
-    
-    
-    <map></map>
-    <!-- <victory></victory> -->
-    
+    <a href="#!/intro">Intro</a>
+    <a href="#!/battle-ground">Battle-ground</a>
+    <a href="#!/map">Map</a>
+    <a href="#!/victory">Victory</a>
+
+    <ng-view></ng-view>
+
     <script src="https://code.angularjs.org/1.6.5/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.6.5/angular-route.min.js"></script>
     <script src="/public/js/module.js"></script>
@@ -26,4 +30,5 @@
     <script src="/public/js/TriviaService.js"></script>
     <script src="/public/js/PlayerService.js"></script>
 </body>
+
 </html>
