@@ -4,7 +4,7 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-.section__winner {
+.section__victory {
     display: flex;
     flex-direction: column;
     align-items: center;
