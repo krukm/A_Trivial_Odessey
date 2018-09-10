@@ -5,13 +5,13 @@ const battleGround = {
     <section class="question__container">
         <div><img class="zues" src="./img/zues.png"></div>
         <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
-        <form class="answers"> 
+        <section class="answers"> 
             <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
             <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer)" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                 {{ answer }}
             </button>
             </div>
-        </from>
+        </section>
     </section>
 
     <button ng-click="$ctrl.nextQuestion()">Next Question</button>
