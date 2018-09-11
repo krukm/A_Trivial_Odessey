@@ -123,9 +123,10 @@ footer {
 
 .story__container .story {
     padding: 20% 15%;
+    width: 340px;
+    height: 340px;
     line-height: 1.5;
 }
-
 
 #canvas {
     background-image: url('/public/img/map.png');
@@ -145,8 +146,6 @@ footer {
     justify-content: flex-end;
     margin-right: 30px;
     padding-top: 2%;
-    /* padding-right: 4px; */
-    /* float: right; */
 }
 
 .img__heart {
