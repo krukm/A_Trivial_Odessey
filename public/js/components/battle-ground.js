@@ -2,10 +2,10 @@
 
 const battleGround = {
     template: `
-    <section class="section__health" id="id__health"></section>
+    <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
     <section class="question__container">
         <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-        <div><img class="zues" src="./img/zues.png"></div>
+        <img class="img__battle-ground__back-ground" src="./img/island.png">
         <section ng-if="$ctrl.answered === false">
             <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
             <section class="answers"> 
@@ -23,7 +23,7 @@ const battleGround = {
     </section>
     `,
 
-    controller: ["TriviaService", "PlayerService", "$location", function(TriviaService, PlayerService, $location) {
+    controller: ["TriviaService", "PlayerService", "$location", "$timeout", function(TriviaService, PlayerService, $location, $timeout) {
         const vm = this;
         vm.id = "id__health";
         vm.gameOver = false;
@@ -83,9 +83,11 @@ const battleGround = {
                 if (PlayerService.playerHealth === 0) {
                     console.log('game over');
                     vm.gameOver = true;
-                    PlayerService.resetPlayer();
-                    //$location.path('/intro');
-                    //reset map and restart story
+
+                    $timeout(() => {
+                        PlayerService.resetPlayer();
+                        $location.path('/intro');
+                    }, 5000);
                 }
             }
         }
