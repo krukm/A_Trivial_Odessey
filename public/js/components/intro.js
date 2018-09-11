@@ -11,7 +11,7 @@ const intro = {
     controller: ["$location", function($location) {
         const vm = this;
         vm.play = () => {
-            $location.url("/battle-ground");
+            $location.url("/map");
         }
 
     }]
