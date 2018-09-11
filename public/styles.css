@@ -100,14 +100,24 @@ footer {
     100% { color: #3CBCFC; }
 }
 
-canvas {
+
+#canvas {
     background-image: url('/public/img/map.png');
+    height: 600px;
+    width: 800px;
+    margin: 1%;
+    object-fit: fill;
+    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
 
 .section__health {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    float: right;
 }
 
 .img__heart {
