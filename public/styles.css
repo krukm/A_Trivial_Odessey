@@ -95,6 +95,26 @@ footer {
     100% { color: #3CBCFC; }
 }
 
+.map__canvas {
+    display: flex;
+}
+
+
+.story__container {
+    background: url("./img/scroll.png");
+    background-size: 95%;
+    width: 35vw;
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.story__container .story {
+    padding: 20% 15%;
+    line-height: 1.5;
+
+}
+
 
 #canvas {
     background-image: url('/public/img/map.png');
@@ -112,10 +132,12 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    float: right;
+    padding-top: 2%;
+    padding-right: 4%;
+    /* float: right; */
 }
 
 .img__heart {
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
 }
