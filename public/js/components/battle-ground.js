@@ -5,6 +5,7 @@ const battleGround = {
     <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
     <section class="timer">
         <p id="timer">{{ $ctrl.counter }} seconds left</p>
+        <button ng-click="$ctrl.timer()">Start</button>
     </section>
     <section class="question__container">
         <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
@@ -13,7 +14,7 @@ const battleGround = {
             <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
             <section class="answers"> 
                 <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
-                <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer)" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                     {{ answer }}
                 </button>
                 </div>
@@ -21,12 +22,12 @@ const battleGround = {
         </section>
         <section class="text_container" ng-if="$ctrl.answered === true">
             <p class="answer_text">{{ $ctrl.answerText }}</p>
-            <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion()">{{ $ctrl.button }}</button>
+            <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
         </section>
     </section>
     `,
 
-    controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", function(TriviaService, PlayerService, $location, $timeout, $interval) {
+    controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", "$scope", function(TriviaService, PlayerService, $location, $timeout, $interval, $scope) {
         const vm = this;
         vm.id = "id__health";
         vm.gameOver = false;
@@ -37,20 +38,24 @@ const battleGround = {
         vm.button = "Next Question";
         vm.counter = PlayerService.counter;
         vm.counter = 30;
+        
+        vm.timer = () => {
+            vm.counter = 30;
+            vm.countDown = setInterval(function() {
+                vm.counter--;
+                $scope.$apply();
+            }, 1000);
 
-        PlayerService.updateHealthDisplay(vm.id);
+            return vm.countDown;
+        } 
 
-        vm.countDown = () => {
-            vm.counter--;
+        vm.stopTimer = () => {
+            clearInterval(vm.countDown);
+            $scope.$apply();
+            vm.counter = 30;
         }
 
-        vm.timer = () => {
-            if (vm.counter > 0) {
-                $interval(vm.countDown, 1000);
-            }    
-        } 
-        
-        
+        PlayerService.updateHealthDisplay(vm.id);
 
         vm.getNextQuestion = () => {
             if (PlayerService.battles < 3) {
