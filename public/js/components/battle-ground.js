@@ -35,17 +35,43 @@ const battleGround = {
 
         PlayerService.updateHealthDisplay(vm.id);
 
-        TriviaService.getEasyQuestions().then((response) => {
-            vm.questions = response.results;
-            vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
-            vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
-            vm.quizQuestion = response.results[vm.randomIndex].question;
-            vm.answers = response.results[vm.randomIndex].incorrect_answers;
-            vm.answers.push(response.results[vm.randomIndex].correct_answer);
-            vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+        console.log('PlayerService.battles: ' + PlayerService.battles);
+        console.log('gameOver: ' + vm.gameOver);
 
-            //console.log(vm.questions);
-        });
+        if (PlayerService.battles <= 3) {
+            console.log('Easy questions loading');
+            TriviaService.getEasyQuestions().then((response) => {
+                vm.questions = response.results;
+                vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
+                vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+                vm.quizQuestion = response.results[vm.randomIndex].question;
+                vm.answers = response.results[vm.randomIndex].incorrect_answers;
+                vm.answers.push(response.results[vm.randomIndex].correct_answer);
+                vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+            });
+        } else if (PlayerService.battles >= 3 && PlayerService.battles <= 6) {
+            console.log('Medium Questions loading');
+            TriviaService.getMediumQuestions().then((response) => {
+                vm.questions = response.results;
+                vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
+                vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+                vm.quizQuestion = response.results[vm.randomIndex].question;
+                vm.answers = response.results[vm.randomIndex].incorrect_answers;
+                vm.answers.push(response.results[vm.randomIndex].correct_answer);
+                vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+            });
+        } else if (PlayerService.battles >= 7) {
+            TriviaService.getHardQuestions().then((response) => {
+                console.log('Hard questions loading');
+                vm.questions = response.results;
+                vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
+                vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+                vm.quizQuestion = response.results[vm.randomIndex].question;
+                vm.answers = response.results[vm.randomIndex].incorrect_answers;
+                vm.answers.push(response.results[vm.randomIndex].correct_answer);
+                vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+            });
+        }
 
         vm.userChooseAnswer = (hit) => {
             vm.answered = true;
@@ -111,7 +137,9 @@ const battleGround = {
             })
         }
 
+        vm.getEasyTriviaQuestions = () => {
 
+        }
 
         vm.getMediumTriviaQuestions = () => {
             TriviaService.getMediumQuestions().then((response) => {
