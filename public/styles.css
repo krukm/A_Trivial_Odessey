@@ -9,11 +9,6 @@
     align-items: center;
 }
 
-body {
-    background: #101628;
-    font-family: 'Press Start 2P', cursive;
-}
-
 div.answered .correct {
     color: green;
 }
