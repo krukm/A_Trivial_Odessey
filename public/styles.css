@@ -99,30 +99,37 @@ section.answers button {
 
 .map__canvas {
     display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.img__container {
+    display: flex;
+    flex-direction: column;
 }
 
 
 .story__container {
     background: url("./img/scroll.png");
     background-size: 95%;
-    width: 35vw;
-    height: 90vh;
+    width: 465px;
+    height: 575px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .story__container .story {
     padding: 20% 15%;
+    width: 340px;
+    height: 340px;
     line-height: 1.5;
-
 }
-
 
 #canvas {
     background-image: url('/public/img/map.png');
     height: 600px;
     width: 800px;
-    margin: 1%;
+    margin: .5%;
     object-fit: fill;
     background-size: cover;
     background-size: contain;
@@ -134,9 +141,8 @@ section.answers button {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding-top: 1%;
-    padding-right: 4%;
-    /* float: right; */
+    margin-right: 30px;
+    padding-top: 2%;
 }
 
 .img__heart {
