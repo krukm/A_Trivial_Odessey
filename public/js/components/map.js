@@ -8,20 +8,23 @@ const map = {
             <section class="section__health" id="id__health"></section>
             <section class="story__container">
                 <p id="story" class="story"></p>
+                <button ng-click="$ctrl.fight()" class="fight">fight!</button>
             </section>
         </section>
     </section>   
-            `,
+    `,
 
-    // 
-    // <img id="map__bg" src="/public/img/map.png">
-    controller: ["PlayerService", "EnemyService", function(PlayerService, EnemyService) {
+    controller: ["PlayerService", "EnemyService", "$location", function(PlayerService, EnemyService, $location) {
 
         const vm = this;
         vm.id = "id__health";
         vm.i = 0;
         vm.speed = 40;
         PlayerService.updateHealthDisplay(vm.id);
+
+        vm.fight = () => {
+            $location.url("/battle-ground");
+        }
 
         switch (PlayerService.battles) {
             case 0:
@@ -60,7 +63,9 @@ const map = {
                 setTimeout(vm.typeWriter, vm.speed);
             }
         }
+
         vm.typeWriter();
+         
 
         vm.draw = () => {
             vm.canvas = document.querySelector('canvas');
