@@ -30,7 +30,6 @@ const map = {
                 document.getElementById("story").innerHTML += vm.storyText.charAt(vm.i);
                 vm.i++;
                 setTimeout(vm.typeWriter, vm.speed);
-                console.log("typing");
             }
         }
         vm.typeWriter();
