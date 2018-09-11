@@ -9,11 +9,6 @@
     align-items: center;
 }
 
-body {
-    background: #101628;
-    font-family: 'Press Start 2P', cursive;
-}
-
 div.answered .correct {
     color: green;
 }
@@ -34,9 +29,24 @@ div.answered .incorrect {
 }
 
 .question__container {
-    width: 50%;
-    margin: 30px auto;
+    width: 75%;
+    margin: 2rem auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.section__game-over {
+    position: absolute;
+    top: 15rem;
+    right: 20rem;
+    animation: blinkingText 0.8s infinite;
+    font-size: 300%;
+}
+
+.img__battle-ground__back-ground {
+    height: 35rem;
 }
 
 .question__container p.trivia__question {
@@ -62,19 +72,6 @@ section.answers button {
     border: none;
     /* font-size: 20px; */
 }
-
-.question__container div img.zues {
-    height: 300px;
-    width: 300px;
-    border-radius: 3px;
-}
-
-footer {
-    /* height: 100px; */
-    background: #AC987B;
-    padding: 100px;
-}
-
 
 /* Intro Component */
 
