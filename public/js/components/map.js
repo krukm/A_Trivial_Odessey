@@ -2,9 +2,16 @@
 
 const map = {
     template: `
+    <section class="map__canvas">
+        <canvas id="canvas"></canvas>
+        <section class="img__container">
+            <section class="section__health" id="id__health"></section>
+            <img class="scroll__img" src="./img/scroll.png">
+        </section>
+    </section>
     
-    <section class="section__health" id="id__health"></section>
-    <canvas id="canvas"></canvas>
+
+
     
     
     `,
