@@ -2,11 +2,14 @@
 
 const battleGround = {
     template: `
-    <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
-    <section class="timer">
-        <p id="timer">{{ $ctrl.counter }} seconds left</p>
-        <button ng-click="$ctrl.timer()">Start</button>
+    <section class="timer__container">
+        <section class="timer">
+            <p id="timer">{{ $ctrl.counter }} seconds left</p>
+            <button ng-click="$ctrl.timer()">Start</button>
+        </section>
+        <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
     </section>
+    
     <section class="question__container">
         <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
         <img class="img__battle-ground__back-ground" src="./img/island.png">
@@ -72,6 +75,7 @@ const battleGround = {
                 });
             }
         }
+        
         vm.getNextQuestion();
         
         vm.getQuestions = (response) => {

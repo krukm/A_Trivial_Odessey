@@ -67,6 +67,12 @@ div.answered .incorrect {
     background-color: #337eaf;
 }
 
+.timer__container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
 .question__container {
     width: 75%;
     margin: 2rem auto;
@@ -85,14 +91,15 @@ div.answered .incorrect {
 }
 
 .img__battle-ground__back-ground {
-    height: 35rem;
+    /* height: 35rem */
+    width: 600px;
+    height: 300px;
 }
 
 .question__container p.trivia__question {
     margin-bottom: 30px;
     padding: 10px;
     border-radius: 3px;
-    /* font-size: 20px; */
     color: #fff;
     background: #FE533D;
 }
@@ -109,7 +116,6 @@ section.answers button {
     background: #FE533D;
     color: #fff;
     border: none;
-    /* font-size: 20px; */
 }
 
 .intro_container {
