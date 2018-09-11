@@ -65,6 +65,7 @@ const battleGround = {
         }
 
         vm.userChooseAnswer = (hit) => {
+
             vm.answered = true;
             vm.answerCounter += 1;
             if (hit === vm.correctAnswer) {
