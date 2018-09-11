@@ -100,25 +100,24 @@ footer {
     100% { color: #3CBCFC; }
 }
 
-/* canvas {
-    background-image: url('/public/img/map.png');
-} */
 
-canvas {
+#canvas {
     background-image: url('/public/img/map.png');
+    height: 600px;
+    width: 800px;
+    margin: 1%;
+    object-fit: fill;
     background-size: cover;
-    height: 100vh;
-    width: 100vw;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 1%;
-    display: block;
 }
+
 
 .section__health {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    float: right;
 }
 
 .img__heart {
