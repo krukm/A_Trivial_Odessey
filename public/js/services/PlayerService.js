@@ -5,7 +5,6 @@ function PlayerService() {
 
     vm.playerHealth = 3;
     vm.battles = 0;
-    
 
     vm.getPlayerHealth = () => {
         return vm.playerHealth;

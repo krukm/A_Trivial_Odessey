@@ -3,6 +3,9 @@
 const battleGround = {
     template: `
     <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
+    <section class="timer">
+        <p id="timer">{{ $ctrl.counter }} seconds left</p>
+    </section>
     <section class="question__container">
         <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
         <img class="img__battle-ground__back-ground" src="./img/island.png">
@@ -23,7 +26,7 @@ const battleGround = {
     </section>
     `,
 
-    controller: ["TriviaService", "PlayerService", "$location", "$timeout", function(TriviaService, PlayerService, $location, $timeout) {
+    controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", function(TriviaService, PlayerService, $location, $timeout, $interval) {
         const vm = this;
         vm.id = "id__health";
         vm.gameOver = false;
@@ -32,8 +35,27 @@ const battleGround = {
         vm.incorrectAnswers = 0;
         vm.answered = false;
         vm.button = "Next Question";
+        vm.counter = PlayerService.counter;
+        vm.counter = 30;
 
         PlayerService.updateHealthDisplay(vm.id);
+
+        vm.timer = () => {
+            $interval(function() {
+                vm.counter -= 1;
+                console.log(vm.counter);
+    
+                if (vm.counter === 0) {
+                    $interval.cancel(vm.timer);
+                }
+        
+                if (vm.counter < 11) {
+                    document.getElementById("timer").style.color = "#D50000";
+                }
+            }, 1000);
+        }
+
+        vm.timer();
 
         vm.getNextQuestion = () => {
             if (PlayerService.battles < 3) {

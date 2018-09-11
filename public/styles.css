@@ -3,6 +3,17 @@
     font-family: 'Press Start 2P', cursive;
 }
 
+
+/* body {
+    background: #000;
+} */
+
+.section__victory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 div.answered .correct {
     color: green;
 }
@@ -144,6 +155,7 @@ section.answers button {
     height: 575px;
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
 }
 
 .story__container .story {
@@ -151,6 +163,21 @@ section.answers button {
     width: 340px;
     height: 340px;
     line-height: 1.5;
+}
+
+.story__container button.fight {
+    position: absolute;
+    bottom: 45px;
+    left: 200px;
+    text-transform: uppercase;
+    background: #D50000;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+.story__container button.fight:hover {
+    cursor: pointer;
 }
 
 #canvas {
