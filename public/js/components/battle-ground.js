@@ -44,7 +44,7 @@ const battleGround = {
                 TriviaService.getMediumQuestions().then((response) => {
                     vm.getQuestions(response);
                 });
-            } else if (PlayerService.battles > 7) {
+            } else if (PlayerService.battles >= 6) {
                 TriviaService.getHardQuestions().then((response) => {
                     vm.getQuestions(response);
                 });
@@ -56,6 +56,8 @@ const battleGround = {
             vm.questions = response.results;
             vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
             vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
+            console.log(vm.correctAnswer);
+            console.log(PlayerService.battles);
             vm.quizQuestion = response.results[vm.randomIndex].question;
             vm.answers = response.results[vm.randomIndex].incorrect_answers;
             vm.answers.push(response.results[vm.randomIndex].correct_answer);
@@ -92,6 +94,9 @@ const battleGround = {
             if (vm.answerCounter === 2) {
                 vm.button = "Continue Story"
                 PlayerService.battles += 1;
+                if (PlayerService.battles > 8) {
+                    $location.path("/victory");
+                }
             }
         }
 

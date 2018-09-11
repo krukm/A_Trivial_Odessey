@@ -21,7 +21,6 @@ function PlayerService() {
     }
 
     vm.updateHealthDisplay = (id) => {
-        console.log('PlayerService health: ' +  vm.playerHealth);
         document.getElementById(id).innerHTML = "";
         for (let i = 0; i < vm.playerHealth; i++) {
             document.getElementById(id).insertAdjacentHTML('afterbegin', '<img class="img__heart" src="/public/img/heart.png"></img>');

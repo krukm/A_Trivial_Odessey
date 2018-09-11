@@ -71,15 +71,15 @@ const map = {
             vm.gctx.lineTo(740,55);
             vm.gctx.stroke();
         }   
-        function march() {
-            vm.offset++;
-            if (vm.offset > 16) {
-              vm.offset = 0;
-            }
-            vm.draw();
-            setTimeout(march, 20);
-          }
-          march();
+        // function march() {
+        //     vm.offset++;
+        //     if (vm.offset > 16) {
+        //       vm.offset = 0;
+        //     }
+        //     vm.draw();
+        //     setTimeout(march, 20);
+        //   }
+        //   march();
         
         // let background = new Image();
         // background.src = '/public/img/map.png';
