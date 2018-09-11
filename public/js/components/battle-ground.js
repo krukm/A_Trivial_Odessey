@@ -40,22 +40,17 @@ const battleGround = {
 
         PlayerService.updateHealthDisplay(vm.id);
 
-        vm.timer = () => {
-            $interval(function() {
-                vm.counter -= 1;
-                console.log(vm.counter);
-    
-                if (vm.counter === 0) {
-                    $interval.cancel(vm.timer);
-                }
-        
-                if (vm.counter < 11) {
-                    document.getElementById("timer").style.color = "#D50000";
-                }
-            }, 1000);
+        vm.countDown = () => {
+            vm.counter--;
         }
 
-        vm.timer();
+        vm.timer = () => {
+            if (vm.counter > 0) {
+                $interval(vm.countDown, 1000);
+            }    
+        } 
+        
+        
 
         vm.getNextQuestion = () => {
             if (PlayerService.battles < 3) {
