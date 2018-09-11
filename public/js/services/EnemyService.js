@@ -10,7 +10,7 @@ function EnemyService() {
 
     vm.poseidon = "Having evaded the sirens, you float feverishly on a calm sea. Poseidon has other plans for you though. He strikes the sea with his trident and huge waves envelop your boat as you cling on despite Poseidon’s fury.";
 
-    vm.achilles = 'You awake upon a beach having evaded Poseidon. You wander lost and hungry and have almost give up hope when Athena, god of wisdom and war, appears. She has taken an interest in your mortal endeavors and will help you if you can prove yourself. Athena places you under the tutelage of Achilles, the great warrior. “You have much to learn and no time to lose” he says. “I will not take it easy on you.” ';
+    vm.achilles = 'You awake upon a beach having evaded Poseidon. You wander lost and hungry and have almost give up hope when Athena, god of wisdom and war, appears. She has taken an interest in you and will help you if you can prove yourself. Athena places you under the tutelage of Achilles, the great warrior. “You have much to learn and no time to lose” he says.';
 
     vm.polyphemus = "well from Achilles and undertake your journey to Mt Olympus. You choose a spot in a cave to rest. Unbeknownst to you the cave is home to Polyphemus, the cyclops. He hungrily eyes you …";
 

@@ -15,22 +15,49 @@ const map = {
 
     // 
     // <img id="map__bg" src="/public/img/map.png">
-    controller: ["PlayerService", "EnemyService", "PlayerService", function(PlayerService, EnemyService, PlayerService) {
+    controller: ["PlayerService", "EnemyService", function(PlayerService, EnemyService) {
 
         const vm = this;
         vm.id = "id__health";
+        vm.i = 0;
+        vm.speed = 40;
         PlayerService.updateHealthDisplay(vm.id);
 
-        vm.storyText =
-            vm.i = 0;
-        vm.speed = 40;
+        switch (PlayerService.battles) {
+            case 0:
+                vm.storyText = EnemyService.cerberus;
+                break;
+            case 1:
+                vm.storyText = EnemyService.hades;
+                break;
+            case 2:
+                vm.storyText = EnemyService.sirens;
+                break;
+            case 3:
+                vm.storyText = EnemyService.poseidon;
+                break;
+            case 4:
+                vm.storyText = EnemyService.achilles;
+                break;
+            case 5:
+                vm.storyText = EnemyService.polyphemus;
+                break;
+            case 6:
+                vm.storyText = EnemyService.prometheus;
+                break;
+            case 7:
+                vm.storyText = EnemyService.hercules;
+                break;
+            case 8:
+                vm.storyText = EnemyService.zeus;
+                break;
+        }
 
         vm.typeWriter = () => {
             if (vm.i < vm.storyText.length) {
                 document.getElementById("story").innerHTML += vm.storyText.charAt(vm.i);
                 vm.i++;
                 setTimeout(vm.typeWriter, vm.speed);
-                console.log("typing");
             }
         }
         vm.typeWriter();

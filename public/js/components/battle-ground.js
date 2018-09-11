@@ -74,49 +74,46 @@ const battleGround = {
         }
 
         vm.userChooseAnswer = (hit) => {
-            vm.answered = true;
-            vm.answerCounter += 1;
-
-            if (hit === vm.correctAnswer) {
-                vm.answerText = "You answered correctly Great job!";
-                vm.CorrectAnswers++;
+                vm.answered = true;
+                vm.answerCounter += 1;
 
                 if (vm.answerCounter === 2) {
                     vm.button = "Continue Story"
                     PlayerService.battles += 1;
+                }
 
-                    if (PlayerService.battles === 3) {
-                        //TODO move to medium difficulty
-                    }
+                if (hit === vm.correctAnswer) {
+                    vm.answerText = "You answered correctly Great job!";
+                    vm.CorrectAnswers++;
 
                     if (vm.CorrectAnswers === 2) {
                         PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
                         vm.CorrectAnswers = 0;
                     }
-                }
-                console.log(`Player health: ${PlayerService.playerHealth}, Correct Answer: ${vm.CorrectAnswers}`);
-           
-            } else {
-                vm.answerText = "You answered the question wrong! Try again!";
-                vm.IncorrectAnswers++;
+                } else {
+                    vm.answerText = "You answered the question wrong! Try again!";
+                    vm.IncorrectAnswers++;
 
-                if (vm.IncorrectAnswers === 2) {
-                    PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
-                    vm.IncorrectAnswers = 0;
-                    console.log('Player Health: ' + PlayerService.playerHealth);
-                }
-                console.log(`Player health: ${PlayerService.playerHealth}, Incorrect Answer: ${vm.IncorrectAnswers}`);
-                if (PlayerService.playerHealth === 0) {
-                    console.log('game over');
-                    vm.gameOver = true;
+                    if (vm.IncorrectAnswers === 2) {
+                        PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
+                        vm.IncorrectAnswers = 0;
+                        console.log('Player Health: ' + PlayerService.playerHealth);
+                    }
+                    console.log(`Player health: ${PlayerService.playerHealth}, Incorrect Answer: ${vm.IncorrectAnswers}`);
+                    if (PlayerService.playerHealth === 0) {
+                        console.log('game over');
+                        vm.gameOver = true;
 
-                    $timeout(() => {
-                        PlayerService.resetPlayer();
-                        $location.path('/intro');
-                    }, 5000);
+                        $timeout(() => {
+                            PlayerService.resetPlayer();
+                            $location.path('/intro');
+                        }, 5000);
+                    }
                 }
             }
-        }
+            // console.log(`Player health: ${PlayerService.playerHealth}, Correct Answer: ${vm.CorrectAnswers}`);
+
+
 
         vm.nextQuestion = () => {
             TriviaService.getEasyQuestions().then((response) => {
@@ -142,12 +139,10 @@ const battleGround = {
         }
 
         vm.getMediumTriviaQuestions = () => {
-            TriviaService.getMediumQuestions().then((response) => {
-            });
+            TriviaService.getMediumQuestions().then((response) => {});
         }
         vm.getHardTriviaQuestions = () => {
-            TriviaService.getHardQuestions().then((response) => {
-            });
+            TriviaService.getHardQuestions().then((response) => {});
         }
 
     }]
