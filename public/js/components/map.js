@@ -6,15 +6,13 @@ const map = {
         <canvas id="canvas"></canvas>
         <section class="img__container">
             <section class="section__health" id="id__health"></section>
-            <img class="scroll__img" src="./img/scroll.png">
+            <section class="story__container"><p class="story">Zeus has followed your journey from the Underworld, across the ocean and your encounters with the Cyclops and Prometheus. “I did not expect you to make it this far. You are still a mere mortal”. A lighting bolt appears in his hand. Zeus is the last thing standing between you and your loved ones!</p></section>
         </section>
-    </section>
-    
-
-
-    
-    
-    `,
+            
+            
+            `,
+            
+    // 
     // <img id="map__bg" src="/public/img/map.png">
     controller: ["PlayerService", function(PlayerService) {
         
