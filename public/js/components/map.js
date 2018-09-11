@@ -110,13 +110,6 @@ const map = {
         }
         march();
 
-        // let background = new Image();
-        // background.src = '/public/img/map.png';
-        // vm.background.onload = function() {
-        //     vm.gctx.drawImage(background, 0, 0);
-        // }
-        // vm.background.onload();
-        // console.log(vm.canvas);
 
     }]
 }
