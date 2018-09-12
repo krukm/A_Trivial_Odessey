@@ -282,9 +282,10 @@ section .button__info, .button__instructions {
     background: url('./img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 90vh;
-    width: 90%;
-    margin: 0 0 0 200px;
+    height: 900px;
+    width: 1090px;
+    /* margin: 0 0 0 200px; */
+    margin: 0 auto;
 }
 
 .instructions__container {
