@@ -7,7 +7,7 @@ const battleGround = {
             <section class="timer__container">
                 <section class="timer">
                     <p id="timer">{{ $ctrl.counter }} seconds left</p>
-                    <button ng-click="$ctrl.timer()">Start</button>
+                    <button ng-click="$ctrl.timer(); ">Start</button>
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
@@ -43,6 +43,16 @@ const battleGround = {
         vm.answered = false;
         vm.button = "Next Question";
         vm.counter = 30;
+        vm.easyQuestions = TriviaService.easyQuestions;
+
+        if (PlayerService.battles === 0) {
+            TriviaService.getEasyQuestions();
+            TriviaService.getMediumQuestions();
+            TriviaService.getHardQuestions();
+            console.log(vm.easyQuestions);
+        }
+
+        
 
         vm.timer = () => {
             vm.counter = 30;
@@ -53,6 +63,13 @@ const battleGround = {
 
             return vm.countDown;
         }
+
+        vm.stopTimer = () => {
+            clearInterval(vm.countDown);
+            $scope.$apply();
+            vm.counter = 30;
+        }
+
         switch (PlayerService.battles) {
             case 0:
                 vm.battleImage = "./img/Underworld.png";
@@ -82,19 +99,28 @@ const battleGround = {
                 vm.battleImage = "/img/Olympus2.png"
                 break;
         }
-        vm.stopTimer = () => {
-            clearInterval(vm.countDown);
-            $scope.$apply();
-            vm.counter = 30;
-        }
 
         PlayerService.updateHealthDisplay(vm.id);
 
+        vm.getQuestions = (response) => {
+            console.log(vm.easyQuestions);
+            vm.randomIndex = Math.floor(Math.random() * response.length);
+            vm.correctAnswer = response[vm.randomIndex].correct_answer;
+            console.log(vm.correctAnswer);
+            console.log(PlayerService.battles);
+
+            vm.quizQuestion = response[vm.randomIndex].question;
+            vm.answers = response[vm.randomIndex].incorrect_answers;
+            vm.answers.push(response[vm.randomIndex].correct_answer);
+            vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+        }
+
         vm.getNextQuestion = () => {
             if (PlayerService.battles < 3) {
-                TriviaService.getEasyQuestions().then((response) => {
-                    vm.getQuestions(response);
-                });
+                    // vm.easyQuestions = TriviaService.easyQuestions;
+                    vm.getQuestions(vm.easyQuestions);
+                    console.log(vm.easyQuestions);
+                
             } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
                 TriviaService.getMediumQuestions().then((response) => {
                     vm.getQuestions(response);
@@ -108,17 +134,7 @@ const battleGround = {
 
         vm.getNextQuestion();
 
-        vm.getQuestions = (response) => {
-            vm.questions = response.results;
-            vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
-            vm.correctAnswer = response.results[vm.randomIndex].correct_answer;
-            console.log(vm.correctAnswer);
-            console.log(PlayerService.battles);
-            vm.quizQuestion = response.results[vm.randomIndex].question;
-            vm.answers = response.results[vm.randomIndex].incorrect_answers;
-            vm.answers.push(response.results[vm.randomIndex].correct_answer);
-            vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
-        }
+       
 
         vm.userChooseAnswer = (hit) => {
 
@@ -148,6 +164,9 @@ const battleGround = {
                     }, 5000);
                 }
             }
+
+            vm.easyQuestions.splice(vm.randomIndex, 1);
+
             if (vm.answerCounter === 2) {
                 vm.button = "Continue Story"
                 PlayerService.battles += 1;
