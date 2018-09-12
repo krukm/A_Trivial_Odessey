@@ -277,3 +277,34 @@ section .button__info, .button__instructions {
     width: 2rem;
     height: 2rem;
 }
+
+.section__instructions {
+    background: url('./img/wide-scroll.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 90vh;
+    width: 90%;
+    margin: 0 0 0 200px;
+}
+
+.instructions__container {
+    width: 700px;
+    height: 300px;
+    padding: 75px 0 0 170px;
+    position: relative;
+}
+
+.instructions__container h1 {
+    text-align: center;
+}
+
+.instructions__container button {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+    color: #fff;
+    border: 2px solid #000;
+    position: absolute;
+    left: 460px;
+}

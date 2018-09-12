@@ -14,7 +14,7 @@ const map = {
     </section>
     <section class="bottom__map--nav">
         <section>
-            <button class="button__instructions" ng-click="$ctrl.intro()">INSTRUCTIONS</button>
+            <button class="button__instructions" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
             <button class="button__info" ng-click="$ctrl.intro()">GOD INFO</button>
         </section>
         <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
@@ -35,6 +35,9 @@ const map = {
         }
         vm.intro = () => {
             $location.url("/intro");
+        }
+        vm.instructions = () => {
+            $location.url('/instructions');
         }
 
         switch (PlayerService.battles) {
