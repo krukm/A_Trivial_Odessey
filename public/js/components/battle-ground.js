@@ -71,16 +71,16 @@ const battleGround = {
                 vm.battleImage = "./img/beach.png"
                 break;
             case 5:
-                vm.battleImage = "/img/rocky.png"
+                vm.battleImage = "./img/rocky.png"
                 break;
             case 6:
-                vm.battleImage = "/img/caves.png"
+                vm.battleImage = "./img/caves.png"
                 break;
             case 7:
-                vm.battleImage = "/img/Olympus1.png"
+                vm.battleImage = "./img/Olympus1.png"
                 break;
             case 8:
-                vm.battleImage = "/img/Olympus2.png"
+                vm.battleImage = "./img/Olympus2.png"
                 break;
         }
         vm.stopTimer = () => {
