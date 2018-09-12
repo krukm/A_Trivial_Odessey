@@ -13,5 +13,8 @@ angular.module('app').config(['$routeProvider', function($routeProvider) {
         })
         .when('/victory', {
             template: '<victory></victory>'
+        })
+        .otherwise({
+            redirectTo: '/intro'
         });
 }])
