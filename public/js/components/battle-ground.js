@@ -71,10 +71,10 @@ const battleGround = {
                 vm.battleImage = "./img/beach.png"
                 break;
             case 5:
-                vm.battleImage = "./img/rocky.png"
+                vm.battleImage = "./img/cave.png"
                 break;
             case 6:
-                vm.battleImage = "./img/caves.png"
+                vm.battleImage = "./img/rocky.png"
                 break;
             case 7:
                 vm.battleImage = "./img/Olympus1.png"
