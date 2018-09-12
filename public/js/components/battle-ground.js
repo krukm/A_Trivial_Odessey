@@ -39,7 +39,6 @@ const battleGround = {
         vm.incorrectAnswers = 0;
         vm.answered = false;
         vm.button = "Next Question";
-        vm.counter = PlayerService.counter;
         vm.counter = 30;
         
         vm.timer = () => {
