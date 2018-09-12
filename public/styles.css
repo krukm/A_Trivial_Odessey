@@ -90,10 +90,17 @@ div.answered .incorrect {
     font-size: 300%;
 }
 
-.img__battle-ground__back-ground {
-    /* height: 35rem */
-    width: 600px;
-    height: 300px;
+.battle__container {
+    height: 100vh;
+    width: 100%;
+}
+
+.battle__img__bg {
+    height: 70vh; 
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .question__container p.trivia__question {
