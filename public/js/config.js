@@ -17,6 +17,9 @@ angular.module('app').config(['$routeProvider', function($routeProvider) {
         .when('/instructions', {
             template: '<instructions></instructions>'
         })
+        .when('/characters', {
+            template: '<characters></characters>'
+        })
         .otherwise({
             redirectTo: '/intro'
         });
