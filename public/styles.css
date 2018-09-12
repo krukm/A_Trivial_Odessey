@@ -73,14 +73,7 @@ div.answered .incorrect {
     align-content: center;
 }
 
-.question__container {
-    width: 75%;
-    margin: 2rem auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
+
 
 .section__game-over {
     position: absolute;
@@ -96,11 +89,29 @@ div.answered .incorrect {
 }
 
 .battle__img__bg {
-    height: 70vh; 
+    height: 100%; 
     width: 100%;
-    object-fit: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.question__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.question__container {
+    margin: 22rem auto 0 auto;
+    width: 90%;
+    text-align: center;
+    background: url(./img/wide-scroll.png);
+    background-size: 100% 100%;
+    opacity: 0.8;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 30vh;
 }
 
 .question__container p.trivia__question {
@@ -109,6 +120,7 @@ div.answered .incorrect {
     border-radius: 3px;
     color: #fff;
     background: #FE533D;
+    margin: 5% 15% 1% 15%;
 }
 
 .question__container section.answers {
