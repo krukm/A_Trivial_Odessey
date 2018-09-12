@@ -2,32 +2,35 @@
 
 const battleGround = {
     template: `
-    <section class="timer__container">
-        <section class="timer">
-            <p id="timer">{{ $ctrl.counter }} seconds left</p>
-            <button ng-click="$ctrl.timer()">Start</button>
-        </section>
-        <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
-    </section>
-    
-    <section class="question__container">
-        <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-        <img class="img__battle-ground__back-ground" ng-src="{{ $ctrl.battleImage }}">
-        <section ng-if="$ctrl.answered === false">
-            <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
-            <section class="answers"> 
-                <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
-                <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
-                    {{ answer }}
-                </button>
-                </div>
+    <section class="battle__container">
+        <section  class="battle__img__bg" ng-style="{'background-image':'url(' + $ctrl.battleImage + ')'}">
+            <section class="timer__container">
+                <section class="timer">
+                    <p id="timer">{{ $ctrl.counter }} seconds left</p>
+                    <button ng-click="$ctrl.timer()">Start</button>
+                </section>
+                <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
         </section>
-        <section class="text_container" ng-if="$ctrl.answered === true">
-            <p class="answer_text">{{ $ctrl.answerText }}</p>
-            <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
+        
+        <section class="question__container">
+            <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+            <section ng-if="$ctrl.answered === false">
+                <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
+                <section class="answers"> 
+                    <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
+                    <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                        {{ answer }}
+                    </button>
+                    </div>
+                </section>
+            </section>
+            <section class="text_container" ng-if="$ctrl.answered === true">
+                <p class="answer_text">{{ $ctrl.answerText }}</p>
+                <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
+            </section>
         </section>
-    </section>
+    </section>    
     `,
 
     controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", "$scope", function(TriviaService, PlayerService, $location, $timeout, $interval, $scope) {
@@ -50,7 +53,6 @@ const battleGround = {
 
             return vm.countDown;
         }
-
         switch (PlayerService.battles) {
             case 0:
                 vm.battleImage = "./img/Underworld.png";
