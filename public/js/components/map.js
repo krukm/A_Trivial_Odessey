@@ -8,22 +8,33 @@ const map = {
             <section class="section__health" id="id__health"></section>
             <section class="story__container">
                 <p id="story" class="story"></p>
-                <button ng-click="$ctrl.fight()" class="fight">fight!</button>
+                <button ng-if="$ctrl.fightButton" ng-click="$ctrl.fight()" class="fight">fight!</button>
             </section>
         </section>
+    </section>
+    <section class="bottom__map--nav">
+        <section>
+            <button class="button__instructions" ng-click="$ctrl.intro()">INSTRUCTIONS</button>
+            <button class="button__info" ng-click="$ctrl.intro()">GOD INFO</button>
+        </section>
+        <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
     </section>   
     `,
 
-    controller: ["PlayerService", "EnemyService", "$location", function(PlayerService, EnemyService, $location) {
+    controller: ["PlayerService", "EnemyService", "$location", "$timeout", function(PlayerService, EnemyService, $location, $timeout) {
 
         const vm = this;
         vm.id = "id__health";
         vm.i = 0;
-        vm.speed = 40;
+        vm.speed = 60;
         PlayerService.updateHealthDisplay(vm.id);
+        vm.fightButton = false;
 
         vm.fight = () => {
             $location.url("/battle-ground");
+        }
+        vm.intro = () => {
+            $location.url("/intro");
         }
 
         switch (PlayerService.battles) {
@@ -60,7 +71,9 @@ const map = {
             if (vm.i < vm.storyText.length) {
                 document.getElementById("story").innerHTML += vm.storyText.charAt(vm.i);
                 vm.i++;
-                setTimeout(vm.typeWriter, vm.speed);
+                $timeout(vm.typeWriter, vm.speed);
+            } else {
+                vm.fightButton = true;
             }
         }
 
