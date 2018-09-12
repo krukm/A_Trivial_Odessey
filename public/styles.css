@@ -119,8 +119,8 @@ section.answers button {
 }
 
 .intro_container {
-    background: url(./img/Underworld.png);
-    background-size: cover;
+    background: url(./img/Intro.png);
+    background-size: contain;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
