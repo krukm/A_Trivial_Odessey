@@ -3,7 +3,6 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-
 body {
     background: #132f41;
 }
@@ -96,7 +95,7 @@ div.answered .incorrect {
 }
 
 .battle__img__bg {
-    height: 70vh; 
+    height: 70vh;
     width: 100%;
     object-fit: cover;
     background-repeat: no-repeat;
@@ -166,12 +165,21 @@ section.answers button {
 }
 
 @keyframes blinkingText {
-
-    0% { color: #F83800; }
-    30% { color: #3CBCFC; }
-    50% { color: #007800; }
-    70% { color:#F83800; }
-    100% { color: #3CBCFC; }
+    0% {
+        color: #F83800;
+    }
+    30% {
+        color: #3CBCFC;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #F83800;
+    }
+    100% {
+        color: #3CBCFC;
+    }
 }
 
 .map__canvas {
@@ -184,7 +192,6 @@ section.answers button {
     display: flex;
     flex-direction: column;
 }
-
 
 .story__container {
     background: url("./img/wide-scroll-rotate.png");
@@ -224,7 +231,8 @@ section.answers button {
     justify-content: space-between;
 }
 
-section .button__info, .button__instructions {
+section .button__info,
+.button__instructions {
     margin-left: 5px;
 }
 
@@ -247,7 +255,6 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
 }
 
 .button__instructions {
@@ -257,7 +264,6 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
 }
 
 #canvas {
@@ -270,7 +276,6 @@ section .button__info, .button__instructions {
     background-size: contain;
     background-repeat: no-repeat;
 }
-
 
 .section__health {
     display: flex;
@@ -291,7 +296,6 @@ section .button__info, .button__instructions {
     background-repeat: no-repeat;
     height: 900px;
     width: 1090px;
-    /* margin: 0 0 0 200px; */
     margin: 0 auto;
 }
 

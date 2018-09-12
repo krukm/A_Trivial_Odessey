@@ -15,16 +15,16 @@ const battleGround = {
         
         <section class="question__container">
             <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-            <section ng-if="$ctrl.answered === false">
-                <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
-                <section class="answers"> 
-                    <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
-                    <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
-                        {{ answer }}
-                    </button>
-                    </div>
-                </section>
-            </section>
+                    <section ng-if="$ctrl.answered === false">
+                        <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
+                        <section class="answers"> 
+                            <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
+                            <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                                {{ answer }}
+                            </button>
+                            </div>
+                        </section>
+                    </section>
             <section class="text_container" ng-if="$ctrl.answered === true">
                 <p class="answer_text">{{ $ctrl.answerText }}</p>
                 <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
@@ -58,7 +58,7 @@ const battleGround = {
                 vm.battleImage = "./img/Underworld.png";
                 break;
             case 1:
-                vm.battleImage = "./img/Underworld.png";
+                vm.battleImage = "./img/Underworld2.png";
                 break;
             case 2:
                 vm.battleImage = "./img/island.png";
@@ -67,19 +67,19 @@ const battleGround = {
                 vm.battleImage = "./img/mountain-island.png"
                 break;
             case 4:
-                vm.battleImage = "./img/mountain-island.png"
+                vm.battleImage = "./img/beach.png"
                 break;
             case 5:
-                vm.battleImage = "/img/mountain-island.png"
+                vm.battleImage = "./img/cave.png"
                 break;
             case 6:
-                vm.battleImage = "/img/mountain-island.png"
+                vm.battleImage = "./img/rocky.png"
                 break;
             case 7:
-                vm.battleImage = "/img/Olympus1.png"
+                vm.battleImage = "./img/Olympus1.png"
                 break;
             case 8:
-                vm.battleImage = "/img/Olympus2.png"
+                vm.battleImage = "./img/Olympus2.png"
                 break;
         }
         vm.stopTimer = () => {
@@ -118,6 +118,7 @@ const battleGround = {
             vm.answers = response.results[vm.randomIndex].incorrect_answers;
             vm.answers.push(response.results[vm.randomIndex].correct_answer);
             vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
+            console.log(response);
         }
 
         vm.userChooseAnswer = (hit) => {
