@@ -12,7 +12,7 @@ const battleGround = {
     
     <section class="question__container">
         <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-        <img class="img__battle-ground__back-ground" src="./img/island.png">
+        <img class="img__battle-ground__back-ground" ng-src="{{ $ctrl.battleImage }}">
         <section ng-if="$ctrl.answered === false">
             <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
             <section class="answers"> 
@@ -40,7 +40,7 @@ const battleGround = {
         vm.answered = false;
         vm.button = "Next Question";
         vm.counter = 30;
-        
+
         vm.timer = () => {
             vm.counter = 30;
             vm.countDown = setInterval(function() {
@@ -49,8 +49,37 @@ const battleGround = {
             }, 1000);
 
             return vm.countDown;
-        } 
+        }
 
+        switch (PlayerService.battles) {
+            case 0:
+                vm.battleImage = "./img/Underworld.png";
+                break;
+            case 1:
+                vm.battleImage = "./img/Underworld.png";
+                break;
+            case 2:
+                vm.battleImage = "./img/island.png";
+                break;
+            case 3:
+                vm.battleImage = "./img/mountain-island.png"
+                break;
+            case 4:
+                vm.battleImage = "./img/mountain-island.png"
+                break;
+            case 5:
+                vm.battleImage = "/img/mountain-island.png"
+                break;
+            case 6:
+                vm.battleImage = "/img/mountain-island.png"
+                break;
+            case 7:
+                vm.battleImage = "/img/Olympus1.png"
+                break;
+            case 8:
+                vm.battleImage = "/img/Olympus2.png"
+                break;
+        }
         vm.stopTimer = () => {
             clearInterval(vm.countDown);
             $scope.$apply();
@@ -74,9 +103,9 @@ const battleGround = {
                 });
             }
         }
-        
+
         vm.getNextQuestion();
-        
+
         vm.getQuestions = (response) => {
             vm.questions = response.results;
             vm.randomIndex = Math.floor(Math.random() * vm.questions.length);
@@ -96,12 +125,12 @@ const battleGround = {
             if (hit === vm.correctAnswer) {
                 vm.answerText = "You answered correctly Great job!";
                 vm.correctAnswers++;
-                
+
                 if (vm.correctAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
                 }
-                
-                
+
+
             } else {
                 vm.answerText = "You answered the question wrong! Try again!";
                 vm.incorrectAnswers++;
@@ -110,7 +139,7 @@ const battleGround = {
                 }
                 if (PlayerService.playerHealth === 0) {
                     vm.gameOver = true;
-                    
+
                     $timeout(() => {
                         PlayerService.resetPlayer();
                         $location.path('/intro');
