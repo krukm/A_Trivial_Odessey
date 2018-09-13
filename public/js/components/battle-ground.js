@@ -7,25 +7,22 @@ const battleGround = {
             <section class="timer__container">
                 <section class="timer">
                     <p id="timer">{{ $ctrl.counter }} seconds left</p>
-                    <button ng-click="$ctrl.timer(); $ctrl.getNextQuestion();
+                    <button class = "start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();
                     ">Start</button>
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health">
                     <player-health></player-health>
                 </section>
             </section>
-
+            <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
             <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
-            <section class="question__container">
-                <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+            <section ng-hide="$ctrl.gameOver" class="question__container">
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
-                    <section class="answers"> 
-                        <div ng-repeat="answer in $ctrl.answerArray " ng-class="{'answered': $ctrl.answered}" >
-                        <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                    <section class="answers"  ng-class="{'answered': $ctrl.answered}" >
+                        <button ng-repeat="answer in $ctrl.answerArray" ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                             {{ answer }}
                         </button>
-                        </div>
                     </section>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
@@ -53,27 +50,27 @@ const battleGround = {
         vm.correctAnswer = null;
         vm.changedHealth = false;
             
+
         if (PlayerService.battles === 0) {
             TriviaService.getEasyQuestions().then((response) => {
                 vm.easyQuestions = response;
                 sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
             });
-       
+
             TriviaService.getMediumQuestions().then((response) => {
                 vm.mediumQuestions = response;
                 sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
             });
-        
+
             TriviaService.getHardQuestions().then((response) => {
                 vm.hardQuestions = response;
                 sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
             });
         }
 
-        vm.easyQuestions = JSON.parse(sessionStorage.getItem("easy")); 
-        vm.mediumQuestions = JSON.parse(sessionStorage.getItem("medium")); 
-        vm.hardQuestions = JSON.parse(sessionStorage.getItem("hard")); 
-        
+        vm.easyQuestions = JSON.parse(sessionStorage.getItem("easy"));
+        vm.mediumQuestions = JSON.parse(sessionStorage.getItem("medium"));
+        vm.hardQuestions = JSON.parse(sessionStorage.getItem("hard"));
 
         vm.timer = () => {
             vm.counter = 30;
@@ -84,7 +81,6 @@ const battleGround = {
 
             return vm.countDown;
         }
-
         vm.stopTimer = () => {
             clearInterval(vm.countDown);
             $scope.$apply();
@@ -92,6 +88,7 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
+            
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -103,6 +100,8 @@ const battleGround = {
             console.log(questionArray);
             questionArray.shift();
             sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
+            sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
+            sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
         }
 
         vm.randomizeArray = (array) => {

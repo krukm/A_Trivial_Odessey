@@ -3,7 +3,6 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-
 body {
     background: #132f41;
 }
@@ -65,14 +64,30 @@ body {
     align-content: center;
 }
 
+.timer {
+    background-color: #fff;
+    opacity: .8;
+    border: 2px solid #000;
+    margin: 15px;
+    border-radius: .25rem;
+    padding: 8px;
+}
 
+.start__button {
+    margin-left: 80px;
+    background-color: #409edb;
+    border: 2px solid #000;
+    color: white;
+    height: 30px;
+    width: 80px;
+    border-radius: .25rem;
+}
 
 .section__game-over {
-    position: absolute;
-    top: 15rem;
-    right: 20rem;
     animation: blinkingText 0.8s infinite;
     font-size: 300%;
+    z-index: 10;
+    text-align: center;
 }
 
 .battle__container {
@@ -82,7 +97,7 @@ body {
 }
 
 .battle__img__bg {
-    height: 100%; 
+    height: 100%;
     width: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -122,11 +137,6 @@ body {
     margin: 3% 15% 1% 15%;
 }
 
-.question__container section.answers {
-    display: flex;
-    justify-content: center;
-}
-
 div.answered .correct {
     color: green;
 }
@@ -136,7 +146,32 @@ div.answered .incorrect {
 }
 
 section.answers button {
-    margin: 0 10px;
+    padding: 10px;
+    max-width: 175px;
+    border-radius: 3px;
+    background: #b01919;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    margin-right: 20px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+section.answers button:hover {
+    background: #dd2020;
+}
+
+.text_container {
+    margin: auto 10%;
+}
+
+.next_question_button {
     padding: 10px;
     border-radius: 3px;
     background: #b01919;
@@ -144,21 +179,7 @@ section.answers button {
     border: none;
     cursor: pointer;
 }
-section.answers button:hover{
-    background: #dd2020;
-}
 
-.text_container {
-    margin: auto 10%;
-}
-.next_question_button {
-    padding: 10px;
-    border-radius: 3px;
-    background:#b01919;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
 .next_question_button:hover {
     background: #dd2020;
 }
@@ -204,12 +225,21 @@ section.answers button:hover{
 }
 
 @keyframes blinkingText {
-
-    0% { color: #F83800; }
-    30% { color: #3CBCFC; }
-    50% { color: #007800; }
-    70% { color:#F83800; }
-    100% { color: #3CBCFC; }
+    0% {
+        color: #F83800;
+    }
+    30% {
+        color: #3CBCFC;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #F83800;
+    }
+    100% {
+        color: #3CBCFC;
+    }
 }
 
 .map__canvas {
@@ -223,7 +253,6 @@ section.answers button:hover{
     flex-direction: column;
 }
 
-
 .story__container {
     background: url("./img/wide-scroll-rotate.png");
     background-size: 82%;
@@ -232,6 +261,7 @@ section.answers button:hover{
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    padding-bottom: 20px;
 }
 
 .story__container .story {
@@ -262,7 +292,9 @@ section.answers button:hover{
     justify-content: space-between;
 }
 
-section .button__info, .button__instructions, .button__intro {
+section .button__info,
+.button__instructions,
+.button__intro {
     margin-left: 5px;
 }
 
@@ -303,6 +335,7 @@ section .button__info, .button__instructions, .button__intro {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
+    margin-left: 50px;
 }
 
 #canvas {
@@ -315,7 +348,6 @@ section .button__info, .button__instructions, .button__intro {
     background-size: contain;
     background-repeat: no-repeat;
 }
-
 
 .section__health {
     display: flex;
@@ -389,7 +421,7 @@ section .button__info, .button__instructions, .button__intro {
     margin: 0 10px;
 }
 
-.ul__gods li a{
+.ul__gods li a {
     text-decoration: none;
     color: #fff;
 }
@@ -407,7 +439,7 @@ section .button__info, .button__instructions, .button__intro {
     padding: 50px 100px 0 100px;
 }
 
-.bio__info img{
+.bio__info img {
     width: 250px;
     height: 250px;
     margin-left: 200px;
@@ -436,6 +468,3 @@ section .button__info, .button__instructions, .button__intro {
     bottom: 100px;
     left: 565px;
 }
-
-
-
