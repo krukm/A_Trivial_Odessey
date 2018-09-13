@@ -12,7 +12,7 @@ const battleGround = {
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
 
-            <img src="./img/achillestest.png" class="battle__char__img">
+            <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
             <section class="question__container">
                 <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
                 <section ng-if="$ctrl.answered === false">
@@ -44,6 +44,7 @@ const battleGround = {
         vm.answered = false;
         vm.button = "Next Question";
         vm.counter = 30;
+        
 
         vm.timer = () => {
             vm.counter = 30;
@@ -57,30 +58,39 @@ const battleGround = {
         switch (PlayerService.battles) {
             case 0:
                 vm.battleImage = "./img/Underworld.png";
+                vm.characterImage = "./img/Cerebrus.png";
                 break;
             case 1:
                 vm.battleImage = "./img/Underworld2.png";
+                vm.characterImage = "./img/Hades.png";
                 break;
             case 2:
                 vm.battleImage = "./img/island.png";
+                vm.characterImage = "./img/Siren.png";
                 break;
             case 3:
                 vm.battleImage = "./img/mountain-island.png"
+                vm.characterImage = "./img/Poseidon.png";
                 break;
             case 4:
                 vm.battleImage = "./img/beach.png"
+                vm.characterImage = "./img/Athena.png";
                 break;
             case 5:
                 vm.battleImage = "./img/cave.png"
+                vm.characterImage = "./img/Polyphemus.png";
                 break;
             case 6:
                 vm.battleImage = "./img/rocky.png"
+                vm.characterImage = "./img/Achilles.png";
                 break;
             case 7:
                 vm.battleImage = "./img/Olympus1.png"
+                vm.characterImage = "./img/Hercules.png";
                 break;
             case 8:
                 vm.battleImage = "./img/Olympus2.png"
+                vm.characterImage = "./img/Zeus.png";
                 break;
         }
         vm.stopTimer = () => {
@@ -122,7 +132,6 @@ const battleGround = {
         }
 
         vm.userChooseAnswer = (hit) => {
-
             vm.answered = true;
             vm.answerCounter += 1;
             if (hit === vm.correctAnswer) {

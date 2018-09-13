@@ -14,14 +14,6 @@ body {
     align-items: center;
 }
 
-div.answered .correct {
-    color: green;
-}
-
-div.answered .incorrect {
-    color: red;
-}
-
 .section__victory {
     background-image: url('./img/Olympus2.png');
     background-repeat: no-repeat;
@@ -103,6 +95,7 @@ div.answered .incorrect {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     top: 25%;
+    height: 300px;
 }
 
 .question__container {
@@ -134,6 +127,13 @@ div.answered .incorrect {
     justify-content: center;
 }
 
+div.answered .correct {
+    color: green;
+}
+
+div.answered .incorrect {
+    color: red;
+}
 
 section.answers button {
     margin: 0 10px;
