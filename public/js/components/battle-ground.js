@@ -12,10 +12,9 @@ const battleGround = {
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
-
+            <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
             <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
-            <section class="question__container">
-                <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+            <section ng-hide="$ctrl.gameOver" class="question__container">
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
                     <section class="answers"  ng-class="{'answered': $ctrl.answered}" >

@@ -84,11 +84,10 @@ body {
 }
 
 .section__game-over {
-    position: absolute;
-    top: 15rem;
-    right: 20rem;
     animation: blinkingText 0.8s infinite;
     font-size: 300%;
+    z-index: 10;
+    text-align: center;
 }
 
 .battle__container {
