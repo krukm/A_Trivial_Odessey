@@ -107,10 +107,10 @@ const battleGround = {
                 vm.getQuestion(vm.easyQuestions);
             } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
                 console.log(vm.mediumQuestions);
-                vm.getQuestions(vm.mediumQuestions);
+                vm.getQuestion(vm.mediumQuestions);
             } else if (PlayerService.battles >= 6) {
                 console.log(vm.hardQuestions);
-                vm.getQuestions(vm.hardQuestions);
+                vm.getQuestion(vm.hardQuestions);
             }
         }
 
@@ -140,8 +140,6 @@ const battleGround = {
                     }, 5000);
                 }
             }
-
-            //vm.easyQuestions.splice(vm.randomIndex, 1);
 
             if (vm.answerCounter === 2) {
                 vm.button = "Continue Story"

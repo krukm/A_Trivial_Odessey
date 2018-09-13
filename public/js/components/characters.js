@@ -45,42 +45,9 @@ const characters = {
         vm.selectCharacter = (hit) => {
             vm.selectBio = true;
             vm.bioShow = true;
-            if (hit === "Achilles") {
-                vm.pic = "./img/Achilles.png";
-                vm.bio = BioService.Achilles;
 
-            } else if (hit === "Athena") {
-                vm.pic = "./img/Athena.png";
-                vm.bio = BioService.Athena;
-
-            } else if (hit === "Cerebrus") {
-                vm.pic = "./img/Cerebrus.png";
-                vm.bio = BioService.Cerebrus;
-
-            } else if (hit === "Hades") {
-                vm.pic = "./img/Hades.png";
-                vm.bio = BioService.Hades;
-
-            } else if (hit === "Hercules") {
-                vm.pic = "./img/Hercules.png";
-                vm.bio = BioService.Hercules;
-
-            } else if (hit === "Polyphemus") {
-                vm.pic = "./img/Polyphemus.png";
-                vm.bio = BioService.Polyphemus;
-
-            } else if (hit === "Poseidon") {
-                vm.pic = "./img/Poseidon.png";
-                vm.bio = BioService.Poseidon;
-
-            } else if (hit === "Siren") {
-                vm.pic = "./img/Siren.png";
-                vm.bio = BioService.Siren;
-
-            } else if (hit === "Zeus") {
-                vm.pic = "./img/Zeus.png";
-                vm.bio = BioService.Zeus;
-            }
+            vm.pic = "./img/" + hit + ".png";
+            vm.bio = BioService[hit];
         }
     }]
 }
