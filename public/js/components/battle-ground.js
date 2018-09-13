@@ -12,7 +12,7 @@ const battleGround = {
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
 
-
+            <img src="./img/achillestest.png" class="battle__char__img">
             <section class="question__container">
                 <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
                 <section ng-if="$ctrl.answered === false">
