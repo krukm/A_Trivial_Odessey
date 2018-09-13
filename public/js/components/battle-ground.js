@@ -68,7 +68,6 @@ const battleGround = {
         vm.mediumQuestions = JSON.parse(sessionStorage.getItem("medium"));
         vm.hardQuestions = JSON.parse(sessionStorage.getItem("hard"));
 
-
         vm.timer = () => {
             vm.counter = 30;
             vm.countDown = setInterval(function() {
@@ -85,6 +84,7 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
+            
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -96,6 +96,8 @@ const battleGround = {
             console.log(questionArray);
             questionArray.shift();
             sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
+            sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
+            sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
         }
 
         vm.randomizeArray = (array) => {
