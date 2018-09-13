@@ -18,12 +18,10 @@ const battleGround = {
                 <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
-                    <section class="answers"> 
-                        <div ng-repeat="answer in $ctrl.answerArray " ng-class="{'answered': $ctrl.answered}" >
-                        <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                    <section class="answers"  ng-class="{'answered': $ctrl.answered}" >
+                        <button ng-repeat="answer in $ctrl.answerArray" ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                             {{ answer }}
                         </button>
-                        </div>
                     </section>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">

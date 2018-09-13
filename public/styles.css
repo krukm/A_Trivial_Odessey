@@ -138,11 +138,6 @@ body {
     margin: 3% 15% 1% 15%;
 }
 
-.question__container section.answers {
-    display: flex;
-    justify-content: center;
-}
-
 div.answered .correct {
     color: green;
 }
@@ -152,13 +147,21 @@ div.answered .incorrect {
 }
 
 section.answers button {
-    margin: 0 10px;
     padding: 10px;
+    max-width: 175px;
     border-radius: 3px;
     background: #b01919;
     color: #fff;
     border: none;
     cursor: pointer;
+    line-height: 1.5;
+    margin-right: 20px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 section.answers button:hover {
@@ -259,6 +262,7 @@ section.answers button:hover {
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    padding-bottom: 20px;
 }
 
 .story__container .story {
