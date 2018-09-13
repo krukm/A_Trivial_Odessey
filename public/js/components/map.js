@@ -30,6 +30,11 @@ const map = {
         vm.speed = 60;
         PlayerService.updateHealthDisplay(vm.id);
         vm.fightButton = false;
+        vm.canvas = document.querySelector('canvas');
+        vm.canvas.width = 800;
+        vm.canvas.height = 600;
+        vm.gctx = vm.canvas.getContext("2d");
+        
 
         vm.fight = () => {
             $location.url("/battle-ground");
@@ -46,6 +51,26 @@ const map = {
         vm.info = () => {
             $location.url('/characters');
         }
+        
+        vm.skip = () => {
+            vm.fightButton = true;
+            vm.speed = 0;
+        }
+        
+        vm.draw = (startX, startY, endX, endY) => {
+            vm.amount = 0;
+            setInterval(function() {
+            vm.amount += 0.01; // change to alter duration
+            if (vm.amount > 1) vm.amount = 1;
+            vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+            vm.gctx.strokeStyle = "red";
+            vm.gctx.setLineDash([5, 5]);
+            vm.gctx.lineWidth = 5;
+            vm.gctx.moveTo(startX, startY);
+            vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
+            vm.gctx.stroke();
+            }, 30);
+        }
 
         switch (PlayerService.battles) {
             case 0:
@@ -53,27 +78,35 @@ const map = {
                 break;
             case 1:
                 vm.storyText = EnemyService.hades;
+                vm.draw(80, 470, 160, 365);
                 break;
             case 2:
                 vm.storyText = EnemyService.sirens;
+                vm.draw(160, 365, 220, 260);
                 break;
             case 3:
                 vm.storyText = EnemyService.poseidon;
+                vm.draw(220, 260, 45, 260);
                 break;
             case 4:
                 vm.storyText = EnemyService.achilles;
+                vm.draw(45, 260, 115, 195);
                 break;
             case 5:
                 vm.storyText = EnemyService.polyphemus;
+                vm.draw(115, 195, 395, 330);
                 break;
             case 6:
                 vm.storyText = EnemyService.prometheus;
+                vm.draw(395, 330, 530, 540);
                 break;
             case 7:
                 vm.storyText = EnemyService.hercules;
+                vm.draw(530, 540, 740, 300);
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
+                vm.draw(740, 300, 720, 240);
                 break;
         }
 
@@ -87,47 +120,16 @@ const map = {
             }
         }
 
-        vm.skip = () => {
-            vm.fightButton = true;
-            vm.speed = 0;
-        }
-
         vm.typeWriter();
-         
-        
+    }]
+}
 
-
-        vm.draw = () => {
-            vm.canvas = document.querySelector('canvas');
-            vm.gctx = vm.canvas.getContext("2d");
-            vm.canvas.width = 800;
-            vm.canvas.height = 600;
-            vm.offset = 0;
-
-            vm.startX = 80;
-            vm.startY = 470;
-            vm.endX = 160;
-            vm.endY = 365;
-            vm.amount = 0;
-        setInterval(function() {
-          vm.amount += 0.01; // change to alter duration
-          if (vm.amount > 1) vm.amount = 1;
-          vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
-          vm.gctx.strokeStyle = "red";
-          vm.gctx.setLineDash([5, 5]);
-          vm.gctx.lineWidth = 5;
-          vm.gctx.moveTo(vm.startX, vm.startY);
-          // lerp : a  + (b - a) * f
-          vm.gctx.lineTo(vm.startX + (vm.endX - vm.startX) * vm.amount, vm.startY + (vm.endY - vm.startY) * vm.amount);
-          vm.gctx.stroke();
-        }, 30);
+angular.module('app').component('map', map);
 
 
 
-        
-            
 
-            // vm.gctx.strokeStyle = "red";
+   // vm.gctx.strokeStyle = "red";
             // vm.gctx.setLineDash([5, 5]);
             // vm.gctx.lineWidth = 5;
             // vm.gctx.lineDashOffset = -vm.offset
@@ -156,55 +158,3 @@ const map = {
             // // Zeus
             // vm.gctx.lineTo(740, 55);
             // vm.gctx.stroke();
-        }
-
-        
-        vm.drawNextBattle = () => {
-            vm.canvas = document.querySelector('canvas');
-            vm.gctx = vm.canvas.getContext("2d");
-            vm.canvas.width = 800;
-            vm.canvas.height = 600;
-            vm.offset = 0;
-
-            vm.startX = 160;
-            vm.startY = 365;
-            vm.endX = 220;
-            vm.endY = 260;
-            vm.amount = 0;
-        setInterval(function() {
-          vm.amount += 0.01; // change to alter duration
-          if (vm.amount > 1) vm.amount = 1;
-          vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
-          vm.gctx.strokeStyle = "red";
-          vm.gctx.setLineDash([5, 5]);
-          vm.gctx.lineWidth = 5;
-          vm.gctx.moveTo(vm.startX, vm.startY);
-          // lerp : a  + (b - a) * f
-          vm.gctx.lineTo(vm.startX + (vm.endX - vm.startX) * vm.amount, vm.startY + (vm.endY - vm.startY) * vm.amount);
-          vm.gctx.stroke();
-        }, 30);
-        }
-
-        if (PlayerService.battles === 1) {
-            vm.draw();
-        } else if (PlayerService.battles === 2) {
-            vm.drawNextBattle();
-        }
-
-
-        // vm.draw();
-
-        // function march() {
-        //     vm.offset++;
-        //     if (vm.offset > 16) {
-        //         vm.offset = 0;
-        //     }
-        //     setTimeout(march, 20);
-        // }
-        // march();
-
-
-    }]
-}
-
-angular.module('app').component('map', map);
