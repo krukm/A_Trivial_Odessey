@@ -27,7 +27,7 @@ const battleGround = {
                     </section>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
-                    <p class="answer_text">{{ $ctrl.answerText }}</p>
+                    <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.correct">{{ $ctrl.correctAnswer }}</span>!</p>
                     <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
                 </section>
             </section>
@@ -39,6 +39,7 @@ const battleGround = {
         const vm = this;
         vm.id = "id__health";
         vm.gameOver = false;
+        vm.correct = false;
         vm.answerCounter = 0;
         vm.correctAnswers = 0;
         vm.incorrectAnswers = 0;
@@ -119,14 +120,15 @@ const battleGround = {
             vm.answered = true;
             vm.answerCounter += 1;
             if (hit === vm.correctAnswer) {
-                vm.answerText = "You answered correctly Great job!";
+                vm.answerText = "You answered correctly. Great job";
                 vm.correctAnswers++;
 
                 if (vm.correctAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
                 }
             } else {
-                vm.answerText = "You answered the question wrong! Try again!";
+                vm.correct = true;
+                vm.answerText = `You answered the question incorrectly! The correct answer was`;
                 vm.incorrectAnswers++;
                 if (vm.incorrectAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
