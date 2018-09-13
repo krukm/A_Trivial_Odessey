@@ -14,14 +14,6 @@ body {
     align-items: center;
 }
 
-div.answered .correct {
-    color: green;
-}
-
-div.answered .incorrect {
-    color: red;
-}
-
 .section__victory {
     background-image: url('./img/Olympus2.png');
     background-repeat: no-repeat;
@@ -103,6 +95,7 @@ div.answered .incorrect {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     top: 25%;
+    height: 300px;
 }
 
 .question__container {
@@ -134,14 +127,40 @@ div.answered .incorrect {
     justify-content: center;
 }
 
+div.answered .correct {
+    color: green;
+}
+
+div.answered .incorrect {
+    color: red;
+}
 
 section.answers button {
     margin: 0 10px;
     padding: 10px;
     border-radius: 3px;
-    background: #FE533D;
+    background: #b01919;
     color: #fff;
     border: none;
+    cursor: pointer;
+}
+section.answers button:hover{
+    background: #dd2020;
+}
+
+.text_container {
+    margin: auto 10%;
+}
+.next_question_button {
+    padding: 10px;
+    border-radius: 3px;
+    background:#b01919;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.next_question_button:hover {
+    background: #dd2020;
 }
 
 .intro_container {
@@ -243,7 +262,7 @@ section.answers button {
     justify-content: space-between;
 }
 
-section .button__info, .button__instructions {
+section .button__info, .button__instructions, .button__intro {
     margin-left: 5px;
 }
 
@@ -254,7 +273,7 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    width: 10%;
+    /* width: 10%; */
     justify-self: flex-end;
     margin-right: 12px;
 }
@@ -266,7 +285,6 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
 }
 
 .button__instructions {
@@ -276,7 +294,15 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
+}
+
+.skip__button {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+    color: #fff;
+    border: 2px solid #000;
 }
 
 #canvas {
@@ -310,7 +336,6 @@ section .button__info, .button__instructions {
     background-repeat: no-repeat;
     height: 900px;
     width: 1090px;
-    /* margin: 0 0 0 200px; */
     margin: 0 auto;
 }
 
@@ -323,6 +348,11 @@ section .button__info, .button__instructions {
 
 .instructions__container h1 {
     text-align: center;
+    color: #DD2020;
+}
+
+.instructions__container p {
+    color: #132f41;
 }
 
 .instructions__container button {
@@ -335,3 +365,68 @@ section .button__info, .button__instructions {
     position: absolute;
     left: 460px;
 }
+
+.character__title {
+    text-align: center;
+    color: #DD2020;
+}
+
+.ul__gods {
+    display: flex;
+    list-style: none;
+}
+
+.ul__gods li {
+    margin: 0 10px;
+}
+
+.ul__gods li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.bio {
+    margin: 0 auto;
+    background: url('./img/wide-scroll.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 700px;
+    width: 900px;
+}
+
+.bio__info {
+    padding: 50px 100px 0 100px;
+}
+
+.bio__info img{
+    width: 250px;
+    height: 250px;
+    margin-left: 200px;
+}
+
+.bio__info p {
+    line-height: 1.5;
+    color: #132f41;
+}
+
+.bio p.select__bio {
+    color: #DD2020;
+    text-align: center;
+    padding-top: 250px;
+    font-size: 18px;
+}
+
+.back__button {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+    color: #fff;
+    border: 2px solid #000;
+    position: relative;
+    bottom: 100px;
+    left: 565px;
+}
+
+
+
