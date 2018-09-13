@@ -19,7 +19,7 @@ const battleGround = {
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
                     <section class="answers"> 
-                        <div ng-repeat="answer in $ctrl.answerArray" ng-class="{'answered': $ctrl.answered}" >
+                        <div ng-repeat="answer in $ctrl.answerArray " ng-class="{'answered': $ctrl.answered}" >
                         <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                             {{ answer }}
                         </button>

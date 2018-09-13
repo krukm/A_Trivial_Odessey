@@ -14,14 +14,6 @@ body {
     align-items: center;
 }
 
-div.answered .correct {
-    color: green;
-}
-
-div.answered .incorrect {
-    color: red;
-}
-
 .section__victory {
     background-image: url('./img/Olympus2.png');
     background-repeat: no-repeat;
@@ -103,6 +95,7 @@ div.answered .incorrect {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     top: 25%;
+    height: 300px;
 }
 
 .question__container {
@@ -134,14 +127,40 @@ div.answered .incorrect {
     justify-content: center;
 }
 
+div.answered .correct {
+    color: green;
+}
+
+div.answered .incorrect {
+    color: red;
+}
 
 section.answers button {
     margin: 0 10px;
     padding: 10px;
     border-radius: 3px;
-    background: #FE533D;
+    background: #b01919;
     color: #fff;
     border: none;
+    cursor: pointer;
+}
+section.answers button:hover{
+    background: #dd2020;
+}
+
+.text_container {
+    margin: auto 10%;
+}
+.next_question_button {
+    padding: 10px;
+    border-radius: 3px;
+    background:#b01919;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.next_question_button:hover {
+    background: #dd2020;
 }
 
 .intro_container {
