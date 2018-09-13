@@ -15,9 +15,10 @@ const map = {
     <section class="bottom__map--nav">
         <section>
             <button class="button__instructions" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
-            <button class="button__info" ng-click="$ctrl.info()">GOD INFO</button>
+            <button class="button__info" ng-click="$ctrl.info()">CHARACTER BIO'S</button>
+            <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
         </section>
-        <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
+        <button class="skip__button" ng-click="$ctrl.skip()">SKIP</button>
     </section>   
     `,
 
@@ -86,11 +87,14 @@ const map = {
             }
         }
 
+        vm.skip = () => {
+            vm.fightButton = true;
+            vm.speed = 0;
+        }
+
         vm.typeWriter();
          
-        if (PlayerService.battles === 1) {
-            vm.draw();
-        }
+        
 
 
         vm.draw = () => {
@@ -117,6 +121,10 @@ const map = {
           vm.gctx.lineTo(vm.startX + (vm.endX - vm.startX) * vm.amount, vm.startY + (vm.endY - vm.startY) * vm.amount);
           vm.gctx.stroke();
         }, 30);
+
+
+
+        
             
 
             // vm.gctx.strokeStyle = "red";
@@ -148,6 +156,39 @@ const map = {
             // // Zeus
             // vm.gctx.lineTo(740, 55);
             // vm.gctx.stroke();
+        }
+
+        
+        vm.drawNextBattle = () => {
+            vm.canvas = document.querySelector('canvas');
+            vm.gctx = vm.canvas.getContext("2d");
+            vm.canvas.width = 800;
+            vm.canvas.height = 600;
+            vm.offset = 0;
+
+            vm.startX = 160;
+            vm.startY = 365;
+            vm.endX = 220;
+            vm.endY = 260;
+            vm.amount = 0;
+        setInterval(function() {
+          vm.amount += 0.01; // change to alter duration
+          if (vm.amount > 1) vm.amount = 1;
+          vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+          vm.gctx.strokeStyle = "red";
+          vm.gctx.setLineDash([5, 5]);
+          vm.gctx.lineWidth = 5;
+          vm.gctx.moveTo(vm.startX, vm.startY);
+          // lerp : a  + (b - a) * f
+          vm.gctx.lineTo(vm.startX + (vm.endX - vm.startX) * vm.amount, vm.startY + (vm.endY - vm.startY) * vm.amount);
+          vm.gctx.stroke();
+        }, 30);
+        }
+
+        if (PlayerService.battles === 1) {
+            vm.draw();
+        } else if (PlayerService.battles === 2) {
+            vm.drawNextBattle();
         }
 
 

@@ -3,7 +3,6 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-
 body {
     background: #132f41;
 }
@@ -12,14 +11,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-div.answered .correct {
-    color: green;
-}
-
-div.answered .incorrect {
-    color: red;
 }
 
 .section__victory {
@@ -73,13 +64,23 @@ div.answered .incorrect {
     align-content: center;
 }
 
-.question__container {
-    width: 75%;
-    margin: 2rem auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+.timer {
+    background-color: #fff;
+    opacity: .8;
+    border: 2px solid #000;
+    margin: 15px;
+    border-radius: .25rem;
+    padding: 8px;
+}
+
+.start__button {
+    margin-left: 80px;
+    background-color: #409edb;
+    border: 2px solid #000;
+    color: white;
+    height: 30px;
+    width: 80px;
+    border-radius: .25rem;
 }
 
 .section__game-over {
@@ -93,36 +94,95 @@ div.answered .incorrect {
 .battle__container {
     height: 100vh;
     width: 100%;
+    position: relative;
 }
 
 .battle__img__bg {
-    height: 70vh; 
+    height: 100%;
     width: 100%;
-    object-fit: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.battle__char__img {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 25%;
+    height: 300px;
+}
+
+.question__container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
+    background: url(./img/wide-scroll.png);
+    background-size: 100% 100%;
+    opacity: 0.8;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 30vh;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 2%;
 }
 
 .question__container p.trivia__question {
     margin-bottom: 30px;
     padding: 10px;
-    border-radius: 3px;
-    color: #fff;
-    background: #FE533D;
+    margin: 3% 15% 1% 15%;
 }
 
-.question__container section.answers {
-    display: flex;
-    justify-content: center;
+div.answered .correct {
+    color: green;
+}
+
+div.answered .incorrect {
+    color: red;
 }
 
 section.answers button {
-    margin: 0 10px;
     padding: 10px;
+    max-width: 175px;
     border-radius: 3px;
-    background: #FE533D;
+    background: #b01919;
     color: #fff;
     border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    margin-right: 20px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+section.answers button:hover {
+    background: #dd2020;
+}
+
+.text_container {
+    margin: auto 10%;
+}
+
+.next_question_button {
+    padding: 10px;
+    border-radius: 3px;
+    background: #b01919;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.next_question_button:hover {
+    background: #dd2020;
 }
 
 .intro_container {
@@ -166,12 +226,21 @@ section.answers button {
 }
 
 @keyframes blinkingText {
-
-    0% { color: #F83800; }
-    30% { color: #3CBCFC; }
-    50% { color: #007800; }
-    70% { color:#F83800; }
-    100% { color: #3CBCFC; }
+    0% {
+        color: #F83800;
+    }
+    30% {
+        color: #3CBCFC;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #F83800;
+    }
+    100% {
+        color: #3CBCFC;
+    }
 }
 
 .map__canvas {
@@ -185,7 +254,6 @@ section.answers button {
     flex-direction: column;
 }
 
-
 .story__container {
     background: url("./img/wide-scroll-rotate.png");
     background-size: 82%;
@@ -194,6 +262,7 @@ section.answers button {
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    padding-bottom: 20px;
 }
 
 .story__container .story {
@@ -224,7 +293,9 @@ section.answers button {
     justify-content: space-between;
 }
 
-section .button__info, .button__instructions {
+section .button__info,
+.button__instructions,
+.button__intro {
     margin-left: 5px;
 }
 
@@ -235,7 +306,7 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    width: 10%;
+    /* width: 10%; */
     justify-self: flex-end;
     margin-right: 12px;
 }
@@ -247,7 +318,6 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
 }
 
 .button__instructions {
@@ -257,7 +327,16 @@ section .button__info, .button__instructions {
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
+}
+
+.skip__button {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+    color: #fff;
+    border: 2px solid #000;
+    margin-left: 50px;
 }
 
 #canvas {
@@ -270,7 +349,6 @@ section .button__info, .button__instructions {
     background-size: contain;
     background-repeat: no-repeat;
 }
-
 
 .section__health {
     display: flex;
@@ -291,7 +369,6 @@ section .button__info, .button__instructions {
     background-repeat: no-repeat;
     height: 900px;
     width: 1090px;
-    /* margin: 0 0 0 200px; */
     margin: 0 auto;
 }
 
@@ -304,6 +381,11 @@ section .button__info, .button__instructions {
 
 .instructions__container h1 {
     text-align: center;
+    color: #DD2020;
+}
+
+.instructions__container p {
+    color: #132f41;
 }
 
 .instructions__container button {
@@ -315,4 +397,66 @@ section .button__info, .button__instructions {
     border: 2px solid #000;
     position: absolute;
     left: 460px;
+}
+
+.character__title {
+    text-align: center;
+    color: #DD2020;
+}
+
+.ul__gods {
+    display: flex;
+    list-style: none;
+}
+
+.ul__gods li {
+    margin: 0 10px;
+}
+
+.ul__gods li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.bio {
+    margin: 0 auto;
+    background: url('./img/wide-scroll.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 700px;
+    width: 900px;
+}
+
+.bio__info {
+    padding: 50px 100px 0 100px;
+}
+
+.bio__info img {
+    width: 250px;
+    height: 250px;
+    margin-left: 200px;
+}
+
+.bio__info p {
+    line-height: 1.5;
+    color: #132f41;
+}
+
+.bio p.select__bio {
+    color: #DD2020;
+    text-align: center;
+    padding-top: 250px;
+    font-size: 18px;
+}
+
+.back__button {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+    color: #fff;
+    border: 2px solid #000;
+    position: relative;
+    bottom: 100px;
+    left: 565px;
 }
