@@ -10,10 +10,8 @@ function TriviaService($http) {
       method: "GET",
       url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple"
     }).then((response) => {
-      for (let i = 0; i < response.data.results.length; i++) {
-        vm.easyQuestions.push(response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"));
-      }
-      return vm.easyQuestions;
+
+      return response.data;
     });
   }
 
