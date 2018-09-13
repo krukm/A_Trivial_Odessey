@@ -2,24 +2,29 @@
 
 const characters = {
     template:`
-    <h1>Character Bios</h1>
+    <h1 class="character__title">Character Bios</h1>
     <section class="section__character-container">
         <ul class="ul__gods">
             <li ng-repeat="character in $ctrl.characters" ng-click="$ctrl.selectCharacter(character.name);">
                 <a href="">{{ character.name }}</a>
             </li>
         </ul>
-        <section>
-            <img ng-src=" {{ $ctrl.pic }}">
-            <p>Bio: {{ $ctrl.bio }} </p>
+        <section class="bio">
+            <p ng-if="$ctrl.selectBio === false" class="select__bio">SELECT A CHARACTER TO REVEAL THEIR BIO.</p>
+            <section class="bio__info" ng-if="$ctrl.bioShow">
+                <img ng-src=" {{ $ctrl.pic }}">
+                <p>{{ $ctrl.bio }}</p>
+            </section>
         </section>
 
-        <button ng-click="$ctrl.back()">BACK</button>
     </section>
+    <button class="back__button" ng-click="$ctrl.back()">BACK</button>
 
     `,
     controller: ["BioService", "$location", function (BioService, $location) {
         const vm = this;
+        vm.bioShow = false;
+        vm.selectBio = false;
 
         vm.characters = [
             {name: 'Achilles'},
@@ -38,6 +43,8 @@ const characters = {
         }
 
         vm.selectCharacter = (hit) => {
+            vm.selectBio = true;
+            vm.bioShow = true;
             if (hit === "Achilles") {
                 vm.pic = "./img/Achilles.png";
                 vm.bio = BioService.Achilles;
