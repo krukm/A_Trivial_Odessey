@@ -15,9 +15,10 @@ const map = {
     <section class="bottom__map--nav">
         <section>
             <button class="button__instructions" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
-            <button class="button__info" ng-click="$ctrl.info()">GOD INFO</button>
+            <button class="button__info" ng-click="$ctrl.info()">CHARACTER BIO'S</button>
+            <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
         </section>
-        <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
+        <button class="skip__button" ng-click="$ctrl.skip()">SKIP</button>
     </section>   
     `,
 
@@ -86,8 +87,13 @@ const map = {
             }
         }
 
+        vm.skip = () => {
+            vm.fightButton = true;
+            vm.speed = 0;
+        }
+
         vm.typeWriter();
-         
+
 
         vm.draw = () => {
             vm.canvas = document.querySelector('canvas');
