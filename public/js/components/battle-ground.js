@@ -12,6 +12,7 @@ const battleGround = {
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
+<<<<<<< HEAD
         </section>
         
         <section class="question__container">
@@ -24,11 +25,26 @@ const battleGround = {
                         {{ answer }}
                     </button>
                     </div>
+=======
+
+
+            <section class="question__container">
+                <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+                <section ng-if="$ctrl.answered === false">
+                    <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
+                    <section class="answers"> 
+                        <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
+                        <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                            {{ answer }}
+                        </button>
+                        </div>
+                    </section>
                 </section>
-            </section>
-            <section class="text_container" ng-if="$ctrl.answered === true">
-                <p class="answer_text">{{ $ctrl.answerText }}</p>
-                <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
+                <section class="text_container" ng-if="$ctrl.answered === true">
+                    <p class="answer_text">{{ $ctrl.answerText }}</p>
+                    <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
+>>>>>>> 4bcd481d315fc7be32c170e616dd57cd9774d594
+                </section>
             </section>
         </section>
     </section>    
