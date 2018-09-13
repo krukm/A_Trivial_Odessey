@@ -7,7 +7,8 @@ const battleGround = {
             <section class="timer__container">
                 <section class="timer">
                     <p id="timer">{{ $ctrl.counter }} seconds left</p>
-                    <button ng-click="$ctrl.timer(); ">Start</button>
+                    <button ng-click="$ctrl.timer(); $ctrl.getNextQuestion();
+                    ">Start</button>
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
@@ -16,9 +17,9 @@ const battleGround = {
         <section class="question__container">
             <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
             <section ng-if="$ctrl.answered === false">
-                <p class="trivia__question"> {{ $ctrl.quizQuestion }} </p>
+                <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
                 <section class="answers"> 
-                    <div ng-repeat="answer in $ctrl.answers" ng-class="{'answered': $ctrl.answered}" >
+                    <div ng-repeat="answer in $ctrl.answerArray " ng-class="{'answered': $ctrl.answered}" >
                     <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
                         {{ answer }}
                     </button>
@@ -43,32 +44,122 @@ const battleGround = {
         vm.answered = false;
         vm.button = "Next Question";
         vm.counter = 30;
-        vm.easyQuestions = TriviaService.easyQuestions;
-
-        if (PlayerService.battles === 0) {
-            TriviaService.getEasyQuestions();
-            TriviaService.getMediumQuestions();
-            TriviaService.getHardQuestions();
-            console.log(vm.easyQuestions);
-        }
-
+        vm.easyQuestions = [];
+        vm.mediumQuestions = [];
+        vm.hardQuestions = [];
+        vm.answerArray = [];
+        vm.currentQuestion = null;
+        vm.correctAnswer = null;
+            
+        TriviaService.getEasyQuestions().then((response) => {
+            vm.easyQuestions = response;
+        });
         
+        TriviaService.getMediumQuestions().then((response) => {
+            vm.mediumQuestions = response;
+        });
+        
+        TriviaService.getHardQuestions().then((response) => {
+            vm.hardQuestions = response;
+        });
 
-        vm.timer = () => {
-            vm.counter = 30;
-            vm.countDown = setInterval(function() {
-                vm.counter--;
-                $scope.$apply();
-            }, 1000);
+        // vm.timer = () => {
+        //     vm.counter = 30;
+        //     vm.countDown = setInterval(function() {
+        //         vm.counter--;
+        //         $scope.$apply();
+        //     }, 1000);
 
-            return vm.countDown;
+        //     return vm.countDown;
+        // }
+
+        // vm.stopTimer = () => {
+        //     clearInterval(vm.countDown);
+        //     $scope.$apply();
+        //     vm.counter = 30;
+        // }
+
+        vm.getQuestion = (questionArray) => {
+            vm.currentQuestion = questionArray[0].question;
+            vm.correctAnswer = questionArray[0].correct_answer;
+
+            vm.answerArray.push(vm.correctAnswer);
+            for (let answer of questionArray[0].incorrect_answers) {
+                vm.answerArray.push(answer);
+            }
+            vm.randomizeArray(vm.answerArray);
+            console.log(questionArray);
+            questionArray.shift();
         }
 
-        vm.stopTimer = () => {
-            clearInterval(vm.countDown);
-            $scope.$apply();
-            vm.counter = 30;
+        vm.randomizeArray = (array) => {
+            return array.sort(function(a, b) { return 0.5 - Math.random() });
         }
+
+        vm.getNextQuestion = () => {
+            vm.currentQuestion = null;
+            vm.correctAnswer = null;
+            vm.answerArray = [];
+
+            if (PlayerService.battles < 3) {
+                console.log(vm.easyQuestions);
+                vm.getQuestion(vm.easyQuestions);
+            } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
+                console.log(vm.mediumQuestions);
+                vm.getQuestions(vm.mediumQuestions);
+            } else if (PlayerService.battles >= 6) {
+                console.log(vm.hardQuestions);
+                vm.getQuestions(vm.hardQuestions);
+            }
+        }
+
+        vm.userChooseAnswer = (hit) => {
+
+            vm.answered = true;
+            vm.answerCounter += 1;
+            if (hit === vm.correctAnswer) {
+                vm.answerText = "You answered correctly Great job!";
+                vm.correctAnswers++;
+
+                if (vm.correctAnswers === 2) {
+                    PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
+                }
+            } else {
+                vm.answerText = "You answered the question wrong! Try again!";
+                vm.incorrectAnswers++;
+                if (vm.incorrectAnswers === 2) {
+                    PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
+                }
+                if (PlayerService.playerHealth === 0) {
+                    vm.gameOver = true;
+
+                    $timeout(() => {
+                        PlayerService.resetPlayer();
+                        $location.path('/intro');
+                    }, 5000);
+                }
+            }
+
+            //vm.easyQuestions.splice(vm.randomIndex, 1);
+
+            if (vm.answerCounter === 2) {
+                vm.button = "Continue Story"
+                PlayerService.battles += 1;
+                if (PlayerService.battles > 8) {
+                    $location.path("/victory");
+                }
+            }
+        }
+
+        vm.nextQuestion = () => {
+            vm.answered = false;
+            vm.getNextQuestion();
+            if (vm.answerCounter === 2) {
+                $location.path("/map");
+            }
+        }
+
+        PlayerService.updateHealthDisplay(vm.id);
 
         switch (PlayerService.battles) {
             case 0:
@@ -98,90 +189,6 @@ const battleGround = {
             case 8:
                 vm.battleImage = "/img/Olympus2.png"
                 break;
-        }
-
-        PlayerService.updateHealthDisplay(vm.id);
-
-        vm.getQuestions = (response) => {
-            console.log(vm.easyQuestions);
-            vm.randomIndex = Math.floor(Math.random() * response.length);
-            vm.correctAnswer = response[vm.randomIndex].correct_answer;
-            console.log(vm.correctAnswer);
-            console.log(PlayerService.battles);
-
-            vm.quizQuestion = response[vm.randomIndex].question;
-            vm.answers = response[vm.randomIndex].incorrect_answers;
-            vm.answers.push(response[vm.randomIndex].correct_answer);
-            vm.answers.sort(function(a, b) { return 0.5 - Math.random() });
-        }
-
-        vm.getNextQuestion = () => {
-            if (PlayerService.battles < 3) {
-                    // vm.easyQuestions = TriviaService.easyQuestions;
-                    vm.getQuestions(vm.easyQuestions);
-                    console.log(vm.easyQuestions);
-                
-            } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
-                TriviaService.getMediumQuestions().then((response) => {
-                    vm.getQuestions(response);
-                });
-            } else if (PlayerService.battles >= 6) {
-                TriviaService.getHardQuestions().then((response) => {
-                    vm.getQuestions(response);
-                });
-            }
-        }
-
-        vm.getNextQuestion();
-
-       
-
-        vm.userChooseAnswer = (hit) => {
-
-            vm.answered = true;
-            vm.answerCounter += 1;
-            if (hit === vm.correctAnswer) {
-                vm.answerText = "You answered correctly Great job!";
-                vm.correctAnswers++;
-
-                if (vm.correctAnswers === 2) {
-                    PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
-                }
-
-
-            } else {
-                vm.answerText = "You answered the question wrong! Try again!";
-                vm.incorrectAnswers++;
-                if (vm.incorrectAnswers === 2) {
-                    PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
-                }
-                if (PlayerService.playerHealth === 0) {
-                    vm.gameOver = true;
-
-                    $timeout(() => {
-                        PlayerService.resetPlayer();
-                        $location.path('/intro');
-                    }, 5000);
-                }
-            }
-
-            vm.easyQuestions.splice(vm.randomIndex, 1);
-
-            if (vm.answerCounter === 2) {
-                vm.button = "Continue Story"
-                PlayerService.battles += 1;
-                if (PlayerService.battles > 8) {
-                    $location.path("/victory");
-                }
-            }
-        }
-
-        vm.nextQuestion = () => {
-            vm.answered = false;
-            vm.getNextQuestion();
-            if (vm.answerCounter === 2) {
-                $location.path("/map");
-            }
         }
     }]
 };

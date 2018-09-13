@@ -4,6 +4,8 @@ function TriviaService($http) {
   const vm = this;
 
   vm.easyQuestions = [];
+  vm.mediumQuestions = [];
+  vm.hardQuestions = [];
 
   vm.getEasyQuestions = () => {
     return $http({
@@ -11,13 +13,12 @@ function TriviaService($http) {
       url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple"
     }).then((response) => {
       for (let i = 0; i < response.data.results.length; i++) {
-        vm.easyQuestions.push(
-          { question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
-            correct_answer: response.data.results[i].correct_answer,
-            incorrect_answers: response.data.results[i].incorrect_answers
+        vm.easyQuestions.push({
+          question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
+          correct_answer: response.data.results[i].correct_answer,
+          incorrect_answers: response.data.results[i].incorrect_answers
         });
       }
-      console.log(vm.easyQuestions);
       return vm.easyQuestions;
     });
   }
@@ -27,8 +28,14 @@ function TriviaService($http) {
       method: "GET",
       url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple"
     }).then((response) => {
-      console.log(response.data);
-      return response.data;
+      for (let i = 0; i < response.data.results.length; i++) {
+        vm.mediumQuestions.push({
+          question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
+          correct_answer: response.data.results[i].correct_answer,
+          incorrect_answers: response.data.results[i].incorrect_answers
+        });
+      }
+      return vm.mediumQuestions;
     });
   }
 
@@ -37,8 +44,14 @@ function TriviaService($http) {
       method: "GET",
       url: "https://opentdb.com/api.php?amount=7&category=20&difficulty=hard&type=multiple"
     }).then((response) => {
-      console.log(response.data);
-      return response.data;
+      for (let i = 0; i < response.data.results.length; i++) {
+        vm.hardQuestions.push({
+          question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
+          correct_answer: response.data.results[i].correct_answer,
+          incorrect_answers: response.data.results[i].incorrect_answers
+        });
+      }
+      return vm.hardQuestions;
     });
   }
 }
