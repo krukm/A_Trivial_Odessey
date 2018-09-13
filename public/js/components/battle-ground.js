@@ -12,10 +12,9 @@ const battleGround = {
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
-
+            <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
             <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
-            <section class="question__container">
-                <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+            <section ng-hide="$ctrl.gameOver" class="question__container">
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
                     <section class="answers"  ng-class="{'answered': $ctrl.answered}" >
@@ -69,7 +68,6 @@ const battleGround = {
         vm.mediumQuestions = JSON.parse(sessionStorage.getItem("medium"));
         vm.hardQuestions = JSON.parse(sessionStorage.getItem("hard"));
 
-
         vm.timer = () => {
             vm.counter = 30;
             vm.countDown = setInterval(function() {
@@ -86,6 +84,7 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
+            
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -97,6 +96,8 @@ const battleGround = {
             console.log(questionArray);
             questionArray.shift();
             sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
+            sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
+            sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
         }
 
         vm.randomizeArray = (array) => {
