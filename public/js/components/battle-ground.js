@@ -12,18 +12,23 @@ const battleGround = {
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
-        </section>
-        
-        <section class="question__container">
-            <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-            <section ng-if="$ctrl.answered === false">
-                <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
-                <section class="answers"> 
-                    <div ng-repeat="answer in $ctrl.answerArray " ng-class="{'answered': $ctrl.answered}" >
-                    <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
-                        {{ answer }}
-                    </button>
-                    </div>
+
+            <img src="./img/achillestest.png" class="battle__char__img">
+            <section class="question__container">
+                <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+                <section ng-if="$ctrl.answered === false">
+                    <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
+                    <section class="answers"> 
+                        <div ng-repeat="answer in $ctrl.answerArray" ng-class="{'answered': $ctrl.answered}" >
+                        <button ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                            {{ answer }}
+                        </button>
+                        </div>
+                    </section>
+                </section>
+                <section class="text_container" ng-if="$ctrl.answered === true">
+                    <p class="answer_text">{{ $ctrl.answerText }}</p>
+                    <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
                 </section>
             </section>
         </section>
