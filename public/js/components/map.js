@@ -88,6 +88,10 @@ const map = {
 
         vm.typeWriter();
          
+        if (PlayerService.battles === 1) {
+            vm.draw();
+        }
+
 
         vm.draw = () => {
             vm.canvas = document.querySelector('canvas');
@@ -96,46 +100,67 @@ const map = {
             vm.canvas.height = 600;
             vm.offset = 0;
 
-            vm.gctx.strokeStyle = "red";
-            vm.gctx.setLineDash([5, 5]);
-            vm.gctx.lineWidth = 5;
-            vm.gctx.lineDashOffset = -vm.offset
-            vm.gctx.beginPath();
-            //Cerebus
-            vm.gctx.moveTo(80, 470);
-            // Hades
-            vm.gctx.lineTo(160, 365);
-            // Sirens
-            vm.gctx.lineTo(105, 345);
-            vm.gctx.lineTo(220, 260);
-            // Poseidon
-            vm.gctx.lineTo(45, 260);
-            // Athena
-            vm.gctx.lineTo(115, 195);
-            // Achilles
-            vm.gctx.lineTo(300, 160);
-            vm.gctx.lineTo(395, 330);
-            // Cyclops
-            vm.gctx.lineTo(530, 540);
-            // Promethus
-            vm.gctx.lineTo(730, 520);
-            vm.gctx.lineTo(740, 300);
-            // Mountain
-            vm.gctx.lineTo(720, 240);
-            // Zeus
-            vm.gctx.lineTo(740, 55);
-            vm.gctx.stroke();
+            vm.startX = 80;
+            vm.startY = 470;
+            vm.endX = 160;
+            vm.endY = 365;
+            vm.amount = 0;
+        setInterval(function() {
+          vm.amount += 0.01; // change to alter duration
+          if (vm.amount > 1) vm.amount = 1;
+          vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+          vm.gctx.strokeStyle = "red";
+          vm.gctx.setLineDash([5, 5]);
+          vm.gctx.lineWidth = 5;
+          vm.gctx.moveTo(vm.startX, vm.startY);
+          // lerp : a  + (b - a) * f
+          vm.gctx.lineTo(vm.startX + (vm.endX - vm.startX) * vm.amount, vm.startY + (vm.endY - vm.startY) * vm.amount);
+          vm.gctx.stroke();
+        }, 30);
+            
+
+            // vm.gctx.strokeStyle = "red";
+            // vm.gctx.setLineDash([5, 5]);
+            // vm.gctx.lineWidth = 5;
+            // vm.gctx.lineDashOffset = -vm.offset
+            // vm.gctx.beginPath();
+            // //Cerebus
+            // vm.gctx.moveTo(80, 470);
+            // // Hades
+            // vm.gctx.lineTo(160, 365);
+            // // Sirens
+            // vm.gctx.lineTo(105, 345);
+            // vm.gctx.lineTo(220, 260);
+            // // Poseidon
+            // vm.gctx.lineTo(45, 260);
+            // // Athena
+            // vm.gctx.lineTo(115, 195);
+            // // Achilles
+            // vm.gctx.lineTo(300, 160);
+            // vm.gctx.lineTo(395, 330);
+            // // Cyclops
+            // vm.gctx.lineTo(530, 540);
+            // // Promethus
+            // vm.gctx.lineTo(730, 520);
+            // vm.gctx.lineTo(740, 300);
+            // // Mountain
+            // vm.gctx.lineTo(720, 240);
+            // // Zeus
+            // vm.gctx.lineTo(740, 55);
+            // vm.gctx.stroke();
         }
 
-        function march() {
-            vm.offset++;
-            if (vm.offset > 16) {
-                vm.offset = 0;
-            }
-            vm.draw();
-            setTimeout(march, 20);
-        }
-        march();
+
+        // vm.draw();
+
+        // function march() {
+        //     vm.offset++;
+        //     if (vm.offset > 16) {
+        //         vm.offset = 0;
+        //     }
+        //     setTimeout(march, 20);
+        // }
+        // march();
 
 
     }]
