@@ -46,40 +46,47 @@ const battleGround = {
         vm.answered = false;
         vm.button = "Next Question";
         vm.counter = 30;
-        vm.easyQuestions = [];
-        vm.mediumQuestions = [];
-        vm.hardQuestions = [];
         vm.answerArray = [];
         vm.currentQuestion = null;
         vm.correctAnswer = null;
             
-        TriviaService.getEasyQuestions().then((response) => {
-            vm.easyQuestions = response;
-        });
+        if (PlayerService.battles === 0) {
+            TriviaService.getEasyQuestions().then((response) => {
+                vm.easyQuestions = response;
+                sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
+            });
+       
+            TriviaService.getMediumQuestions().then((response) => {
+                vm.mediumQuestions = response;
+                sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
+            });
         
-        TriviaService.getMediumQuestions().then((response) => {
-            vm.mediumQuestions = response;
-        });
+            TriviaService.getHardQuestions().then((response) => {
+                vm.hardQuestions = response;
+                sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
+            });
+        }
+
+        vm.easyQuestions = JSON.parse(sessionStorage.getItem("easy")); 
+        vm.mediumQuestions = JSON.parse(sessionStorage.getItem("medium")); 
+        vm.hardQuestions = JSON.parse(sessionStorage.getItem("hard")); 
         
-        TriviaService.getHardQuestions().then((response) => {
-            vm.hardQuestions = response;
-        });
 
-        // vm.timer = () => {
-        //     vm.counter = 30;
-        //     vm.countDown = setInterval(function() {
-        //         vm.counter--;
-        //         $scope.$apply();
-        //     }, 1000);
+        vm.timer = () => {
+            vm.counter = 30;
+            vm.countDown = setInterval(function() {
+                vm.counter--;
+                $scope.$apply();
+            }, 1000);
 
-        //     return vm.countDown;
-        // }
+            return vm.countDown;
+        }
 
-        // vm.stopTimer = () => {
-        //     clearInterval(vm.countDown);
-        //     $scope.$apply();
-        //     vm.counter = 30;
-        // }
+        vm.stopTimer = () => {
+            clearInterval(vm.countDown);
+            $scope.$apply();
+            vm.counter = 30;
+        }
 
         vm.getQuestion = (questionArray) => {
             vm.currentQuestion = questionArray[0].question;
@@ -92,6 +99,7 @@ const battleGround = {
             vm.randomizeArray(vm.answerArray);
             console.log(questionArray);
             questionArray.shift();
+            sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
         }
 
         vm.randomizeArray = (array) => {
