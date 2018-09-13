@@ -324,7 +324,7 @@ section .button__info, .button__instructions, .button__intro {
     margin-right: 30px;
     padding-top: 2%;
 }
-.img__heart:first-child {
+.img__heart__change:first-child {
         animation: blinker 1s linear infinite;
         animation-iteration-count: 4;
 }
