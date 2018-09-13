@@ -135,7 +135,7 @@ const battleGround = {
             vm.answered = true;
             vm.answerCounter += 1;
             if (hit === vm.correctAnswer) {
-                vm.answerText = "You answered correctly Great job!";
+                vm.answerText = "You answered correctly. Great job!";
                 vm.correctAnswers++;
 
                 if (vm.correctAnswers === 2) {
@@ -144,7 +144,7 @@ const battleGround = {
 
 
             } else {
-                vm.answerText = "You answered the question wrong! Try again!";
+                vm.answerText = `You answered the question incorrectly! The correct answer was ${vm.correctAnswer}.`;
                 vm.incorrectAnswers++;
                 if (vm.incorrectAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);

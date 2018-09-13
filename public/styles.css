@@ -139,9 +139,28 @@ section.answers button {
     margin: 0 10px;
     padding: 10px;
     border-radius: 3px;
-    background: #FE533D;
+    background: #b01919;
     color: #fff;
     border: none;
+    cursor: pointer;
+}
+section.answers button:hover{
+    background: #dd2020;
+}
+
+.text_container {
+    margin: auto 10%;
+}
+.next_question_button {
+    padding: 10px;
+    border-radius: 3px;
+    background:#b01919;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.next_question_button:hover {
+    background: #dd2020;
 }
 
 .intro_container {
