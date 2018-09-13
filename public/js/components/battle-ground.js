@@ -73,10 +73,22 @@ const battleGround = {
             vm.countDown = setInterval(function() {
                 vm.counter--;
                 $scope.$apply();
+
+                if (vm.counter <= 0) {
+                    clearInterval(vm.countDown);
+                    $scope.$apply();
+                    
+                    $timeout(function() {
+                        vm.answered = true;
+                        vm.correct = true;
+                        vm.answerText = `You ran out of time. The correct answer was`;
+                    }, 0);
+                }
             }, 1000);
 
             return vm.countDown;
         }
+
         vm.stopTimer = () => {
             clearInterval(vm.countDown);
             $scope.$apply();
