@@ -74,13 +74,17 @@ body {
 }
 
 .start__button {
-    margin-left: 80px;
     background-color: #409edb;
     border: 2px solid #000;
     color: white;
-    height: 30px;
-    width: 80px;
+    padding: 20px 30px;
     border-radius: .25rem;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.start__button:hover {
+    cursor: pointer;
 }
 
 .section__game-over {
@@ -356,6 +360,15 @@ section .button__info,
     margin-right: 30px;
     padding-top: 2%;
 }
+.img__heart__change:first-child {
+        animation: blinker 1s linear infinite;
+        animation-iteration-count: 4;
+}
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 
 .img__heart {
     width: 2rem;
@@ -416,6 +429,9 @@ section .button__info,
     text-decoration: none;
     color: #fff;
 }
+.ul__gods li a:hover {
+    color: #E8BD00;
+}
 
 .bio {
     margin: 0 auto;
@@ -446,6 +462,11 @@ section .button__info,
     text-align: center;
     padding-top: 250px;
     font-size: 18px;
+}
+
+.select__bio {
+    padding: 0 100px;
+    line-height: 2;
 }
 
 .back__button {

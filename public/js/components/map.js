@@ -5,7 +5,9 @@ const map = {
     <section class="map__canvas">
         <canvas id="canvas"></canvas>
         <section class="img__container">
-            <section class="section__health" id="id__health"></section>
+            <section class="section__health" id="id__health">
+                <player-health></player-health>
+            </section>
             <section class="story__container">
                 <p id="story" class="story"></p>
                 <button ng-if="$ctrl.fightButton" ng-click="$ctrl.fight()" class="fight">fight!</button>
@@ -28,7 +30,6 @@ const map = {
         vm.id = "id__health";
         vm.i = 0;
         vm.speed = 60;
-        PlayerService.updateHealthDisplay(vm.id);
         vm.fightButton = false;
         vm.canvas = document.querySelector('canvas');
         vm.canvas.width = 800;
@@ -60,15 +61,15 @@ const map = {
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
             setInterval(function() {
-            vm.amount += 0.01; // change to alter duration
-            if (vm.amount > 1) vm.amount = 1;
-            vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
-            vm.gctx.strokeStyle = "red";
-            vm.gctx.setLineDash([5, 5]);
-            vm.gctx.lineWidth = 5;
-            vm.gctx.moveTo(startX, startY);
-            vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
-            vm.gctx.stroke();
+                vm.amount += 0.01; // change to alter duration
+                if (vm.amount > 1) vm.amount = 1;
+                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.gctx.strokeStyle = "red";
+                vm.gctx.setLineDash([5, 5]);
+                vm.gctx.lineWidth = 5;
+                vm.gctx.moveTo(startX, startY);
+                vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
+                vm.gctx.stroke();
             }, 30);
         }
 
