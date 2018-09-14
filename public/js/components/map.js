@@ -61,15 +61,15 @@ const map = {
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
             setInterval(function() {
-            vm.amount += 0.01; // change to alter duration
-            if (vm.amount > 1) vm.amount = 1;
-            vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
-            vm.gctx.strokeStyle = "red";
-            vm.gctx.setLineDash([5, 5]);
-            vm.gctx.lineWidth = 5;
-            vm.gctx.moveTo(startX, startY);
-            vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
-            vm.gctx.stroke();
+                vm.amount += 0.01; // change to alter duration
+                if (vm.amount > 1) vm.amount = 1;
+                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.gctx.strokeStyle = "red";
+                vm.gctx.setLineDash([5, 5]);
+                vm.gctx.lineWidth = 5;
+                vm.gctx.moveTo(startX, startY);
+                vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
+                vm.gctx.stroke();
             }, 30);
         }
 
