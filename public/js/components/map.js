@@ -71,7 +71,7 @@ const map = {
                 vm.gctx.moveTo(startX, startY);
                 vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
                 vm.gctx.stroke();
-            }, 55);
+            }, 50);
         }
 
         switch (PlayerService.battles) {
