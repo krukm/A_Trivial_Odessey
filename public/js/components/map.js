@@ -136,8 +136,9 @@ const map = {
                 vm.gctx.lineTo(115, 195);
                 vm.gctx.lineTo(395, 330);
                 vm.gctx.lineTo(530, 540);
+                vm.gctx.lineTo(730, 520);
                 vm.gctx.stroke();
-                vm.draw(530, 540, 740, 300);
+                vm.draw(730, 520, 740, 300);
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
