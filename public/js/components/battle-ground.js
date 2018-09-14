@@ -110,7 +110,7 @@ const battleGround = {
 
         vm.stopTimer = () => {
             $interval.cancel(vm.countDown);
-            vm.counter = 30;
+            vm.counter = 20;
         }
 
         vm.getQuestion = (questionArray) => {
