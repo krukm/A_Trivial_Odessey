@@ -25,7 +25,7 @@ const battleGround = {
                 </section>
                 <section>
                     <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();
-                    ">Start</button>
+                    ">Press Start</button>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
                     <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.correct">{{ $ctrl.correctAnswer }}</span>!</p>
@@ -52,7 +52,7 @@ const battleGround = {
         vm.currentQuestion = null;
         vm.correctAnswer = null;
         vm.changedHealth = false;
-            
+
 
         if (PlayerService.battles === 0) {
             TriviaService.getEasyQuestions().then((response) => {
@@ -93,10 +93,10 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                    console.log(vm.answerCounter);
+                        console.log(vm.answerCounter);
 
                     vm.evaluateAnswerCounter();
-                    
+
                     $timeout(function() {
                         vm.answered = true;
                         vm.correct = true;
@@ -114,7 +114,7 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
-            
+
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -189,7 +189,7 @@ const battleGround = {
             vm.getNextQuestion();
             if (vm.answerCounter === 2) {
                 if (vm.changedHealth) {
-                    $location.path("/map").search({"updateHealth": "true"});
+                    $location.path("/map").search({ "updateHealth": "true" });
                 } else {
                     $location.path("/map");
                 }

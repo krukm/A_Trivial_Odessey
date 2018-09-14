@@ -16,9 +16,10 @@ const map = {
     </section>
     <section class="bottom__map--nav">
         <section>
+            <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
             <button class="button__instructions" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
             <button class="button__info" ng-click="$ctrl.info()">CHARACTER BIO'S</button>
-            <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
+          
         </section>
         <button class="skip__button" ng-click="$ctrl.skip()">SKIP</button>
     </section>   
@@ -35,7 +36,7 @@ const map = {
         vm.canvas.width = 800;
         vm.canvas.height = 600;
         vm.gctx = vm.canvas.getContext("2d");
-        
+
 
         vm.fight = () => {
             $location.url("/battle-ground");
@@ -52,12 +53,12 @@ const map = {
         vm.info = () => {
             $location.url('/characters');
         }
-        
+
         vm.skip = () => {
             vm.fightButton = true;
             vm.speed = 0;
         }
-        
+
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
             setInterval(function() {
@@ -130,32 +131,32 @@ angular.module('app').component('map', map);
 
 
 
-   // vm.gctx.strokeStyle = "red";
-            // vm.gctx.setLineDash([5, 5]);
-            // vm.gctx.lineWidth = 5;
-            // vm.gctx.lineDashOffset = -vm.offset
-            // vm.gctx.beginPath();
-            // //Cerebus
-            // vm.gctx.moveTo(80, 470);
-            // // Hades
-            // vm.gctx.lineTo(160, 365);
-            // // Sirens
-            // vm.gctx.lineTo(105, 345);
-            // vm.gctx.lineTo(220, 260);
-            // // Poseidon
-            // vm.gctx.lineTo(45, 260);
-            // // Athena
-            // vm.gctx.lineTo(115, 195);
-            // // Achilles
-            // vm.gctx.lineTo(300, 160);
-            // vm.gctx.lineTo(395, 330);
-            // // Cyclops
-            // vm.gctx.lineTo(530, 540);
-            // // Promethus
-            // vm.gctx.lineTo(730, 520);
-            // vm.gctx.lineTo(740, 300);
-            // // Mountain
-            // vm.gctx.lineTo(720, 240);
-            // // Zeus
-            // vm.gctx.lineTo(740, 55);
-            // vm.gctx.stroke();
+// vm.gctx.strokeStyle = "red";
+// vm.gctx.setLineDash([5, 5]);
+// vm.gctx.lineWidth = 5;
+// vm.gctx.lineDashOffset = -vm.offset
+// vm.gctx.beginPath();
+// //Cerebus
+// vm.gctx.moveTo(80, 470);
+// // Hades
+// vm.gctx.lineTo(160, 365);
+// // Sirens
+// vm.gctx.lineTo(105, 345);
+// vm.gctx.lineTo(220, 260);
+// // Poseidon
+// vm.gctx.lineTo(45, 260);
+// // Athena
+// vm.gctx.lineTo(115, 195);
+// // Achilles
+// vm.gctx.lineTo(300, 160);
+// vm.gctx.lineTo(395, 330);
+// // Cyclops
+// vm.gctx.lineTo(530, 540);
+// // Promethus
+// vm.gctx.lineTo(730, 520);
+// vm.gctx.lineTo(740, 300);
+// // Mountain
+// vm.gctx.lineTo(720, 240);
+// // Zeus
+// vm.gctx.lineTo(740, 55);
+// vm.gctx.stroke();
