@@ -499,6 +499,8 @@ section.answers button:hover {
     background-color: #337eaf;
 }
 
+
+/* Animations */
 @keyframes blinkingText {
     0% {
         color: #F83800;
