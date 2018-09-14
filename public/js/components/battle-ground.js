@@ -12,7 +12,7 @@ const battleGround = {
                     <player-health></player-health>
                 </section>
             </section>
-            <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
+            <section ng-show="$ctrl.gameOver" class="section__game-over">GAME OVER</section>
             <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
             <section ng-hide="$ctrl.gameOver" class="question__container">
                 <section ng-if="$ctrl.answered === false">
@@ -24,7 +24,7 @@ const battleGround = {
                     </section>
                 </section>
                 <section>
-                    <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();">Start</button>
+                    <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();">START</button>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
                     <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.incorrect">{{ $ctrl.correctAnswer }}</span>!</p>
@@ -94,7 +94,7 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                    vm.incorrect = true;
+                        vm.incorrect = true;
                     console.log(vm.answerCounter);
 
                     vm.evaluateAnswerCounter();
@@ -203,7 +203,7 @@ const battleGround = {
 
         vm.continue = () => {
             if (vm.changedHealth) {
-                $location.path("/map").search({"updateHealth": "true"});
+                $location.path("/map").search({ "updateHealth": "true" });
             } else {
                 $location.path("/map");
             }
