@@ -11,8 +11,8 @@ body {
 /*Intro*/
 
 .intro_container {
-    background: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(./img/Intro.png);
-    background-size: contain;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(./img/Intro.png);
+    background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
@@ -22,7 +22,7 @@ body {
 }
 
 .logo {
-    margin-top: 150px;
+    margin-top: 200px;
 }
 
 .h1__title {
