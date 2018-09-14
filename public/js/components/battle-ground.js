@@ -7,8 +7,6 @@ const battleGround = {
             <section class="timer__container">
                 <section class="timer">
                     <p id="timer">{{ $ctrl.counter }} seconds left</p>
-                    <button class = "start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();
-                    ">Start</button>
                 </section>
                 <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
             </section>
@@ -23,6 +21,10 @@ const battleGround = {
                         </button>
                     </section>
                 </section>
+                <section>
+                    <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();
+                    ">Start</button>
+                </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
                     <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.correct">{{ $ctrl.correctAnswer }}</span>!</p>
                     <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
@@ -32,9 +34,10 @@ const battleGround = {
     </section>    
     `,
 
-    controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", "$scope", function(TriviaService, PlayerService, $location, $timeout, $interval, $scope) {
+    controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", function(TriviaService, PlayerService, $location, $timeout, $interval) {
         const vm = this;
         vm.id = "id__health";
+        vm.start = false;
         vm.gameOver = false;
         vm.correct = false;
         vm.answerCounter = 0;
@@ -42,7 +45,7 @@ const battleGround = {
         vm.incorrectAnswers = 0;
         vm.answered = false;
         vm.button = "Next Question";
-        vm.counter = 30;
+        vm.counter = 20;
         vm.answerArray = [];
         vm.currentQuestion = null;
         vm.correctAnswer = null;
@@ -68,15 +71,27 @@ const battleGround = {
         vm.mediumQuestions = JSON.parse(sessionStorage.getItem("medium"));
         vm.hardQuestions = JSON.parse(sessionStorage.getItem("hard"));
 
+        vm.evaluateAnswerCounter = () => {
+            if (vm.answerCounter === 2) {
+                vm.button = "Continue Story"
+                PlayerService.battles += 1;
+                if (PlayerService.battles > 8) {
+                    $location.path("/victory");
+                }
+            }
+        }
+
         vm.timer = () => {
-            vm.counter = 30;
-            vm.countDown = setInterval(function() {
+            vm.counter = 20;
+            vm.countDown = $interval(function() {
                 vm.counter--;
-                $scope.$apply();
 
                 if (vm.counter <= 0) {
-                    clearInterval(vm.countDown);
-                    $scope.$apply();
+                    $interval.cancel(vm.countDown);
+                    vm.answerCounter++
+                    console.log(vm.answerCounter);
+
+                    vm.evaluateAnswerCounter();
                     
                     $timeout(function() {
                         vm.answered = true;
@@ -90,8 +105,7 @@ const battleGround = {
         }
 
         vm.stopTimer = () => {
-            clearInterval(vm.countDown);
-            $scope.$apply();
+            $interval.cancel(vm.countDown);
             vm.counter = 30;
         }
 
@@ -105,7 +119,7 @@ const battleGround = {
                 vm.answerArray.push(answer);
             }
             vm.randomizeArray(vm.answerArray);
-            console.log(questionArray);
+            // console.log(questionArray);
             questionArray.shift();
             sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
             sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
@@ -117,18 +131,19 @@ const battleGround = {
         }
 
         vm.getNextQuestion = () => {
+            vm.start = true;
             vm.currentQuestion = null;
             vm.correctAnswer = null;
             vm.answerArray = [];
 
             if (PlayerService.battles < 3) {
-                console.log(vm.easyQuestions);
+                // console.log(vm.easyQuestions);
                 vm.getQuestion(vm.easyQuestions);
             } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
-                console.log(vm.mediumQuestions);
+                // console.log(vm.mediumQuestions);
                 vm.getQuestion(vm.mediumQuestions);
             } else if (PlayerService.battles >= 6) {
-                console.log(vm.hardQuestions);
+                // console.log(vm.hardQuestions);
                 vm.getQuestion(vm.hardQuestions);
             }
         }
@@ -160,14 +175,7 @@ const battleGround = {
                     }, 5000);
                 }
             }
-
-            if (vm.answerCounter === 2) {
-                vm.button = "Continue Story"
-                PlayerService.battles += 1;
-                if (PlayerService.battles > 8) {
-                    $location.path("/victory");
-                }
-            }
+            vm.evaluateAnswerCounter();
         }
 
         vm.nextQuestion = () => {

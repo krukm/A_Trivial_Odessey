@@ -10,7 +10,7 @@ const characters = {
             </li>
         </ul>
         <section class="bio">
-            <p ng-if="$ctrl.selectBio === false" class="select__bio">SELECT A CHARACTER TO REVEAL THEIR BIO.</p>
+            <p ng-if="$ctrl.selectBio === false" class="select__bio">SELECT A CHARACTER UP TOP TO REVEAL THEIR BIO.</p>
             <section class="bio__info" ng-if="$ctrl.bioShow">
                 <img ng-src=" {{ $ctrl.pic }}">
                 <p>{{ $ctrl.bio }}</p>
