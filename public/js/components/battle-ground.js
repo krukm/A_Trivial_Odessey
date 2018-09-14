@@ -78,6 +78,7 @@ const battleGround = {
         vm.evaluateAnswerCounter = () => {
             if (vm.answerCounter === 2) {
                 vm.button = "Continue Story"
+                vm.switchButtons = true;
                 PlayerService.battles += 1;
                 if (PlayerService.battles > 8) {
                     $location.path("/victory");
@@ -93,7 +94,8 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                        console.log(vm.answerCounter);
+                    vm.incorrect = true;
+                    console.log(vm.answerCounter);
 
                     vm.evaluateAnswerCounter();
 

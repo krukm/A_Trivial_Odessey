@@ -30,7 +30,7 @@ const map = {
         const vm = this;
         vm.id = "id__health";
         vm.i = 0;
-        vm.speed = 60;
+        vm.speed = 30;
         vm.fightButton = false;
         vm.canvas = document.querySelector('canvas');
         vm.canvas.width = 800;
@@ -71,7 +71,7 @@ const map = {
                 vm.gctx.moveTo(startX, startY);
                 vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
                 vm.gctx.stroke();
-            }, vm.speed);
+            }, 50);
         }
 
         switch (PlayerService.battles) {
