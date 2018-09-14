@@ -25,7 +25,7 @@ const map = {
     </section>   
     `,
 
-    controller: ["PlayerService", "EnemyService", "$location", "$timeout", function(PlayerService, EnemyService, $location, $timeout) {
+    controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, $location, $timeout, $interval) {
 
         const vm = this;
         vm.id = "id__health";
@@ -61,7 +61,7 @@ const map = {
 
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
-            setInterval(function() {
+            $interval(function() {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
                 vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
@@ -71,7 +71,7 @@ const map = {
                 vm.gctx.moveTo(startX, startY);
                 vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
                 vm.gctx.stroke();
-            }, 30);
+            }, vm.speed);
         }
 
         switch (PlayerService.battles) {
@@ -84,30 +84,72 @@ const map = {
                 break;
             case 2:
                 vm.storyText = EnemyService.sirens;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.stroke();
                 vm.draw(160, 365, 220, 260);
                 break;
             case 3:
                 vm.storyText = EnemyService.poseidon;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.lineTo(220, 260);
+                vm.gctx.stroke();
                 vm.draw(220, 260, 45, 260);
                 break;
             case 4:
                 vm.storyText = EnemyService.achilles;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.lineTo(220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.stroke();
                 vm.draw(45, 260, 115, 195);
                 break;
             case 5:
                 vm.storyText = EnemyService.polyphemus;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.lineTo(220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.stroke();
                 vm.draw(115, 195, 395, 330);
                 break;
             case 6:
                 vm.storyText = EnemyService.prometheus;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.lineTo(220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.lineTo(395, 330);
+                vm.gctx.stroke();
                 vm.draw(395, 330, 530, 540);
                 break;
             case 7:
                 vm.storyText = EnemyService.hercules;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.lineTo(220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.lineTo(395, 330);
+                vm.gctx.lineTo(530, 540);
+                vm.gctx.stroke();
                 vm.draw(530, 540, 740, 300);
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.lineTo(220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.lineTo(395, 330);
+                vm.gctx.lineTo(530, 540);
+                vm.gctx.lineTo(740, 300);
+                vm.gctx.stroke();
                 vm.draw(740, 300, 720, 240);
                 break;
         }
@@ -123,40 +165,37 @@ const map = {
         }
 
         vm.typeWriter();
+
+        // vm.gctx.strokeStyle = "red";
+        //     vm.gctx.setLineDash([5, 5]);
+        //     vm.gctx.lineWidth = 5;
+        //     vm.gctx.lineDashOffset = -vm.offset
+        //     vm.gctx.beginPath();
+        //     //Cerebus
+        //     vm.gctx.moveTo(80, 470);
+        //     // Hades
+        //     vm.gctx.lineTo(160, 365);
+        //     // Sirens
+        //     vm.gctx.lineTo(105, 345);
+        //     vm.gctx.lineTo(220, 260);
+        //     // Poseidon
+        //     vm.gctx.lineTo(45, 260);
+        //     // Athena
+        //     vm.gctx.lineTo(115, 195);
+        //     // Achilles
+        //     vm.gctx.lineTo(300, 160);
+        //     vm.gctx.lineTo(395, 330);
+        //     // Cyclops
+        //     vm.gctx.lineTo(530, 540);
+        //     // Promethus
+        //     vm.gctx.lineTo(730, 520);
+        //     vm.gctx.lineTo(740, 300);
+        //     // Mountain
+        //     vm.gctx.lineTo(720, 240);
+        //     // Zeus
+        //     vm.gctx.lineTo(740, 55);
+        //     vm.gctx.stroke();
     }]
 }
 
 angular.module('app').component('map', map);
-
-
-
-
-// vm.gctx.strokeStyle = "red";
-// vm.gctx.setLineDash([5, 5]);
-// vm.gctx.lineWidth = 5;
-// vm.gctx.lineDashOffset = -vm.offset
-// vm.gctx.beginPath();
-// //Cerebus
-// vm.gctx.moveTo(80, 470);
-// // Hades
-// vm.gctx.lineTo(160, 365);
-// // Sirens
-// vm.gctx.lineTo(105, 345);
-// vm.gctx.lineTo(220, 260);
-// // Poseidon
-// vm.gctx.lineTo(45, 260);
-// // Athena
-// vm.gctx.lineTo(115, 195);
-// // Achilles
-// vm.gctx.lineTo(300, 160);
-// vm.gctx.lineTo(395, 330);
-// // Cyclops
-// vm.gctx.lineTo(530, 540);
-// // Promethus
-// vm.gctx.lineTo(730, 520);
-// vm.gctx.lineTo(740, 300);
-// // Mountain
-// vm.gctx.lineTo(720, 240);
-// // Zeus
-// vm.gctx.lineTo(740, 55);
-// vm.gctx.stroke();
