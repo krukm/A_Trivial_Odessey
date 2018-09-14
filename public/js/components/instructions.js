@@ -1,7 +1,7 @@
 "use strict";
 
 const instructions = {
-  template:`
+    template: `
     <section class="section__instructions">
       <section class="instructions__container">
         <h1>Instructions</h1>
@@ -13,19 +13,24 @@ const instructions = {
         <p>Answering one question incorrectly will result in no health gained.</p>
         <p>If you fail to correctly answer both questions you will lose a heart.</p>
         <p>In the event that you lose all of your hearts you will be thrown back into the underworld to start your journey again.</p>
-        <button type="button" ng-click="$ctrl.back();">BACK</button>
+        <button type="button" ng-click="$ctrl.back();">{{ $ctrl.button }}</button>
       </section>
     </section>
-  `, 
-  controller: ['$location', function ($location) {
-    const vm = this;
+  `,
+    controller: ['$location', 'PlayerService', function($location, PlayerService) {
+        const vm = this;
+        vm.button = "BACK";
 
-    vm.back = () => {
-      $location.url('/map');
-    }
-  }]
+        if (PlayerService.battles === 0) {
+            vm.button = "PLAY";
+        }
+
+        vm.back = () => {
+            $location.url('/map');
+        }
+    }]
 }
 
 angular
-  .module("app")
-  .component("instructions", instructions);
+    .module("app")
+    .component("instructions", instructions);

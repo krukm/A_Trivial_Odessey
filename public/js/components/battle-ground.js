@@ -52,7 +52,7 @@ const battleGround = {
         vm.currentQuestion = null;
         vm.correctAnswer = null;
         vm.changedHealth = false;
-            
+
 
         if (PlayerService.battles === 0) {
             TriviaService.getEasyQuestions().then((response) => {
@@ -93,10 +93,10 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                    console.log(vm.answerCounter);
+                        console.log(vm.answerCounter);
 
                     vm.evaluateAnswerCounter();
-                    
+
                     $timeout(function() {
                         vm.answered = true;
                         vm.correct = true;
@@ -114,7 +114,7 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
-            
+
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 

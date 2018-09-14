@@ -10,7 +10,7 @@ const victory = {
         <button class="button__play-again" type="button" ng-click="$ctrl.resetGame();">Play again?</button>
     </section>
     `,
-    controller: ['$location', 'PlayerService', function ($location, PlayerService) {
+    controller: ['$location', 'PlayerService', function($location, PlayerService) {
         const vm = this;
         vm.i = 0;
         vm.speed = 40;
