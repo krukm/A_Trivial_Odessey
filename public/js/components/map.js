@@ -59,6 +59,12 @@ const map = {
             vm.speed = 0;
         }
 
+        vm.logoImg = new Image();
+        vm.logoImg.onload = function () {
+            vm.gctx.drawImage(vm.logoImg, 10, 20, 400, 40);
+        }
+        vm.logoImg.src = "./img/logo2.png";
+
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
             $interval(function() {
