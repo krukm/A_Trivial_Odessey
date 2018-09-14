@@ -8,7 +8,9 @@ const battleGround = {
                 <section class="timer">
                     <p id="timer">{{ $ctrl.counter }} seconds left</p>
                 </section>
-                <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health"></section>
+                <section ng-hide="$ctrl.gameOver" class="section__health" id="id__health">
+                    <player-health></player-health>
+                </section>
             </section>
             <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
             <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
@@ -49,6 +51,8 @@ const battleGround = {
         vm.answerArray = [];
         vm.currentQuestion = null;
         vm.correctAnswer = null;
+        vm.changedHealth = false;
+            
 
         if (PlayerService.battles === 0) {
             TriviaService.getEasyQuestions().then((response) => {
@@ -158,6 +162,7 @@ const battleGround = {
 
                 if (vm.correctAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
+                    vm.changedHealth = true;
                 }
             } else {
                 vm.correct = true;
@@ -165,6 +170,7 @@ const battleGround = {
                 vm.incorrectAnswers++;
                 if (vm.incorrectAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
+                    vm.changedHealth = true;
                 }
                 if (PlayerService.playerHealth === 0) {
                     vm.gameOver = true;
@@ -182,11 +188,14 @@ const battleGround = {
             vm.answered = false;
             vm.getNextQuestion();
             if (vm.answerCounter === 2) {
-                $location.path("/map");
+                if (vm.changedHealth) {
+                    $location.path("/map").search({"updateHealth": "true"});
+                } else {
+                    $location.path("/map");
+                }
             }
         }
 
-        PlayerService.updateHealthDisplay(vm.id);
 
         switch (PlayerService.battles) {
             case 0:

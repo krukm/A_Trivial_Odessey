@@ -360,6 +360,15 @@ section .button__info,
     margin-right: 30px;
     padding-top: 2%;
 }
+.img__heart__change:first-child {
+        animation: blinker 1s linear infinite;
+        animation-iteration-count: 4;
+}
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 
 .img__heart {
     width: 2rem;
