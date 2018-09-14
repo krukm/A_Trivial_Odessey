@@ -5,7 +5,9 @@ const map = {
     <section class="map__canvas">
         <canvas id="canvas"></canvas>
         <section class="img__container">
-            <section class="section__health" id="id__health"></section>
+            <section class="section__health" id="id__health">
+                <player-health></player-health>
+            </section>
             <section class="story__container">
                 <p id="story" class="story"></p>
                 <button ng-if="$ctrl.fightButton" ng-click="$ctrl.fight()" class="fight">fight!</button>
@@ -28,7 +30,6 @@ const map = {
         vm.id = "id__health";
         vm.i = 0;
         vm.speed = 60;
-        PlayerService.updateHealthDisplay(vm.id);
         vm.fightButton = false;
         vm.canvas = document.querySelector('canvas');
         vm.canvas.width = 800;
