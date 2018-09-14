@@ -36,14 +36,12 @@ body {
 }
 
 .button__play {
-    /* margin: 3rem 0 0 0; */
     padding: 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
     border: 2px solid #000;
-    /* width: 10%; */
 }
 
 .button__play:hover {
@@ -153,7 +151,6 @@ section .button__intro,
     color: #fff;
     border: 2px solid #000;
     justify-self: flex-end;
-    margin-right: 12px;
 }
 
 .button__instructions {
