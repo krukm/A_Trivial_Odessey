@@ -24,7 +24,7 @@ const battleGround = {
                     </section>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
-                    <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.correct">{{ $ctrl.correctAnswer }}</span>!</p>
+                    <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.incorrect">{{ $ctrl.correctAnswer }}</span>!</p>
                     <button ng-hide="$ctrl.gameOver" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">{{ $ctrl.button }}</button>
                 </section>
             </section>
@@ -36,7 +36,7 @@ const battleGround = {
         const vm = this;
         vm.id = "id__health";
         vm.gameOver = false;
-        vm.correct = false;
+        vm.incorrect = false;
         vm.answerCounter = 0;
         vm.correctAnswers = 0;
         vm.incorrectAnswers = 0;
@@ -93,7 +93,6 @@ const battleGround = {
                 vm.answerArray.push(answer);
             }
             vm.randomizeArray(vm.answerArray);
-            console.log(questionArray);
             questionArray.shift();
             sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
             sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
@@ -110,35 +109,41 @@ const battleGround = {
             vm.answerArray = [];
 
             if (PlayerService.battles < 3) {
+                console.log('if < 3');
                 console.log(vm.easyQuestions);
                 vm.getQuestion(vm.easyQuestions);
             } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
+                console.log('if >=3 && < 6');
                 console.log(vm.mediumQuestions);
                 vm.getQuestion(vm.mediumQuestions);
             } else if (PlayerService.battles >= 6) {
+                console.log('if >= 6');
                 console.log(vm.hardQuestions);
                 vm.getQuestion(vm.hardQuestions);
             }
         }
 
-        vm.userChooseAnswer = (hit) => {
-
+        vm.userChooseAnswer = (userSelection) => {
             vm.answered = true;
             vm.answerCounter += 1;
-            if (hit === vm.correctAnswer) {
+
+            if (userSelection === vm.correctAnswer) {
                 vm.answerText = "You answered correctly. Great job";
                 vm.correctAnswers++;
 
                 if (vm.correctAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
                 }
+
             } else {
-                vm.correct = true;
+                vm.incorrect = true;
                 vm.answerText = `You answered the question incorrectly! The correct answer was`;
                 vm.incorrectAnswers++;
+
                 if (vm.incorrectAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
                 }
+
                 if (PlayerService.playerHealth === 0) {
                     vm.gameOver = true;
 
@@ -156,14 +161,16 @@ const battleGround = {
                     $location.path("/victory");
                 }
             }
-        }
 
-        vm.nextQuestion = () => {
-            vm.answered = false;
-            vm.getNextQuestion();
-            if (vm.answerCounter === 2) {
-                $location.path("/map");
+            vm.nextQuestion = () => {
+                vm.answered = false;
+                vm.getNextQuestion();
+                if(vm.answerCounter === 2) {
+                    $location.path('/map');
+                }
             }
+
+
         }
 
         PlayerService.updateHealthDisplay(vm.id);
