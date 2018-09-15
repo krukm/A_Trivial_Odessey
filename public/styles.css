@@ -500,8 +500,32 @@ section.answers button:hover {
     background: #DD2020;
 }
 
+.random__response{
+    text-align: center;
+}
+
+.random__response p {
+    text-transform: uppercase;
+    font-size: 40px;
+    margin-top: 70px;
+}
+
+.correct {
+    animation: randomResponseRight 0.8s infinite;
+}
+
+.incorrect {
+    animation: randomResponseWrong 0.8s infinite;
+}
+
+
+/***************************/
+
 
 /*Victory*/
+
+
+/****************************/
 
 .section__victory {
     display: flex;
@@ -549,8 +573,14 @@ section.answers button:hover {
     background-color: #337eaf;
 }
 
+/**************************/
+
 
 /* Animations */
+
+
+/**************************/
+
 @keyframes blinkingText {
     0% {
         color: #F83800;
@@ -566,5 +596,41 @@ section.answers button:hover {
     }
     100% {
         color: #3CBCFC;
+    }
+}
+
+@keyframes randomResponseRight {
+    0% {
+        color: #007800;
+    }
+    30% {
+        color: #fff;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #fff;
+    }
+    100% {
+        color: #007800;
+    }
+}
+
+@keyframes randomResponseWrong {
+    0% {
+        color: #DD2020;
+    }
+    30% {
+        color: #fff;
+    }
+    50% {
+        color: #DD2020;
+    }
+    70% {
+        color: #fff;
+    }
+    100% {
+        color: #DD2020;
     }
 }
