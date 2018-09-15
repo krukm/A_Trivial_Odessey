@@ -5,14 +5,13 @@ const instructions = {
     <section class="section__instructions">
       <section class="instructions__container">
         <h1>Instructions</h1>
-        <p>In order to rescue your family you must defeat the gods by going on A Trivial Odyssey.</p>
-        <p>Your battles will consist of mythological trivia questions.</p>
-        <p>Each battle will have two questions and you will have 30 seconds to answer each question.</p>
-        <p>Question intensity will increase as you progess through 9 battles.</p>
-        <p>Answer two questions correctly and you will gain an extra heart (health).</p>
-        <p>Answering one question incorrectly will result in no health gained.</p>
-        <p>If you fail to correctly answer both questions you will lose a heart.</p>
-        <p>In the event that you lose all of your hearts you will be thrown back into the underworld to start your journey again.</p>
+        <ul>
+        <li>Your battles will consist of various mythological trivia questions.</li>
+        <li>Each battle will have two questions with 20 seconds to answer each question.</li>
+        <li>Answer both questions correctly and gain a health point (heart). No heart is gained for only one correct answer.</li>
+        <li>Lose a heart if both questions are answered incorrectly.</li>
+        <li>The game is over if all hearts are lost.</li>
+        </ul>
         <button type="button" ng-click="$ctrl.back();">{{ $ctrl.button }}</button>
       </section>
     </section>
