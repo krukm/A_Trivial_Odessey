@@ -140,16 +140,10 @@ const battleGround = {
             vm.answerArray = [];
 
             if (PlayerService.battles < 3) {
-                console.log('if < 3');
-                console.log(vm.easyQuestions);
                 vm.getQuestion(vm.easyQuestions);
             } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
-                console.log('if >=3 && < 6');
-                console.log(vm.mediumQuestions);
                 vm.getQuestion(vm.mediumQuestions);
             } else if (PlayerService.battles >= 6) {
-                console.log('if >= 6');
-                console.log(vm.hardQuestions);
                 vm.getQuestion(vm.hardQuestions);
             }
         }

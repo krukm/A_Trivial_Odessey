@@ -30,12 +30,15 @@ const map = {
         const vm = this;
         vm.id = "id__health";
         vm.i = 0;
+        vm.idx = -1;
         vm.speed = 60;
         vm.fightButton = false;
         vm.canvas = document.querySelector('canvas');
         vm.canvas.width = 800;
         vm.canvas.height = 600;
-        vm.gctx = vm.canvas.getContext("2d");
+        vm.context = vm.canvas.getContext("2d");
+        vm.soldierBackImage = new Image();
+        vm.soldierBackImage.src = "./img/soldier-back.png";
 
 
         vm.fight = () => {
@@ -64,14 +67,62 @@ const map = {
             $interval(function() {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
-                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
-                vm.gctx.strokeStyle = "red";
-                vm.gctx.setLineDash([5, 5]);
-                vm.gctx.lineWidth = 5;
-                vm.gctx.moveTo(startX, startY);
-                vm.gctx.lineTo(startX + (endX - startX) * vm.amount, startY + (endY - startY) * vm.amount);
-                vm.gctx.stroke();
+                vm.x2 = startX + (endX - startX) * vm.amount;
+                vm.y2 = startY + (endY - startY) * vm.amount;
+                //vm.context.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.context.strokeStyle = "red";
+                vm.context.setLineDash([5, 5]);
+                vm.context.lineWidth = 5;
+                vm.context.beginPath();
+                vm.context.moveTo(startX, startY);
+                vm.context.lineTo(vm.x2, vm.y2);
+                vm.context.stroke();
             }, vm.speed);
+        }
+
+        vm.drawTwoLines = (startX, startY, middleX, middleY, endX, endY) => {
+            vm.amount = 0;
+
+            vm.startx = [startX, middleX];
+            vm.starty = [startY, middleY];
+            vm.endx = [middleX, endX];
+            vm.endy = [middleY, endY];
+
+            vm.drawLinesInterval = $interval(function() {
+                if (vm.idx > vm.startx.length)
+                    clearInterval(vm.drawLinesInterval);
+            
+                vm.linepercentage = 0;
+                vm.idx++; //move onto the next line
+                vm.animateInterval = $interval(function() {
+                    vm.linepercentage += 0.01;
+                    if(vm.linepercentage > 1) {
+                        clearInterval(vm.animateInterval);
+                    }
+            
+                    vm.context.strokeStyle = "red";
+                    vm.context.setLineDash([5, 5]);
+                    vm.context.lineWidth = 5;
+                    vm.context.moveTo(vm.startx[vm.idx], vm.starty[vm.idx]);
+                    vm.tempxend = 0;
+                    vm.tempyend = 0;
+
+                    if (vm.startx[vm.idx] > vm.endx[vm.idx]) {
+                        vm.tempxend = vm.startx[vm.idx] - ((vm.startx[vm.idx] - vm.endx[vm.idx]) * vm.linepercentage);
+                    } else {
+                        vm.tempxend = vm.startx[vm.idx] + ((vm.endx[vm.idx] - vm.startx[vm.idx]) * vm.linepercentage);
+                    }
+
+                    if (vm.starty[vm.idx] > vm.endy[vm.idx]) {
+                        vm.tempyend = vm.starty[vm.idx] - ((vm.starty[vm.idx] - vm.endy[vm.idx]) * vm.linepercentage);
+                    } else {
+                        vm.tempyend = vm.starty[vm.idx] + ((vm.endy[vm.idx] - vm.starty[vm.idx]) * vm.linepercentage);
+                    }
+
+                    vm.context.lineTo(vm.tempxend, vm.tempyend);
+                    vm.context.stroke();
+                }, 40);
+            }, 2000);
         }
 
         switch (PlayerService.battles) {
@@ -84,72 +135,73 @@ const map = {
                 break;
             case 2:
                 vm.storyText = EnemyService.sirens;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.stroke();
-                vm.draw(160, 365, 220, 260);
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.stroke();
+                //vm.draw(160, 365, 220, 260);
+                vm.drawTwoLines(160, 365, 105, 345, 220, 260);
                 break;
             case 3:
                 vm.storyText = EnemyService.poseidon;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
-                vm.gctx.stroke();
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.lineTo(220, 260);
+                vm.context.stroke();
                 vm.draw(220, 260, 45, 260);
                 break;
             case 4:
                 vm.storyText = EnemyService.achilles;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
-                vm.gctx.lineTo(45, 260);
-                vm.gctx.stroke();
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.lineTo(220, 260);
+                vm.context.lineTo(45, 260);
+                vm.context.stroke();
                 vm.draw(45, 260, 115, 195);
                 break;
             case 5:
                 vm.storyText = EnemyService.polyphemus;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
-                vm.gctx.lineTo(45, 260);
-                vm.gctx.lineTo(115, 195);
-                vm.gctx.stroke();
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.lineTo(220, 260);
+                vm.context.lineTo(45, 260);
+                vm.context.lineTo(115, 195);
+                vm.context.stroke();
                 vm.draw(115, 195, 395, 330);
                 break;
             case 6:
                 vm.storyText = EnemyService.prometheus;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
-                vm.gctx.lineTo(45, 260);
-                vm.gctx.lineTo(115, 195);
-                vm.gctx.lineTo(395, 330);
-                vm.gctx.stroke();
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.lineTo(220, 260);
+                vm.context.lineTo(45, 260);
+                vm.context.lineTo(115, 195);
+                vm.context.lineTo(395, 330);
+                vm.context.stroke();
                 vm.draw(395, 330, 530, 540);
                 break;
             case 7:
                 vm.storyText = EnemyService.hercules;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
-                vm.gctx.lineTo(45, 260);
-                vm.gctx.lineTo(115, 195);
-                vm.gctx.lineTo(395, 330);
-                vm.gctx.lineTo(530, 540);
-                vm.gctx.stroke();
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.lineTo(220, 260);
+                vm.context.lineTo(45, 260);
+                vm.context.lineTo(115, 195);
+                vm.context.lineTo(395, 330);
+                vm.context.lineTo(530, 540);
+                vm.context.stroke();
                 vm.draw(530, 540, 740, 300);
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
-                vm.gctx.moveTo(80, 470);
-                vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
-                vm.gctx.lineTo(45, 260);
-                vm.gctx.lineTo(115, 195);
-                vm.gctx.lineTo(395, 330);
-                vm.gctx.lineTo(530, 540);
-                vm.gctx.lineTo(740, 300);
-                vm.gctx.stroke();
+                vm.context.moveTo(80, 470);
+                vm.context.lineTo(160, 365);
+                vm.context.lineTo(220, 260);
+                vm.context.lineTo(45, 260);
+                vm.context.lineTo(115, 195);
+                vm.context.lineTo(395, 330);
+                vm.context.lineTo(530, 540);
+                vm.context.lineTo(740, 300);
+                vm.context.stroke();
                 vm.draw(740, 300, 720, 240);
                 break;
         }
@@ -166,35 +218,35 @@ const map = {
 
         vm.typeWriter();
 
-        // vm.gctx.strokeStyle = "red";
-        //     vm.gctx.setLineDash([5, 5]);
-        //     vm.gctx.lineWidth = 5;
-        //     vm.gctx.lineDashOffset = -vm.offset
-        //     vm.gctx.beginPath();
+        // vm.context.strokeStyle = "red";
+        //     vm.context.setLineDash([5, 5]);
+        //     vm.context.lineWidth = 5;
+        //     vm.context.lineDashOffset = -vm.offset
+        //     vm.context.beginPath();
         //     //Cerebus
-        //     vm.gctx.moveTo(80, 470);
+        //     vm.context.moveTo(80, 470);
         //     // Hades
-        //     vm.gctx.lineTo(160, 365);
+        //     vm.context.lineTo(160, 365);
         //     // Sirens
-        //     vm.gctx.lineTo(105, 345);
-        //     vm.gctx.lineTo(220, 260);
+        //     vm.context.lineTo(105, 345);
+        //     vm.context.lineTo(220, 260);
         //     // Poseidon
-        //     vm.gctx.lineTo(45, 260);
+        //     vm.context.lineTo(45, 260);
         //     // Athena
-        //     vm.gctx.lineTo(115, 195);
+        //     vm.context.lineTo(115, 195);
         //     // Achilles
-        //     vm.gctx.lineTo(300, 160);
-        //     vm.gctx.lineTo(395, 330);
+        //     vm.context.lineTo(300, 160);
+        //     vm.context.lineTo(395, 330);
         //     // Cyclops
-        //     vm.gctx.lineTo(530, 540);
+        //     vm.context.lineTo(530, 540);
         //     // Promethus
-        //     vm.gctx.lineTo(730, 520);
-        //     vm.gctx.lineTo(740, 300);
+        //     vm.context.lineTo(730, 520);
+        //     vm.context.lineTo(740, 300);
         //     // Mountain
-        //     vm.gctx.lineTo(720, 240);
+        //     vm.context.lineTo(720, 240);
         //     // Zeus
-        //     vm.gctx.lineTo(740, 55);
-        //     vm.gctx.stroke();
+        //     vm.context.lineTo(740, 55);
+        //     vm.context.stroke();
     }]
 }
 
