@@ -82,6 +82,24 @@ const map = {
             }, vm.speed);
         }
 
+        // vm.drawBezier = (startX, startY, middleX, middleY, endX, endY) => {
+        //     vm.amount = 0;
+        //     $interval(function() {
+        //         vm.amount += 0.01; // change to alter duration
+        //         if (vm.amount > 1) vm.amount = 1;
+        //         vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+        //         vm.gctx.strokeStyle = "red";
+        //         vm.gctx.setLineDash([5, 5]);
+        //         vm.gctx.lineWidth = 5;
+        //         vm.gctx.moveTo(startX, startY);
+        //         vm.gctx.lineTo(startX + (middleX - startX) * vm.amount, startY + (middleY - startY) * vm.amount);
+        //         vm.gctx.stroke();
+        //         vm.gctx.lineTo(middleX + (endX - middleX) * vm.amount, middleY + (endY - middleY) * vm.amount);
+        //         vm.gctx.stroke();
+        //     }, vm.speed);
+        // }
+
+
         switch (PlayerService.battles) {
             case 0:
                 vm.storyText = EnemyService.cerberus;
@@ -96,12 +114,13 @@ const map = {
                 vm.gctx.lineTo(160, 365);
                 vm.gctx.stroke();
                 vm.draw(160, 365, 220, 260);
+                // vm.drawBezier(160, 365, 105, 345, 220, 260);
                 break;
             case 3:
                 vm.storyText = EnemyService.poseidon;
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.stroke();
                 vm.draw(220, 260, 45, 260);
                 break;
@@ -109,7 +128,7 @@ const map = {
                 vm.storyText = EnemyService.achilles;
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.stroke();
                 vm.draw(45, 260, 115, 195);
@@ -118,20 +137,21 @@ const map = {
                 vm.storyText = EnemyService.polyphemus;
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
                 vm.gctx.stroke();
+                // vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.draw(115, 195, 395, 330);
                 break;
             case 6:
                 vm.storyText = EnemyService.prometheus;
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
-                vm.gctx.lineTo(395, 330);
+                vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.stroke();
                 vm.draw(395, 330, 530, 540);
                 break;
@@ -139,11 +159,11 @@ const map = {
                 vm.storyText = EnemyService.hercules;
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
-                vm.gctx.lineTo(395, 330);
                 vm.gctx.lineTo(530, 540);
+                vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(730, 520);
                 vm.gctx.stroke();
                 vm.draw(730, 520, 740, 300);
@@ -152,11 +172,11 @@ const map = {
                 vm.storyText = EnemyService.zeus;
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
-                vm.gctx.lineTo(220, 260);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
-                vm.gctx.lineTo(395, 330);
                 vm.gctx.lineTo(530, 540);
+                vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(740, 300);
                 vm.gctx.stroke();
                 vm.draw(740, 300, 720, 240);
