@@ -13,18 +13,21 @@ const battleGround = {
                 </section>
             </section>
             <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-            <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
+            <img ng-if="$ctrl.answered === false" ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
+            <section class="random__response" ng-if="$ctrl.answered === true">
+                <p ng-class="{'correct':$ctrl.correct, 'incorrect':$ctrl.incorrect}">{{ $ctrl.response }}</p>
+            </section>
             <section ng-hide="$ctrl.gameOver" class="question__container">
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
                     <section class="answers"  ng-class="{'answered': $ctrl.answered}" >
-                        <button ng-repeat="answer in $ctrl.answerArray" ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();" ng-class="answer === $ctrl.correctAnswer ? 'correct' : 'incorrect'">
+                        <button ng-repeat="answer in $ctrl.answerArray" ng-value="answer" ng-click="$ctrl.userChooseAnswer(answer); $ctrl.stopTimer();">
                             {{ answer }}
                         </button>
                     </section>
                 </section>
                 <section>
-                    <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();">Start</button>
+                    <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();">START</button>
                 </section>
                 <section class="text_container" ng-if="$ctrl.answered === true">
                     <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.incorrect">{{ $ctrl.correctAnswer }}</span>!</p>
@@ -42,6 +45,7 @@ const battleGround = {
         vm.start = false;
         vm.gameOver = false;
         vm.incorrect = false;
+        vm.correct = false;
         vm.switchButtons = false;
         vm.answerCounter = 0;
         vm.correctAnswers = 0;
@@ -52,6 +56,26 @@ const battleGround = {
         vm.currentQuestion = null;
         vm.correctAnswer = null;
         vm.changedHealth = false;
+        vm.rightAnswerArr = [
+            "Your a genius, keep up the good work!",
+            "The Gods stand no chance at defeating you!",
+            "Wow, You got it right!",
+            "I am sparta!",
+            "Keep getting questions right and you may get a cookie!"
+        ];
+
+        vm.wrongAnswerArr = [
+            "Nope! Try Again!",
+            "Wrong, Wrong, Wrong",
+            "You need to study more",
+            "Nice Try, Maybe next time",
+            "We all make mistakes"
+        ];
+
+        vm.getRandomResponse = (array) => {
+            vm.randomIndex = Math.floor(Math.random() * array.length);
+            vm.response = array[vm.randomIndex];   
+        }
 
 
         if (PlayerService.battles === 0) {
@@ -78,6 +102,7 @@ const battleGround = {
         vm.evaluateAnswerCounter = () => {
             if (vm.answerCounter === 2) {
                 vm.button = "Continue Story"
+                vm.switchButtons = true;
                 PlayerService.battles += 1;
                 if (PlayerService.battles > 8) {
                     $location.path("/victory");
@@ -87,19 +112,20 @@ const battleGround = {
 
         vm.timer = () => {
             vm.counter = 20;
-            vm.countDown = $interval(function() {
+            vm.countDown = $interval(() => {
                 vm.counter--;
 
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                        console.log(vm.answerCounter);
+                    vm.incorrect = true;
+                    vm.correct = false;
 
                     vm.evaluateAnswerCounter();
 
-                    $timeout(function() {
+                    $timeout(() => {
                         vm.answered = true;
-                        vm.correct = true;
+                        vm.correct = false;
                         vm.answerText = `You ran out of time. The correct answer was`;
                     }, 0);
                 }
@@ -114,7 +140,6 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
-
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -130,7 +155,7 @@ const battleGround = {
         }
 
         vm.randomizeArray = (array) => {
-            return array.sort(function(a, b) { return 0.5 - Math.random() });
+            return array.sort(() => 0.5 - Math.random());
         }
 
         vm.getNextQuestion = () => {
@@ -153,8 +178,11 @@ const battleGround = {
             vm.answerCounter += 1;
 
             if (userSelection === vm.correctAnswer) {
+                vm.correct = true;
+                vm.incorrect = false;
                 vm.answerText = "You answered correctly. Great job";
                 vm.correctAnswers++;
+                vm.getRandomResponse(vm.rightAnswerArr);
 
                 if (vm.correctAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
@@ -163,8 +191,10 @@ const battleGround = {
 
             } else {
                 vm.incorrect = true;
+                vm.correct = false;
                 vm.answerText = `You answered the question incorrectly! The correct answer was`;
                 vm.incorrectAnswers++;
+                vm.getRandomResponse(vm.wrongAnswerArr);
 
                 if (vm.incorrectAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
@@ -195,7 +225,7 @@ const battleGround = {
 
         vm.continue = () => {
             if (vm.changedHealth) {
-                $location.path("/map").search({"updateHealth": "true"});
+                $location.path("/map").search({ "updateHealth": "true" });
             } else {
                 $location.path("/map");
             }

@@ -8,17 +8,27 @@ body {
 }
 
 
+/************************/
+
+
 /*Intro*/
 
+
+/************************/
+
 .intro_container {
-    background: url(./img/Intro.png);
-    background-size: contain;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(./img/Intro.png);
+    background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.logo {
+    margin-top: 200px;
 }
 
 .h1__title {
@@ -41,10 +51,12 @@ body {
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
+    font-size: 18px;
 }
 
-.button__play:hover {
+.button__play:hover,
+.button__instructions--intro:hover {
     background-color: #337eaf;
 }
 
@@ -62,11 +74,18 @@ body {
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
+    font-size: 18px;
 }
 
 
+/*******************************/
+
+
 /*Map*/
+
+
+/*******************************/
 
 .map__canvas {
     display: flex;
@@ -123,13 +142,14 @@ body {
     text-transform: uppercase;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
     border-radius: 3px;
     padding: 10px;
 }
 
 .story__container button.fight:hover {
     cursor: pointer;
+    background-color: #337eaf;
 }
 
 .bottom__map--nav {
@@ -139,50 +159,108 @@ body {
 
 section .button__intro,
 .button__instructions,
-.button__info {
+.button__info,
+.skip__button {
     margin-left: 5px;
+    padding: 15px 20px;
+    font-size: 16px;
+}
+
+section .button__intro:hover,
+.button__instructions:hover,
+.button__info:hover,
+.skip__button:hover {
+    background-color: #337eaf;
 }
 
 .button__intro {
-    padding: 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
     justify-self: flex-end;
 }
 
 .button__instructions {
-    padding: 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
 }
 
 .button__info {
-    padding: 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
 }
 
 .skip__button {
-    padding: 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
-    margin-left: 50px;
+    border: 3px solid #000;
+    margin-right: 50px;
+}
+
+.popup {
+    position: relative;
+}
+
+.heart__instructions {
+    background: url('./img/wide-scroll.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 100;
+    position: absolute;
+    left: 350px;
+    bottom: 200px;
+    width: 600px;
+    height: 400px;
+}
+
+.answer__section {
+    display: flex;
+    justify-content: center;
+}
+
+.heart__question {
+    padding: 50px 70px;;
+}
+
+.heart__question button {
+    border: 3px solid #000;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+}
+
+.heart__question .answers {
+    padding: 5px;
+    color: #fff;
+    margin: 0 10px;
+}
+
+.heart__question .x__button {
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    left: 380px;
+    color: #fff;
 }
 
 
+/******************************/
+
+
 /*Instructions*/
+
+
+/******************************/
 
 .section__instructions {
     background: url('./img/wide-scroll.png');
@@ -203,10 +281,14 @@ section .button__intro,
 .instructions__container h1 {
     text-align: center;
     color: #DD2020;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    font-size: 25px;
 }
 
-.instructions__container p {
-    color: #132f41;
+.instructions__container li {
+    color: #000;
+    margin-bottom: 30px;
 }
 
 .instructions__container button {
@@ -215,13 +297,24 @@ section .button__intro,
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
     position: absolute;
     left: 460px;
+    font-size: 16px;
+}
+
+.instructions__container button:hover {
+    background-color: #337eaf;
 }
 
 
+/***************************/
+
+
 /*Character*/
+
+
+/****************************/
 
 .character__title {
     text-align: center;
@@ -240,10 +333,11 @@ section .button__intro,
 .ul__gods li a {
     text-decoration: none;
     color: #fff;
+    font-size: 18px;
 }
 
 .ul__gods li a:hover {
-    color: #E8BD00;
+    color: #FFB046;
 }
 
 .bio {
@@ -279,7 +373,7 @@ section .button__intro,
 
 .bio__info p {
     line-height: 1.5;
-    color: #132f41;
+    color: #000;
 }
 
 .back__button {
@@ -288,14 +382,25 @@ section .button__intro,
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
     position: relative;
     bottom: 100px;
     left: 565px;
+    font-size: 16px;
+}
+
+.back__button:hover {
+    background-color: #337eaf;
 }
 
 
+/**************************/
+
+
 /*Player Health*/
+
+
+/**************************/
 
 .img__heart {
     width: 2rem;
@@ -314,7 +419,13 @@ section .button__intro,
 }
 
 
+/**************************/
+
+
 /*Battle Ground*/
+
+
+/*************************/
 
 .battle__container {
     height: 100vh;
@@ -391,34 +502,27 @@ section .button__intro,
     justify-content: center;
 }
 
-div.answered .correct {
-    color: green;
-}
-
-div.answered .incorrect {
-    color: red;
-}
-
 section.answers button {
     padding: 10px;
     max-width: 175px;
-    border-radius: 3px;
-    background: #b01919;
-    color: #fff;
-    border: none;
+    border-radius: .25 rem;
+    background: #FFB046;
+    color: #000;
+    border: 3px solid black;
     cursor: pointer;
     line-height: 1.5;
     margin-right: 20px;
 }
 
 section.answers button:hover {
-    background: #dd2020;
+    background: #409edb;
+    color: #fff;
 }
 
 .start__button {
     background-color: #409edb;
-    border: 2px solid #000;
-    color: white;
+    border: 3px solid #000;
+    color: #fff;
     padding: 20px 30px;
     border-radius: .25rem;
     font-size: 20px;
@@ -434,20 +538,45 @@ section.answers button:hover {
 }
 
 .next_question_button {
-    padding: 10px;
+    padding: 20px 30px;
     border-radius: 3px;
-    background: #b01919;
+    background: #DD2020;
     color: #fff;
-    border: none;
+    border: 3px solid black;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .next_question_button:hover {
-    background: #dd2020;
+    background: #DD2020;
+}
+
+.random__response{
+    text-align: center;
+}
+
+.random__response p {
+    text-transform: uppercase;
+    font-size: 40px;
+    margin-top: 70px;
+}
+
+.correct {
+    animation: randomResponseRight 0.8s infinite;
+}
+
+.incorrect {
+    animation: randomResponseWrong 0.8s infinite;
 }
 
 
+/***************************/
+
+
 /*Victory*/
+
+
+/****************************/
 
 .section__victory {
     display: flex;
@@ -464,6 +593,7 @@ section.answers button:hover {
     text-align: center;
     animation: blinkingText 0.8s infinite;
     margin: 8rem 0 3rem 0;
+    font-size: 50px;
 }
 
 .section__wide-scroll {
@@ -488,12 +618,21 @@ section.answers button:hover {
     cursor: pointer;
     background-color: #409edb;
     color: #fff;
-    border: 2px solid #000;
+    border: 3px solid #000;
+    font-size: 16px
 }
 
 .button__play-again:hover {
     background-color: #337eaf;
 }
+
+/**************************/
+
+
+/* Animations */
+
+
+/**************************/
 
 @keyframes blinkingText {
     0% {
@@ -510,5 +649,41 @@ section.answers button:hover {
     }
     100% {
         color: #3CBCFC;
+    }
+}
+
+@keyframes randomResponseRight {
+    0% {
+        color: #007800;
+    }
+    30% {
+        color: #fff;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #fff;
+    }
+    100% {
+        color: #007800;
+    }
+}
+
+@keyframes randomResponseWrong {
+    0% {
+        color: #DD2020;
+    }
+    30% {
+        color: #fff;
+    }
+    50% {
+        color: #DD2020;
+    }
+    70% {
+        color: #fff;
+    }
+    100% {
+        color: #DD2020;
     }
 }
