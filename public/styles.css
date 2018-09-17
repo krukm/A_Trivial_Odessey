@@ -839,4 +839,9 @@ section.answers button:hover {
         font-size: 20px;
         width: 750px;
     }
+    .instructions__container button {
+        position: absolute;
+        left: 440px;
+        top: 550px;
+    }
 }
