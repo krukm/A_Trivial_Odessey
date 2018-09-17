@@ -58,7 +58,7 @@ const map = {
                 question: "In most traditions, who was the wife of Zeus?",
                 incorrect_answers: ["Aphrodite", "Athena", "Hestia"],
                 correct_answer: "Hera"
-            }
+        }
 
         vm.question = vm.questionObj.question;
         vm.correctAnswer = vm.questionObj.correct_answer;

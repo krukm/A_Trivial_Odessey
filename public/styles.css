@@ -229,7 +229,7 @@ section .button__intro:hover,
 }
 
 .heart__question {
-    padding: 50px 70px;
+    padding: 50px 80px;
     position: relative;
 }
 
@@ -240,8 +240,12 @@ section .button__intro:hover,
     background-color: #409edb;
 }
 
+.heart__question button:hover {
+    background-color: #337eaf;
+}
+
 .heart__question .answers {
-    padding: 5px;
+    padding: 10px;
     color: #fff;
     margin: 0 10px;
 }
@@ -515,7 +519,7 @@ section .button__intro:hover,
 section.answers button {
     padding: 10px;
     max-width: 175px;
-    border-radius: .25 rem;
+    border-radius: .25rem;
     background: #FFB046;
     color: #000;
     border: 3px solid black;
