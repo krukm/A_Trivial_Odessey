@@ -11,7 +11,7 @@ function TriviaService($http) {
     return $http({
       method: "GET",
       url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple"
-    }).then((response) => {
+    }).then(response => {
       for (let i = 0; i < response.data.results.length; i++) {
         vm.easyQuestions.push({
           question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
@@ -27,7 +27,7 @@ function TriviaService($http) {
     return $http({
       method: "GET",
       url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple"
-    }).then((response) => {
+    }).then(response => {
       for (let i = 0; i < response.data.results.length; i++) {
         vm.mediumQuestions.push({
           question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
@@ -43,7 +43,7 @@ function TriviaService($http) {
     return $http({
       method: "GET",
       url: "https://opentdb.com/api.php?amount=7&category=20&difficulty=hard&type=multiple"
-    }).then((response) => {
+    }).then(response => {
       for (let i = 0; i < response.data.results.length; i++) {
         vm.hardQuestions.push({
           question: response.data.results[i].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, "&"),
@@ -55,9 +55,4 @@ function TriviaService($http) {
     });
   }
 }
-
-
-
-angular
-  .module("app")
-  .service("TriviaService", TriviaService);
+angular.module("app").service("TriviaService", TriviaService);

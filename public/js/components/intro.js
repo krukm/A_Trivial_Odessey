@@ -16,38 +16,30 @@ const intro = {
         const vm = this;
         vm.playButton = "PLAY";
 
-        if (PlayerService.battles > 0) {
-            vm.playButton = "CONTINUE";
-        }
-
-        vm.play = () => {
-            $location.url("/map");
-        }
-
-        vm.instructions = () => {
-            $location.url("/instructions");
-        }
-
         // Find matches
         vm.mql = window.matchMedia("(orientation: portrait)");
 
         // If there are matches, we're in portrait
-        if (vm.mql.matches) {  
+        if (vm.mql.matches) {
             // Portrait orientation
-        } else {  
+        } else {
             // Landscape orientation
         }
 
         // Add a media query change listener
         vm.mql.addListener(function(m) {
-            if(m.matches) {
+            if (m.matches) {
                 // Changed to portrait
-            }
-            else {
+            } else {
                 // Changed to landscape
             }
         });
+
+        PlayerService.battles > 0 ? vm.playButton = "CONTINUE" : vm.playButton = "PLAY";
+
+        vm.play = () => $location.url("/map");
+
+        vm.instructions = () => $location.url("/instructions");
     }]
 }
-
 angular.module('app').component('intro', intro);

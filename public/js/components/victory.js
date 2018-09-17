@@ -10,7 +10,7 @@ const victory = {
         <button class="button__play-again" type="button" ng-click="$ctrl.resetGame();">PLAY AGAIN?</button>
     </section>
     `,
-    controller: ['$location', 'PlayerService', function($location, PlayerService) {
+    controller: ['$location', 'PlayerService', "$timeout", function($location, PlayerService, $timeout) {
         const vm = this;
         vm.i = 0;
         vm.speed = 40;
@@ -26,12 +26,11 @@ const victory = {
             if (vm.i < vm.storyText.length) {
                 document.getElementById("id__credits").innerHTML += vm.storyText.charAt(vm.i);
                 vm.i++;
-                setTimeout(vm.typeWriter, vm.speed);
+                $timeout(vm.typeWriter, vm.speed);
             }
         }
 
         vm.typeWriter();
     }]
 }
-
 angular.module('app').component('victory', victory);

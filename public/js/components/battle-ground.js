@@ -13,8 +13,8 @@ const battleGround = {
                 </section>
             </section>
             <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
-            <img ng-if="$ctrl.answered === false" ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
-            <section class="random__response" ng-if="$ctrl.answered === true">
+            <img ng-if="!$ctrl.answered" ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
+            <section class="random__response" ng-if="$ctrl.answered">
                 <p ng-class="{'correct':$ctrl.correct, 'incorrect':$ctrl.incorrect}">{{ $ctrl.response }}</p>
             </section>
             <section ng-hide="$ctrl.gameOver" class="question__container">
@@ -29,9 +29,9 @@ const battleGround = {
                 <section>
                     <button ng-if="$ctrl.start === false" class="start__button" ng-click="$ctrl.timer(); $ctrl.getNextQuestion();">START</button>
                 </section>
-                <section class="text_container" ng-if="$ctrl.answered === true">
+                <section class="text_container" ng-if="$ctrl.answered">
                     <p class="answer_text">{{ $ctrl.answerText }} <span ng-if="$ctrl.incorrect">{{ $ctrl.correctAnswer }}</span>!</p>
-                    <button ng-hide=" $ctrl.switchButtons" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">NEXT QUESTION</button>
+                    <button ng-hide="$ctrl.switchButtons" class="next_question_button" ng-click="$ctrl.nextQuestion(); $ctrl.timer();">NEXT QUESTION</button>
                     <button ng-show="$ctrl.switchButtons" class="next_question_button" ng-click="$ctrl.continue();">CONTINUE</button>
                 </section>
             </section>
@@ -72,24 +72,24 @@ const battleGround = {
             "We all make mistakes"
         ];
 
-        vm.getRandomResponse = (array) => {
+        vm.getRandomResponse = array => {
             vm.randomIndex = Math.floor(Math.random() * array.length);
-            vm.response = array[vm.randomIndex];   
+            vm.response = array[vm.randomIndex];
         }
 
 
         if (PlayerService.battles === 0) {
-            TriviaService.getEasyQuestions().then((response) => {
+            TriviaService.getEasyQuestions().then(response => {
                 vm.easyQuestions = response;
                 sessionStorage.setItem("easy", JSON.stringify(vm.easyQuestions));
             });
 
-            TriviaService.getMediumQuestions().then((response) => {
+            TriviaService.getMediumQuestions().then(response => {
                 vm.mediumQuestions = response;
                 sessionStorage.setItem("medium", JSON.stringify(vm.mediumQuestions));
             });
 
-            TriviaService.getHardQuestions().then((response) => {
+            TriviaService.getHardQuestions().then(response => {
                 vm.hardQuestions = response;
                 sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
             });
@@ -104,9 +104,7 @@ const battleGround = {
                 vm.button = "Continue Story"
                 vm.switchButtons = true;
                 PlayerService.battles += 1;
-                if (PlayerService.battles > 8) {
-                    $location.path("/victory");
-                }
+                if (PlayerService.battles > 8) $location.path("/victory");
             }
         }
 
@@ -118,7 +116,7 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                    vm.incorrect = true;
+                        vm.incorrect = true;
                     vm.correct = false;
 
                     vm.evaluateAnswerCounter();
@@ -139,7 +137,7 @@ const battleGround = {
             vm.counter = 20;
         }
 
-        vm.getQuestion = (questionArray) => {
+        vm.getQuestion = questionArray => {
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -154,9 +152,7 @@ const battleGround = {
             sessionStorage.setItem("hard", JSON.stringify(vm.hardQuestions));
         }
 
-        vm.randomizeArray = (array) => {
-            return array.sort(() => 0.5 - Math.random());
-        }
+        vm.randomizeArray = array => array.sort(() => 0.5 - Math.random());
 
         vm.getNextQuestion = () => {
             vm.start = true;
@@ -173,7 +169,7 @@ const battleGround = {
             }
         }
 
-        vm.userChooseAnswer = (userSelection) => {
+        vm.userChooseAnswer = userSelection => {
             vm.answered = true;
             vm.answerCounter += 1;
 
@@ -211,10 +207,6 @@ const battleGround = {
                 }
             }
 
-            if (vm.answerCounter === 2) {
-                vm.switchButtons = true;
-            }
-
             vm.evaluateAnswerCounter();
         }
 
@@ -223,13 +215,7 @@ const battleGround = {
             vm.getNextQuestion();
         }
 
-        vm.continue = () => {
-            if (vm.changedHealth) {
-                $location.path("/map").search({ "updateHealth": "true" });
-            } else {
-                $location.path("/map");
-            }
-        }
+        vm.continue = () => vm.changedHealth ? $location.path("/map").search({ "updateHealth": "true" }) : $location.path("/map");
 
         switch (PlayerService.battles) {
             case 0:
@@ -271,6 +257,4 @@ const battleGround = {
         }
     }]
 };
-
-
 angular.module('app').component('battleGround', battleGround);

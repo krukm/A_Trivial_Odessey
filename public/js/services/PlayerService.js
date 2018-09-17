@@ -10,7 +10,7 @@ function PlayerService() {
         return vm.playerHealth;
     }
 
-    vm.setPlayerHealth = (value) => {
+    vm.setPlayerHealth = value => {
         vm.playerHealth = value;
     }
 
@@ -19,5 +19,4 @@ function PlayerService() {
         vm.battles = 0;
     }
 }
-
 angular.module('app').service('PlayerService', PlayerService);
