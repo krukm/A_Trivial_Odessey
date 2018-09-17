@@ -99,21 +99,15 @@ const map = {
 
         vm.hideInstructions = () => vm.showInstructions = false;
 
-<<<<<<< HEAD
-        vm.fight = () => $location.url("/battle-ground");
-
-        vm.intro = () => $location.url("/intro");
-=======
         vm.fight = () => {
             $location.url("/battle-ground");
             vm.map_music.pause();
         }
-        
+
         vm.intro = () => {
             $location.url("/intro");
             vm.map_music.pause();
         }
->>>>>>> 010a30f9b2c319e700077ce1043141e82aaa4de4
 
         vm.instructions = () => $location.url('/instructions');
 
