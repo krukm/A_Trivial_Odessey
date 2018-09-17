@@ -12,16 +12,11 @@ const battleGround = {
                     <player-health></player-health>
                 </section>
             </section>
-<<<<<<< HEAD
             <section ng-show="$ctrl.gameOver" class="section__game-over">Game Over</section>
             <img ng-if="$ctrl.answered === false" ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
             <section class="random__response" ng-if="$ctrl.answered === true">
                 <p ng-class="{'correct':$ctrl.correct, 'incorrect':$ctrl.incorrect}">{{ $ctrl.response }}</p>
             </section>
-=======
-            <section ng-show="$ctrl.gameOver" class="section__game-over">GAME OVER</section>
-            <img ng-src="{{ $ctrl.characterImage }}" class="battle__char__img">
->>>>>>> f48a0821a2eceeb2b8e45c17cd78a6d54b23bf41
             <section ng-hide="$ctrl.gameOver" class="question__container">
                 <section ng-if="$ctrl.answered === false">
                     <p class="trivia__question"> {{ $ctrl.currentQuestion }} </p>
@@ -62,25 +57,24 @@ const battleGround = {
         vm.correctAnswer = null;
         vm.changedHealth = false;
         vm.rightAnswerArr = [
-            "Your a genius, keep up the good work",
-            "The Gods stand no chance at defeating you",
-            "Go get em tiger",
-            "I am sparta",
-            "Keep getting questions right and you may get a cookie"
+            "Your a genius, keep up the good work!",
+            "The Gods stand no chance at defeating you!",
+            "Wow, You got it right!",
+            "I am sparta!",
+            "Keep getting questions right and you may get a cookie!"
         ];
 
         vm.wrongAnswerArr = [
-            "You Suck!",
+            "Nope! Try Again!",
             "Wrong, Wrong, Wrong",
             "You need to study more",
-            "Nice Try bud, try harder next time",
+            "Nice Try, Maybe next time",
             "We all make mistakes"
         ];
 
         vm.getRandomResponse = (array) => {
             vm.randomIndex = Math.floor(Math.random() * array.length);
-            vm.response = array[vm.randomIndex];
-            console.log(vm.response);
+            vm.response = array[vm.randomIndex];   
         }
 
 
@@ -118,7 +112,7 @@ const battleGround = {
 
         vm.timer = () => {
             vm.counter = 20;
-            vm.countDown = $interval(function() {
+            vm.countDown = $interval(() => {
                 vm.counter--;
 
                 if (vm.counter <= 0) {
@@ -126,11 +120,10 @@ const battleGround = {
                     vm.answerCounter++
                     vm.incorrect = true;
                     vm.correct = false;
-                    console.log(vm.answerCounter);
 
                     vm.evaluateAnswerCounter();
 
-                    $timeout(function() {
+                    $timeout(() => {
                         vm.answered = true;
                         vm.correct = false;
                         vm.answerText = `You ran out of time. The correct answer was`;
@@ -147,7 +140,6 @@ const battleGround = {
         }
 
         vm.getQuestion = (questionArray) => {
-
             vm.currentQuestion = questionArray[0].question;
             vm.correctAnswer = questionArray[0].correct_answer;
 
@@ -163,7 +155,7 @@ const battleGround = {
         }
 
         vm.randomizeArray = (array) => {
-            return array.sort(function(a, b) { return 0.5 - Math.random() });
+            return array.sort(() => 0.5 - Math.random());
         }
 
         vm.getNextQuestion = () => {
@@ -173,16 +165,10 @@ const battleGround = {
             vm.answerArray = [];
 
             if (PlayerService.battles < 3) {
-                console.log('if < 3');
-                console.log(vm.easyQuestions);
                 vm.getQuestion(vm.easyQuestions);
             } else if (PlayerService.battles >= 3 && PlayerService.battles < 6) {
-                console.log('if >=3 && < 6');
-                console.log(vm.mediumQuestions);
                 vm.getQuestion(vm.mediumQuestions);
             } else if (PlayerService.battles >= 6) {
-                console.log('if >= 6');
-                console.log(vm.hardQuestions);
                 vm.getQuestion(vm.hardQuestions);
             }
         }

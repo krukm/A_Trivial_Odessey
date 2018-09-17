@@ -13,19 +13,31 @@ const map = {
                 <button ng-if="$ctrl.fightButton" ng-click="$ctrl.fight()" class="fight">fight!</button>
             </section>
         </section>
-    </section>
+    </section>       
+    <section class="popup">
+        <section ng-if="$ctrl.showInstructions" class="heart__instructions">
+            <section class="heart__question">
+                <p>Wow you gained an extra heart!</p>
+                <p>Answer this question right and you can gain an extra heart!</p>
+                <p>{{ $ctrl.question }}</p>
+                <section class="answer__section">
+                    <button class="answers" ng-click="$ctrl.evaluateAnswer(answer)" ng-repeat="answer in $ctrl.answers">{{ answer }}</button>
+                </section>
+                <button class="x__button" ng-click="$ctrl.hideInstructions()"><i class="fas fa-times"></i></button>
+            </sectio>
+        </section>
+    </section>                            
     <section class="bottom__map--nav">
         <section>
             <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
             <button class="button__instructions" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
             <button class="button__info" ng-click="$ctrl.info()">CHARACTER BIO'S</button>
-          
         </section>
         <button class="skip__button" ng-click="$ctrl.skip()">SKIP</button>
     </section>   
     `,
 
-    controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, $location, $timeout, $interval) {
+    controller: ["PlayerService", "EnemyService", "TriviaService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, TriviaService, $location, $timeout, $interval) {
 
         const vm = this;
         vm.id = "id__health";
@@ -36,24 +48,43 @@ const map = {
         vm.canvas.width = 800;
         vm.canvas.height = 600;
         vm.gctx = vm.canvas.getContext("2d");
+        vm.questions;
+        vm.showInstructions = false;
 
+        if (PlayerService.battles === 1) {
+            vm.showInstructions = true;
+            TriviaService.getEasyQuestions().then(() => {
+                vm.questions = angular.copy(TriviaService.easyQuestions);
+                console.log(vm.questions);
+            }).then(() => {
+                vm.getQuestion = () => {
+                    vm.question = vm.questions[5].question;
+                    vm.correct_answer = vm.questions[5].correct_answer;
+                    vm.answers = vm.questions[5].incorrect_answers;
+                    vm.answers.push(vm.correct_answer);
+                }
+            }).then(() => {
+                vm.getQuestion();
+                vm.evaluateAnswer = (answer) => {
+                    if (answer === vm.correct_answer) {
+                        console.log(`Right`);
+                    } else {
+                        console.log(`Wrong`);
+                    }
+                }
+            });
+        };
+        
+        vm.hideInstructions = () => vm.showInstructions = false;
 
-        vm.fight = () => {
-            $location.url("/battle-ground");
-        }
+        vm.fight = () => $location.url("/battle-ground");
 
-        vm.intro = () => {
-            $location.url("/intro");
-        }
+        vm.intro = () => $location.url("/intro");
 
-        vm.instructions = () => {
-            $location.url('/instructions');
-        }
-
-        vm.info = () => {
-            $location.url('/characters');
-        }
-
+        vm.instructions = () => $location.url('/instructions');
+        
+        vm.info = () => $location.url('/characters');
+        
         vm.skip = () => {
             vm.fightButton = true;
             vm.speed = 0;
@@ -61,7 +92,7 @@ const map = {
 
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
-            $interval(function() {
+            $interval(() => {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
                 vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);

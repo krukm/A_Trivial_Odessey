@@ -207,6 +207,52 @@ section .button__intro:hover,
     margin-right: 50px;
 }
 
+.popup {
+    position: relative;
+}
+
+.heart__instructions {
+    background: url('./img/wide-scroll.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 100;
+    position: absolute;
+    left: 350px;
+    bottom: 200px;
+    width: 600px;
+    height: 400px;
+}
+
+.answer__section {
+    display: flex;
+    justify-content: center;
+}
+
+.heart__question {
+    padding: 50px 70px;;
+}
+
+.heart__question button {
+    border: 3px solid #000;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #409edb;
+}
+
+.heart__question .answers {
+    padding: 5px;
+    color: #fff;
+    margin: 0 10px;
+}
+
+.heart__question .x__button {
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    left: 380px;
+    color: #fff;
+}
+
 
 /******************************/
 
