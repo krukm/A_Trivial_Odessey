@@ -43,7 +43,7 @@ const map = {
         const vm = this;
         vm.id = "id__health";
         vm.i = 0;
-        vm.speed = 30;
+        vm.speed = 20;
         vm.fightButton = false;
         vm.canvas = document.querySelector('canvas');
         vm.canvas.width = 800;
@@ -54,6 +54,10 @@ const map = {
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
+        vm.map_music = new Audio("./sounds/map.mp3");
+
+        PlayerService.battles >= 0 ? vm.map_music.play() : console.log(`Not Playing`);
+
         vm.questionObj = {
             question: "In most traditions, who was the wife of Zeus?",
             incorrect_answers: ["Aphrodite", "Athena", "Hestia"],
@@ -95,9 +99,21 @@ const map = {
 
         vm.hideInstructions = () => vm.showInstructions = false;
 
+<<<<<<< HEAD
         vm.fight = () => $location.url("/battle-ground");
 
         vm.intro = () => $location.url("/intro");
+=======
+        vm.fight = () => {
+            $location.url("/battle-ground");
+            vm.map_music.pause();
+        }
+        
+        vm.intro = () => {
+            $location.url("/intro");
+            vm.map_music.pause();
+        }
+>>>>>>> 010a30f9b2c319e700077ce1043141e82aaa4de4
 
         vm.instructions = () => $location.url('/instructions');
 
