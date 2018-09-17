@@ -18,18 +18,10 @@ const instructions = {
   `,
     controller: ['$location', 'PlayerService', function($location, PlayerService) {
         const vm = this;
-        vm.button = "BACK";
-
-        if (PlayerService.battles === 0) {
-            vm.button = "PLAY";
-        }
-
-        vm.back = () => {
-            $location.url('/map');
-        }
+        
+        PlayerService.battles === 0 ? vm.button = "PLAY" : vm.button = "BACK";
+    
+        vm.back = () => $location.url('/map');
     }]
 }
-
-angular
-    .module("app")
-    .component("instructions", instructions);
+angular.module("app").component("instructions", instructions);
