@@ -27,6 +27,26 @@ const intro = {
         vm.instructions = () => {
             $location.url("/instructions");
         }
+
+        // Find matches
+        vm.mql = window.matchMedia("(orientation: portrait)");
+
+        // If there are matches, we're in portrait
+        if (vm.mql.matches) {  
+            // Portrait orientation
+        } else {  
+            // Landscape orientation
+        }
+
+        // Add a media query change listener
+        vm.mql.addListener(function(m) {
+            if(m.matches) {
+                // Changed to portrait
+            }
+            else {
+                // Changed to landscape
+            }
+        });
     }]
 }
 
