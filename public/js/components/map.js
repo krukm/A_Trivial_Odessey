@@ -54,7 +54,7 @@ const map = {
         if (PlayerService.battles === 1) {
             vm.showInstructions = true;
             TriviaService.getEasyQuestions().then(() => {
-                vm.questions = angular.copy(TriviaService.easyQuestions);
+                vm.questions = TriviaService.easyQuestions;
                 console.log(vm.questions);
             }).then(() => {
                 vm.getQuestion = () => {
@@ -78,7 +78,7 @@ const map = {
         vm.hideInstructions = () => vm.showInstructions = false;
 
         vm.fight = () => $location.url("/battle-ground");
-
+        
         vm.intro = () => $location.url("/intro");
 
         vm.instructions = () => $location.url('/instructions');
