@@ -16,7 +16,6 @@ const characters = {
                 <p>{{ $ctrl.bio }}</p>
             </section>
         </section>
-
     </section>
     <button class="back__button" ng-click="$ctrl.back()">BACK</button>
 
@@ -38,11 +37,9 @@ const characters = {
             { name: 'Zeus' }
         ];
 
-        vm.back = () => {
-            $location.url('/map');
-        }
-
-        vm.selectCharacter = (hit) => {
+        vm.back = () => $location.url('/map');
+        
+        vm.selectCharacter = hit => {
             vm.selectBio = true;
             vm.bioShow = true;
 
@@ -51,5 +48,4 @@ const characters = {
         }
     }]
 }
-
 angular.module('app').component('characters', characters);

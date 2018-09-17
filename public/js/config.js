@@ -23,4 +23,4 @@ angular.module('app').config(['$routeProvider', function($routeProvider) {
         .otherwise({
             redirectTo: '/intro'
         });
-}])
+}]);

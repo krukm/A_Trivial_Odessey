@@ -17,14 +17,15 @@ const map = {
     <section class="popup">
         <section ng-if="$ctrl.showInstructions" class="heart__instructions">
             <section class="heart__question">
-                <p>Wow you gained an extra heart!</p>
-                <p>Answer this question right and you can gain an extra heart!</p>
-                <p>{{ $ctrl.question }}</p>
-                <section class="answer__section">
+                <p ng-if="!$ctrl.showOutCome">{{ $ctrl.message }}</png>
+                <p ng-if="!$ctrl.showOutCome">{{ $ctrl.message_2 }}</p>
+                <p ng-if="!$ctrl.showOutCome">{{ $ctrl.question }}</p>
+                <section ng-if="!$ctrl.showOutCome" class="answer__section">
                     <button class="answers" ng-click="$ctrl.evaluateAnswer(answer)" ng-repeat="answer in $ctrl.answers">{{ answer }}</button>
                 </section>
+                <p class="out_come" ng-class="{'correct__map':$ctrl.correct, 'incorrect__map':$ctrl.incorrect}" ng-if="$ctrl.showOutCome">{{ $ctrl.message_3 }}</p>
                 <button class="x__button" ng-click="$ctrl.hideInstructions()"><i class="fas fa-times"></i></button>
-            </sectio>
+            </section>
         </section>
     </section>                            
     <section class="bottom__map--nav">
@@ -37,7 +38,7 @@ const map = {
     </section>   
     `,
 
-    controller: ["PlayerService", "EnemyService", "TriviaService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, TriviaService, $location, $timeout, $interval) {
+    controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, $location, $timeout, $interval) {
 
         const vm = this;
         vm.id = "id__health";
@@ -50,41 +51,58 @@ const map = {
         vm.gctx = vm.canvas.getContext("2d");
         vm.questions;
         vm.showInstructions = false;
+        vm.showOutCome = false;
+        vm.correct = false;
+        vm.incorrect = false;
+        vm.questionObj = {
+            question: "In most traditions, who was the wife of Zeus?",
+            incorrect_answers: ["Aphrodite", "Athena", "Hestia"],
+            correct_answer: "Hera"
+        }
+
+        vm.question = vm.questionObj.question;
+        vm.correctAnswer = vm.questionObj.correct_answer;
+        vm.answers = vm.questionObj.incorrect_answers;
+        vm.answers.push(vm.correctAnswer);
 
         if (PlayerService.battles === 1) {
             vm.showInstructions = true;
-            TriviaService.getEasyQuestions().then(() => {
-                vm.questions = TriviaService.easyQuestions;
-                console.log(vm.questions);
-            }).then(() => {
-                vm.getQuestion = () => {
-                    vm.question = vm.questions[5].question;
-                    vm.correct_answer = vm.questions[5].correct_answer;
-                    vm.answers = vm.questions[5].incorrect_answers;
-                    vm.answers.push(vm.correct_answer);
-                }
-            }).then(() => {
-                vm.getQuestion();
-                vm.evaluateAnswer = (answer) => {
-                    if (answer === vm.correct_answer) {
-                        console.log(`Right`);
-                    } else {
-                        console.log(`Wrong`);
-                    }
-                }
-            });
+            if (PlayerService.playerHealth < 3) {
+                vm.message = "Did you notice you lost a heart?";
+                vm.message_2 = "Answer this question right and you can get your heart back!";
+            } else if (PlayerService.playerHealth > 3) {
+                vm.message = "Did you notice you gained a heart?";
+                vm.message_2 = "Answer this question right and you can get an extra one!";
+            } else {
+                vm.message = "Did you notice you still have 3 hearts?";
+                vm.message_2 = "Answer this queston right and you can get an extra one!";
+            }
         };
-        
+
+        vm.evaluateAnswer = answer => {
+            if (answer === vm.correctAnswer) {
+                vm.showOutCome = true;
+                vm.correct = true;
+                PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
+                vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
+                console.log(`Player health: ${PlayerService.playerHealth}`);
+            } else {
+                vm.showOutCome = true;
+                vm.incorrect = true;
+                vm.message_3 = "Oh no, You answered wrong, don't loose all your hearts or you'll die!";
+            }
+        }
+
         vm.hideInstructions = () => vm.showInstructions = false;
 
         vm.fight = () => $location.url("/battle-ground");
-        
+
         vm.intro = () => $location.url("/intro");
 
         vm.instructions = () => $location.url('/instructions');
-        
+
         vm.info = () => $location.url('/characters');
-        
+
         vm.skip = () => {
             vm.fightButton = true;
             vm.speed = 0;
@@ -116,15 +134,15 @@ const map = {
             vm.drawLinesInterval = $interval(function() {
                 if (vm.idx > vm.startx.length)
                     clearInterval(vm.drawLinesInterval);
-            
+
                 vm.linepercentage = 0;
                 vm.idx++; //move onto the next line
                 vm.animateInterval = $interval(function() {
                     vm.linepercentage += 0.01;
-                    if(vm.linepercentage > 1) {
+                    if (vm.linepercentage > 1) {
                         clearInterval(vm.animateInterval);
                     }
-            
+
                     vm.context.strokeStyle = "red";
                     vm.context.setLineDash([5, 5]);
                     vm.context.lineWidth = 5;
@@ -243,37 +261,6 @@ const map = {
         }
 
         vm.typeWriter();
-
-        // vm.context.strokeStyle = "red";
-        //     vm.context.setLineDash([5, 5]);
-        //     vm.context.lineWidth = 5;
-        //     vm.context.lineDashOffset = -vm.offset
-        //     vm.context.beginPath();
-        //     //Cerebus
-        //     vm.context.moveTo(80, 470);
-        //     // Hades
-        //     vm.context.lineTo(160, 365);
-        //     // Sirens
-        //     vm.context.lineTo(105, 345);
-        //     vm.context.lineTo(220, 260);
-        //     // Poseidon
-        //     vm.context.lineTo(45, 260);
-        //     // Athena
-        //     vm.context.lineTo(115, 195);
-        //     // Achilles
-        //     vm.context.lineTo(300, 160);
-        //     vm.context.lineTo(395, 330);
-        //     // Cyclops
-        //     vm.context.lineTo(530, 540);
-        //     // Promethus
-        //     vm.context.lineTo(730, 520);
-        //     vm.context.lineTo(740, 300);
-        //     // Mountain
-        //     vm.context.lineTo(720, 240);
-        //     // Zeus
-        //     vm.context.lineTo(740, 55);
-        //     vm.context.stroke();
     }]
 }
-
 angular.module('app').component('map', map);

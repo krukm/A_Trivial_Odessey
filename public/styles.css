@@ -217,7 +217,8 @@ section .button__intro:hover,
 }
 
 .heart__question {
-    padding: 50px 70px;;
+    padding: 50px 80px;
+    position: relative;
 }
 
 .heart__question button {
@@ -227,18 +228,38 @@ section .button__intro:hover,
     background-color: #409edb;
 }
 
+.heart__question button:hover {
+    background-color: #337eaf;
+}
+
 .heart__question .answers {
-    padding: 5px;
+    padding: 10px;
     color: #fff;
     margin: 0 10px;
 }
 
 .heart__question .x__button {
     font-size: 20px;
-    position: relative;
-    top: 70px;
-    left: 380px;
+    position: absolute;
+    top: 335px;
+    left: 450px;
     color: #fff;
+}
+
+.out_come {
+    position: absolute;
+    margin: 70px 75px 100px 0;
+    padding: 0 50px;
+    line-height: 2;
+
+}
+
+.correct__map {
+    animation: randomResponseRightMap 0.8s infinite;
+}
+
+.incorrect__map {
+    animation: randomResponseWrongMap 0.8s infinite;
 }
 
 
@@ -394,13 +415,6 @@ section .button__intro:hover,
     animation-iteration-count: 4;
 }
 
-@keyframes blinker {
-    50% {
-        opacity: 0;
-    }
-}
-
-
 /**************************/
 
 /*Battle Ground*/
@@ -485,7 +499,7 @@ section .button__intro:hover,
 section.answers button {
     padding: 10px;
     max-width: 175px;
-    border-radius: .25 rem;
+    border-radius: .25rem;
     background: #FFB046;
     color: #000;
     border: 3px solid black;
@@ -610,6 +624,12 @@ section.answers button:hover {
 
 /**************************/
 
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
 @keyframes blinkingText {
     0% {
         color: #F83800;
@@ -643,6 +663,42 @@ section.answers button:hover {
     }
     100% {
         color: #007800;
+    }
+}
+
+@keyframes randomResponseRightMap {
+    0% {
+        color: #007800;
+    }
+    30% {
+        color: #000;
+    }
+    50% {
+        color: #007800;
+    }
+    70% {
+        color: #000;
+    }
+    100% {
+        color: #007800;
+    }
+}
+
+@keyframes randomResponseWrongMap {
+    0% {
+        color: #DD2020;
+    }
+    30% {
+        color: #000;
+    }
+    50% {
+        color: #DD2020;
+    }
+    70% {
+        color: #000;
+    }
+    100% {
+        color: #DD2020;
     }
 }
 
