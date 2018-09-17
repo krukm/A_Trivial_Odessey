@@ -14,12 +14,20 @@ const intro = {
     `,
     controller: ["$location", "PlayerService", function($location, PlayerService) {
         const vm = this;
+        vm.audio = new Audio("./sounds/intro.mp3");
+
+        PlayerService.battles >= 0 ? vm.audio.play() : console.log(`Not Playing`);
         
         PlayerService.battles > 0 ? vm.playButton = "CONTINUE" : vm.playButton = "PLAY";
         
-        vm.play = () => $location.url("/map");
+        vm.play = () => {
+            $location.url("/map");
+            vm.audio.pause();
+        }
         
         vm.instructions = () => $location.url("/instructions");
+
+
     }]
 }
 angular.module('app').component('intro', intro);
