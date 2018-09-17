@@ -3,7 +3,8 @@
 const map = {
     template: `
     <section class="map__canvas">
-        <canvas id="canvas"></canvas>
+            <img id="logo__map" src="./img/logo2.png">
+            <canvas id="canvas"></canvas>
         <section class="img__container">
             <section class="section__health" id="id__health">
                 <player-health></player-health>
@@ -58,12 +59,13 @@ const map = {
             vm.fightButton = true;
             vm.speed = 0;
         }
+        // This code may be used to draw logo on map. Remove if not functional. Currently logo is position is absolute.
+        // vm.logoImg = new Image();
+        // vm.logoImg.src = "./img/logo2.png";
+        // vm.logoImg.onload = function () {
+        //     vm.gctx.drawImage(vm.logoImg, 10, 20, 400, 40);
+        // }
 
-        vm.logoImg = new Image();
-        vm.logoImg.onload = function () {
-            vm.gctx.drawImage(vm.logoImg, 10, 20, 400, 40);
-        }
-        vm.logoImg.src = "./img/logo2.png";
 
         vm.draw = (startX, startY, endX, endY) => {
             vm.amount = 0;
