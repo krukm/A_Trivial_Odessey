@@ -231,40 +231,40 @@ const battleGround = {
 
         switch (PlayerService.battles) {
             case 0:
-                vm.battleImage = "/public/img/Underworld.png";
-                vm.characterImage = "/public/img/Cerebrus.png";
+                vm.battleImage = "public/img/Underworld.png";
+                vm.characterImage = "public/img/Cerebrus.png";
                 break;
             case 1:
-                vm.battleImage = "/public/img/Underworld2.png";
-                vm.characterImage = "/public/img/Hades.png";
+                vm.battleImage = "public/img/Underworld2.png";
+                vm.characterImage = "public/img/Hades.png";
                 break;
             case 2:
-                vm.battleImage = "/public/img/island.png";
-                vm.characterImage = "/public/img/Siren.png";
+                vm.battleImage = "public/img/island.png";
+                vm.characterImage = "public/img/Siren.png";
                 break;
             case 3:
-                vm.battleImage = "/public/img/mountain-island.png"
-                vm.characterImage = "/public/img/Poseidon.png";
+                vm.battleImage = "public/img/mountain-island.png"
+                vm.characterImage = "public/img/Poseidon.png";
                 break;
             case 4:
-                vm.battleImage = "/public/img/beach.png"
-                vm.characterImage = "/public/img/Athena.png";
+                vm.battleImage = "public/img/beach.png"
+                vm.characterImage = "public/img/Athena.png";
                 break;
             case 5:
-                vm.battleImage = "/public/img/cave.png"
-                vm.characterImage = "/public/img/Polyphemus.png";
+                vm.battleImage = "public/img/cave.png"
+                vm.characterImage = "public/img/Polyphemus.png";
                 break;
             case 6:
-                vm.battleImage = "/public/img/rocky.png"
-                vm.characterImage = "/public/img/Achilles.png";
+                vm.battleImage = "public/img/rocky.png"
+                vm.characterImage = "public/img/Achilles.png";
                 break;
             case 7:
-                vm.battleImage = "/public/img/Olympus1.png"
-                vm.characterImage = "/public/img/Hercules.png";
+                vm.battleImage = "public/img/Olympus1.png"
+                vm.characterImage = "public/img/Hercules.png";
                 break;
             case 8:
-                vm.battleImage = "/public/img/Olympus2.png"
-                vm.characterImage = "/public/img/Zeus.png";
+                vm.battleImage = "public/img/Olympus2.png"
+                vm.characterImage = "public/img/Zeus.png";
                 break;
         }
     }]

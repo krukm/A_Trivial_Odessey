@@ -3,8 +3,8 @@
 const map = {
     template: `
     <section class="map__canvas>
-            <img id="logo__map" src="/public/img/logo2.png">
-            <img src="{{ './img/' + $ctrl.opponentOnMap + '.png' }}" id="img__canvas" style="{{$ctrl.showMonster?'display:block':'display:none'}}; left: {{$ctrl.monsterLeft}}; top: {{$ctrl.monsterTop}};" >
+            <img id="logo__map" src="public/img/logo2.png">
+            <img src="{{ 'public/img/' + $ctrl.opponentOnMap + '.png' }}" id="img__canvas" style="{{$ctrl.showMonster?'display:block':'display:none'}}; left: {{$ctrl.monsterLeft}}; top: {{$ctrl.monsterTop}};" >
 
             <canvas id="canvas"></canvas>
         <section class="img__container">

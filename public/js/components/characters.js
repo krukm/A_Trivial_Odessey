@@ -43,7 +43,7 @@ const characters = {
             vm.selectBio = true;
             vm.bioShow = true;
 
-            vm.pic = `/public/img/${hit}.png`;
+            vm.pic = `public/img/${hit}.png`;
             vm.bio = BioService[hit];
         }
     }]
