@@ -94,12 +94,6 @@ body {
     height: 40px;
 }
 
-#img__canvas {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-}
-
 #canvas {
     background-image: url('img/map.png');
     height: 600px;
@@ -806,7 +800,6 @@ section.answers button:hover {
         width: 1.5rem;
         height: 1.5rem;
     }
-
     .story__container {
         background: none;
         width: 425px;
