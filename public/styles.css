@@ -800,7 +800,7 @@ section.answers button:hover {
     
     .story__container button.fight {
         bottom: -40px;
-        left: 150px;
+        left: 80px;
     }
     
     section .button__intro,
@@ -888,7 +888,21 @@ section.answers button:hover {
     }
 
     .story__container {
-        width: 89%;
+        width: 93%;
+        background: none;;
+    }
+
+    .story__container .story {
+        padding: 0px 20px 20px 60px;
+        line-height: 1.25;
+        font-size: 18px;
+        color: #FFB046;
+        width: 60%;
+    }
+
+    .story__container button.fight {
+        bottom: 30px;
+        left: 150px;
     }
 
     .section__health {
@@ -897,6 +911,13 @@ section.answers button:hover {
         justify-content: center;
         margin-right: 30px;
         padding-top: 2%;
+    }
+
+    .heart__instructions {
+        left: 200px;
+        bottom: 100px;
+        width: 600px;
+        height: 400px;
     }
 
     /*instructions*/
@@ -924,4 +945,5 @@ section.answers button:hover {
         left: 440px;
         top: 550px;
     }
+
 }
