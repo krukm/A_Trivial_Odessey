@@ -9,7 +9,9 @@ body {
 
 /************************/
 
+
 /*Intro*/
+
 
 /************************/
 
@@ -71,7 +73,9 @@ body {
 
 /*******************************/
 
+
 /*Map*/
+
 
 /*******************************/
 
@@ -251,7 +255,6 @@ section .button__intro:hover,
     margin: 70px 75px 100px 0;
     padding: 0 50px;
     line-height: 2;
-
 }
 
 .correct__map {
@@ -265,7 +268,9 @@ section .button__intro:hover,
 
 /******************************/
 
+
 /*Instructions*/
+
 
 /******************************/
 
@@ -317,7 +322,9 @@ section .button__intro:hover,
 
 /***************************/
 
+
 /*Character*/
+
 
 /****************************/
 
@@ -401,7 +408,9 @@ section .button__intro:hover,
 
 /**************************/
 
+
 /*Player Health*/
+
 
 /**************************/
 
@@ -415,9 +424,12 @@ section .button__intro:hover,
     animation-iteration-count: 4;
 }
 
+
 /**************************/
 
+
 /*Battle Ground*/
+
 
 /*************************/
 
@@ -529,6 +541,7 @@ section.answers button:hover {
 
 .text_container {
     margin: auto 10%;
+    font-size: 25px;
 }
 
 .next_question_button {
@@ -545,7 +558,7 @@ section.answers button:hover {
     background: #DD2020;
 }
 
-.random__response{
+.random__response {
     text-align: center;
 }
 
@@ -553,6 +566,7 @@ section.answers button:hover {
     text-transform: uppercase;
     font-size: 40px;
     margin-top: 70px;
+    line-height: 1.5
 }
 
 .correct {
@@ -566,7 +580,9 @@ section.answers button:hover {
 
 /***************************/
 
+
 /*Victory*/
+
 
 /****************************/
 
@@ -618,9 +634,12 @@ section.answers button:hover {
     background-color: #337eaf;
 }
 
+
 /**************************/
 
+
 /* Animations */
+
 
 /**************************/
 
@@ -720,24 +739,29 @@ section.answers button:hover {
     }
 }
 
+
 /* portrait */
+
 @media screen and (orientation:portrait) {
-	/* portrait-specific styles */
+    /* portrait-specific styles */
 }
+
+
 /* landscape */
+
 @media screen and (max-width: 767px) and (orientation: landscape) {
     
     /*Intro*/
     .logo {
-        margin-top: 5px;;
+        margin-top: 5px;
+        ;
         width: 80%;
     }
-
     .intro_container p.intro_text {
         text-align: center;
     }
-    
-    .button__play, .button__instructions--intro {
+    .button__play,
+    .button__instructions--intro {
         padding: 0.5rem;
         font-size: 13px;
     }
@@ -794,6 +818,49 @@ section.answers button:hover {
         width: 600px;
         height: 400px;
     }
+
+    /*battle-ground*/
+    .battle__char__img {
+        height: 150px;
+        top: 15%;
+    }
+    .timer {
+        font-size: 10px;
+    }
+    .question__container {
+        height: 150px;
+    }
+    .question__container p.trivia__question {
+        font-size: 8px;
+    }
+    section.answers button {
+        padding: 5px;
+        max-width: 100px;
+        line-height: 1.5;
+        margin-right: 10px;
+        font-size: 8px;
+    }
+    .start__button {
+        margin-top: 11px;
+        padding: 10px 15px;
+        border-radius: .25rem;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .text_container {
+        font-size: 10px;
+    }
+    .next_question_button {
+        padding: 10px 15px;
+        font-size: 10px;
+    }
+    .random__response p {
+        margin-top: 20px;
+    }
+    .section__instructions {
+        height: 375px;
+        width: 500px;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
@@ -803,13 +870,12 @@ section.answers button:hover {
         margin-top: 90px;
         width: 80%;
     }
-    
     .intro_container p.intro_text {
         margin: 2rem;
         width: 80%;
     }
-    
-    .button__play, .button__instructions--intro{
+    .button__play,
+    .button__instructions--intro {
         margin-top: 1rem;
         padding: 1.5rem;
     }
@@ -833,4 +899,29 @@ section.answers button:hover {
         padding-top: 2%;
     }
 
+    /*instructions*/
+    .section__instructions {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 1020px;
+        height: 750px;
+    }
+    .instructions__container {
+        width: 500;
+        height: 150;
+        padding-left: 105px;
+    }
+    .instructions__container h1 {
+        margin-top: 40px;
+        margin-left: 70px;
+    }
+    .instructions__container ul {
+        font-size: 20px;
+        width: 750px;
+    }
+    .instructions__container button {
+        position: absolute;
+        left: 440px;
+        top: 550px;
+    }
 }
