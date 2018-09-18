@@ -83,6 +83,15 @@ body {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    position: relative;
+}
+
+#logo__map {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 400px;
+    height: 40px;
 }
 
 #canvas {
@@ -750,6 +759,7 @@ section.answers button:hover {
 /* landscape */
 
 @media screen and (max-width: 767px) and (orientation: landscape) {
+    /*Intro*/
     .logo {
         margin-top: 5px;
         ;
@@ -763,6 +773,52 @@ section.answers button:hover {
         padding: 0.5rem;
         font-size: 13px;
     }
+    /*map*/
+    #canvas {
+        height: 300px;
+        width: 400px;
+        margin: .1%;
+    }
+    .img__container {
+        display: flex;
+        flex-direction: column;
+    }
+    .section__health {
+        display: none;
+    }
+    .story__container {
+        background: none;
+        width: 400px;
+        height: 250px;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+    }
+    .story__container .story {
+        padding: 0px 20px 20px 60px;
+        line-height: 1.25;
+        font-size: 11px;
+        color: #FFB046;
+        width: 40%;
+    }
+    .story__container button.fight {
+        bottom: -40px;
+        left: 80px;
+    }
+    section .button__intro,
+    .button__instructions,
+    .button__info,
+    .skip__button {
+        margin-left: 5px;
+        padding: 10px 10px;
+        font-size: 10px;
+    }
+    .heart__instructions {
+        left: 50px;
+        bottom: -100px;
+        width: 600px;
+        height: 400px;
+    }
+    /*battle-ground*/
     .battle__char__img {
         height: 150px;
         top: 15%;
@@ -859,6 +915,7 @@ section.answers button:hover {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /*Intro*/
     .logo {
         margin-top: 90px;
         width: 80%;
@@ -872,6 +929,42 @@ section.answers button:hover {
         margin-top: 1rem;
         padding: 1.5rem;
     }
+    /*map*/
+    #canvas {
+        height: 500px;
+        width: 600px;
+        margin: .1%;
+    }
+    .story__container {
+        width: 93%;
+        background: none;
+        ;
+    }
+    .story__container .story {
+        padding: 0px 20px 20px 60px;
+        line-height: 1.25;
+        font-size: 18px;
+        color: #FFB046;
+        width: 60%;
+    }
+    .story__container button.fight {
+        bottom: 30px;
+        left: 150px;
+    }
+    .section__health {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-right: 30px;
+        padding-top: 2%;
+    }
+    .heart__instructions {
+        left: 200px;
+        bottom: 100px;
+        width: 600px;
+        height: 400px;
+    }
+    /*instructions*/
     .section__instructions {
         background-size: contain;
         background-repeat: no-repeat;

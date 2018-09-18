@@ -16,7 +16,7 @@ const intro = {
         const vm = this;
 
         // Find matches
-        vm.mql = window.matchMedia("(orientation: portrait)");
+        vm.mql = window.matchMedia("(orientation: landscape)");
 
         // If there are matches, we're in portrait
         if (vm.mql.matches) {
