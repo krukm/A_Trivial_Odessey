@@ -614,8 +614,8 @@ section.answers button:hover {
 }
 
 .section__wide-scroll {
-    width: 30%;
-    height: 300px;
+    width: 40%;
+    height: 400px;
     background-image: url('./img/wide-scroll.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -626,6 +626,7 @@ section.answers button:hover {
     margin: 0 auto;
     padding: 3rem 0;
     line-height: 1.5;
+    margin-top: 50px;
 }
 
 .button__play-again {
@@ -856,6 +857,7 @@ section.answers button:hover {
     .random__response p {
         margin-top: 20px;
     }
+    /*INSTRUCTIONS*/
     .section__instructions {
         margin-left: 60px;
         width: 660px;
@@ -871,17 +873,17 @@ section.answers button:hover {
         margin-top: 0;
         left: 165px;
     }
-    .instructions__container li {
-        margin-bottom: 10px;
-        left: 10px;
-        padding-left: 20px;
-        padding-top: 10px;
-    }
     .instructions__container ul {
         font-size: 10px;
         width: 400px;
         margin-top: 20px;
         margin-left: 15px;
+    }
+    .instructions__container li {
+        margin-bottom: 10px;
+        left: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
     }
     .instructions__container button {
         position: absolute;
@@ -889,28 +891,41 @@ section.answers button:hover {
         font-size: 10px;
         padding: 12px;
     }
+    /* CHARACTERS*/
     .character__title {
         margin-left: 350px;
         width: 655px;
     }
+    .ul__gods {
+        padding-left: 3px;
+    }
     .bio {
         margin-left: 235px;
     }
-    .ul__gods {
-        padding-left: 3px;
+    /* VICTORY */
+    .h1__winner {
+        font-size: 35px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .p__credits {
+        font-size: 10px;
+        width: 250px;
+        margin-left: 40px;
     }
     .section__wide-scroll {
         position: absolute;
         width: 350px;
         height: 225px;
-        top: 50px;
+        top: 100px;
+        left: 165px;
     }
-    .p__credits {
+    .button__play-again {
+        position: absolute;
+        bottom: 5px;
         font-size: 10px;
-    }
-    .h1__winner {
-        font-size: 40px;
-        margin-top: 50px;
+        padding: 10px;
+        left: 250px;
     }
 }
 
@@ -996,6 +1011,7 @@ section.answers button:hover {
         left: 440px;
         top: 550px;
     }
+    /* CHARACTERS*/
     .ul__gods li a {
         font-size: 12px;
     }
@@ -1005,13 +1021,14 @@ section.answers button:hover {
         left: 440px;
         font-size: 16px;
     }
+    /*VICTORY*/
+    .h1__winner {
+        margin-left: 60px;
+    }
     .section__wide-scroll {
         width: 600px;
         height: 350px;
         margin-left: 125px;
-    }
-    .h1__winner {
-        margin-left: 60px;
     }
     .p__credits {
         position: absolute;
