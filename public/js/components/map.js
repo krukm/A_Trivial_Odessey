@@ -155,7 +155,6 @@ const map = {
             }, 50);
         }
 
-
             switch (PlayerService.battles) {
                 case 0:
                     vm.storyText = EnemyService.cerberus;
