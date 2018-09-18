@@ -2,9 +2,10 @@
 
 const map = {
     template: `
-    <section class="map__canvas">
-            <img id="logo__map" src="./img/logo2.png">
+    <section class="map__canvas>
+            <img id="logo__map" src="/public/img/logo2.png">
             <img src="{{ './img/' + $ctrl.opponentOnMap + '.png' }}" id="img__canvas" style="{{$ctrl.showMonster?'display:block':'display:none'}}; left: {{$ctrl.monsterLeft}}; top: {{$ctrl.monsterTop}};" >
+
             <canvas id="canvas"></canvas>
         <section class="img__container">
             <section class="section__health" id="id__health">
@@ -120,16 +121,16 @@ const map = {
             $location.url("/battle-ground");
             PlayerService.mapAudio.pause();
         }
-        
+
         vm.intro = () => {
             $location.url("/intro");
             PlayerService.mapAudio.pause();
         }
 
         vm.instructions = () => $location.url('/instructions');
-        
+
         vm.info = () => $location.url('/characters');
-        
+
         vm.skip = () => {
             vm.fightButton = true;
             vm.speed = 0;
@@ -153,6 +154,7 @@ const map = {
         switch (PlayerService.battles) {
             case 0:
                 vm.storyText = EnemyService.cerberus;
+
                 vm.showMonster = true;
                 vm.monsterLeft = "60px";
                 vm.monsterTop = "440px";
@@ -175,6 +177,7 @@ const map = {
                 // vm.logoImg.onload = function () {
                 //     vm.gctx.drawImage(vm.logoImg, 125, 325, 70, 70);
                 // }
+
                 vm.draw(80, 470, 160, 365);
                 break;
             case 2:
@@ -193,6 +196,7 @@ const map = {
                 vm.gctx.lineTo(160, 365);
                 vm.gctx.stroke();
                 vm.draw(160, 365, 220, 260);
+
                 break;
             case 3:
                 // vm.logoImg = new Image();
@@ -200,6 +204,7 @@ const map = {
                 // vm.logoImg.onload = function () {
                 //     vm.gctx.drawImage(vm.logoImg, 10, 215, 70, 70);
                 // }
+
                 vm.storyText = EnemyService.poseidon;
                 vm.showMonster = true;
                 vm.opponentOnMap = "Poseidon";
@@ -212,6 +217,7 @@ const map = {
                 vm.draw(220, 260, 45, 260);
                 break;
             case 4:
+
                 vm.storyText = EnemyService.achilles;
                 // vm.logoImg = new Image();
                 // vm.logoImg.src = "./img/athena.png";
@@ -230,11 +236,13 @@ const map = {
                 vm.draw(45, 260, 115, 195);
                 break;
             case 5:
+
                 // vm.logoImg = new Image();
                 // vm.logoImg.src = "./img/achilles.png";
                 // vm.logoImg.onload = function () {
                 //     vm.gctx.drawImage(vm.logoImg, 370, 280, 70, 70);
                 // }
+
                 vm.storyText = EnemyService.polyphemus;
                 vm.showMonster = true;
                 vm.opponentOnMap = "Achilles";
@@ -249,11 +257,13 @@ const map = {
                 vm.draw(115, 195, 395, 330);
                 break;
             case 6:
+
                 // vm.logoImg = new Image();
                 // vm.logoImg.src = "./img/polyphemus.png";
                 // vm.logoImg.onload = function () {
                 //     vm.gctx.drawImage(vm.logoImg, 500, 480, 70, 70);
                 // }
+
                 vm.storyText = EnemyService.prometheus;
                 vm.showMonster = true;
                 vm.opponentOnMap = "Polyphemus";
@@ -269,11 +279,13 @@ const map = {
                 vm.draw(395, 330, 530, 540);
                 break;
             case 7:
+
             // vm.logoImg = new Image();
             // vm.logoImg.src = "./img/warrior.png";
             // vm.logoImg.onload = function () {
             //     vm.gctx.drawImage(vm.logoImg, 700, 480, 70, 70);
             // }
+
                 vm.storyText = EnemyService.hercules;
                 vm.showMonster = true;
                 vm.opponentOnMap = "Warrior";
@@ -290,11 +302,13 @@ const map = {
                 vm.draw(530, 540, 730, 520);
                 break;
             case 8:
+
             // vm.logoImg = new Image();
             // vm.logoImg.src = "./img/zeus.png";
             // vm.logoImg.onload = function () {
             //     vm.gctx.drawImage(vm.logoImg, 705, 240, 70, 70);
             // }
+
                 vm.storyText = EnemyService.zeus;
                 vm.showMonster = true;
                 vm.opponentOnMap = "Zeus";

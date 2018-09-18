@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 * {
     font-family: 'Press Start 2P', cursive;
 }
@@ -17,7 +16,7 @@ body {
 /************************/
 
 .intro_container {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(./img/Intro.png);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/public/img/Intro.png);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -29,13 +28,6 @@ body {
 
 .logo {
     margin-top: 200px;
-}
-
-.h1__title {
-    color: #fff;
-    font-size: 300%;
-    padding: 10rem 0 2rem 0;
-    text-align: center;
 }
 
 .intro_container p.intro_text {
@@ -133,7 +125,7 @@ body {
 }
 
 .story__container {
-    background: url("./img/wide-scroll-rotate.png");
+    background: url("/public/img/wide-scroll-rotate.png");
     background-size: 82%;
     width: 475px;
     height: 575px;
@@ -227,7 +219,7 @@ section .button__intro:hover,
 }
 
 .heart__instructions {
-    background: url('./img/wide-scroll.png');
+    background: url('/public/img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 100;
@@ -278,7 +270,6 @@ section .button__intro:hover,
     margin: 70px 75px 100px 0;
     padding: 0 50px;
     line-height: 2;
-
 }
 
 .correct__map {
@@ -299,7 +290,7 @@ section .button__intro:hover,
 /******************************/
 
 .section__instructions {
-    background: url('./img/wide-scroll.png');
+    background: url('/public/img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
     height: 900px;
@@ -378,7 +369,7 @@ section .button__intro:hover,
 
 .bio {
     margin: 0 auto;
-    background: url('./img/wide-scroll.png');
+    background: url('/public/img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
     height: 700px;
@@ -448,6 +439,7 @@ section .button__intro:hover,
     animation-iteration-count: 4;
 }
 
+
 /**************************/
 
 
@@ -506,7 +498,7 @@ section .button__intro:hover,
     flex-direction: column;
     width: 90%;
     text-align: center;
-    background: url(./img/wide-scroll.png);
+    background: url(/public/img/wide-scroll.png);
     background-size: 100% 100%;
     opacity: 0.8;
     background-position: center center;
@@ -564,6 +556,7 @@ section.answers button:hover {
 
 .text_container {
     margin: auto 10%;
+    font-size: 25px;
 }
 
 .next_question_button {
@@ -580,7 +573,7 @@ section.answers button:hover {
     background: #DD2020;
 }
 
-.random__response{
+.random__response {
     text-align: center;
 }
 
@@ -588,6 +581,7 @@ section.answers button:hover {
     text-transform: uppercase;
     font-size: 40px;
     margin-top: 70px;
+    line-height: 1.5
 }
 
 .correct {
@@ -609,7 +603,7 @@ section.answers button:hover {
 
 .section__victory {
     display: flex;
-    background-image: url('./img/Olympus2.png');
+    background-image: url('/public/img/Olympus2.png');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -621,14 +615,14 @@ section.answers button:hover {
 .h1__winner {
     text-align: center;
     animation: blinkingText 0.8s infinite;
-    margin: 8rem 0 3rem 0;
+    margin: 5rem 0 3rem 0;
     font-size: 50px;
 }
 
 .section__wide-scroll {
-    width: 30%;
-    height: 300px;
-    background-image: url('./img/wide-scroll.png');
+    width: 40%;
+    height: 400px;
+    background-image: url('/public/img/wide-scroll.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -638,6 +632,7 @@ section.answers button:hover {
     margin: 0 auto;
     padding: 3rem 0;
     line-height: 1.5;
+    margin-top: 50px;
 }
 
 .button__play-again {
@@ -654,6 +649,7 @@ section.answers button:hover {
 .button__play-again:hover {
     background-color: #337eaf;
 }
+
 
 /**************************/
 
@@ -756,5 +752,295 @@ section.answers button:hover {
     }
     100% {
         color: #DD2020;
+    }
+}
+
+
+/* portrait */
+
+@media screen and (orientation:portrait) {
+    /* portrait-specific styles */
+}
+
+
+/* landscape */
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    /*Intro*/
+    .logo {
+        margin-top: 5px;
+        ;
+        width: 80%;
+    }
+    .intro_container p.intro_text {
+        text-align: center;
+    }
+    .button__play,
+    .button__instructions--intro {
+        padding: 0.5rem;
+        font-size: 13px;
+    }
+    /*map*/
+    #canvas {
+        height: 300px;
+        width: 400px;
+        margin: .1%;
+    }
+    .img__container {
+        display: flex;
+        flex-direction: column;
+    }
+    .section__health {
+        display: none;
+    }
+    .story__container {
+        background: none;
+        width: 400px;
+        height: 250px;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+    }
+    .story__container .story {
+        padding: 0px 20px 20px 60px;
+        line-height: 1.25;
+        font-size: 11px;
+        color: #FFB046;
+        width: 40%;
+    }
+    .story__container button.fight {
+        bottom: -40px;
+        left: 80px;
+    }
+    section .button__intro,
+    .button__instructions,
+    .button__info,
+    .skip__button {
+        margin-left: 5px;
+        padding: 10px 10px;
+        font-size: 10px;
+    }
+    .heart__instructions {
+        left: 50px;
+        bottom: -100px;
+        width: 600px;
+        height: 400px;
+    }
+    /*battle-ground*/
+    .battle__char__img {
+        height: 150px;
+        top: 15%;
+    }
+    .timer {
+        font-size: 10px;
+    }
+    .question__container {
+        height: 150px;
+    }
+    .question__container p.trivia__question {
+        font-size: 8px;
+    }
+    section.answers button {
+        padding: 5px;
+        max-width: 100px;
+        line-height: 1.5;
+        margin-right: 10px;
+        font-size: 8px;
+    }
+    .start__button {
+        margin-top: 11px;
+        padding: 10px 15px;
+        border-radius: .25rem;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .text_container {
+        font-size: 10px;
+    }
+    .next_question_button {
+        padding: 10px 15px;
+        font-size: 10px;
+    }
+    .random__response p {
+        margin-top: 20px;
+    }
+    /*INSTRUCTIONS*/
+    .section__instructions {
+        margin-left: 60px;
+        width: 660px;
+        height: 360px;
+    }
+    .instructions__container {
+        padding-left: 15px;
+        padding-top: 55px;
+    }
+    .instructions__container h1 {
+        position: absolute;
+        font-size: 16px;
+        margin-top: 0;
+        left: 165px;
+    }
+    .instructions__container ul {
+        font-size: 10px;
+        width: 400px;
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+    .instructions__container li {
+        margin-bottom: 10px;
+        left: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+    .instructions__container button {
+        position: absolute;
+        left: 218px;
+        font-size: 10px;
+        padding: 12px;
+    }
+    /* CHARACTERS*/
+    .character__title {
+        margin-left: 350px;
+        width: 655px;
+    }
+    .ul__gods {
+        padding-left: 3px;
+    }
+    .bio {
+        margin-left: 235px;
+    }
+    /* VICTORY */
+    .h1__winner {
+        font-size: 35px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .p__credits {
+        font-size: 10px;
+        width: 250px;
+        margin-left: 40px;
+        padding-top: 0;
+    }
+    .section__wide-scroll {
+        position: absolute;
+        width: 350px;
+        height: 225px;
+        top: 100px;
+        left: 165px;
+    }
+    .button__play-again {
+        position: absolute;
+        bottom: 5px;
+        font-size: 10px;
+        padding: 10px;
+        left: 250px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /*Intro*/
+    .logo {
+        margin-top: 90px;
+        width: 80%;
+    }
+    .intro_container p.intro_text {
+        margin: 2rem;
+        width: 80%;
+    }
+    .button__play,
+    .button__instructions--intro {
+        margin-top: 1rem;
+        padding: 1.5rem;
+    }
+    /*map*/
+    #canvas {
+        height: 500px;
+        width: 600px;
+        margin: .1%;
+    }
+    .story__container {
+        width: 93%;
+        background: none;
+        ;
+    }
+    .story__container .story {
+        padding: 0px 20px 20px 60px;
+        line-height: 1.25;
+        font-size: 18px;
+        color: #FFB046;
+        width: 60%;
+    }
+    .story__container button.fight {
+        bottom: 30px;
+        left: 150px;
+    }
+    .section__health {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-right: 30px;
+        padding-top: 2%;
+    }
+    .heart__instructions {
+        left: 200px;
+        bottom: 100px;
+        width: 600px;
+        height: 400px;
+    }
+    /*instructions*/
+    .section__instructions {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 1020px;
+        height: 750px;
+    }
+    .instructions__container {
+        width: 500;
+        height: 150;
+        padding-left: 105px;
+    }
+    .instructions__container h1 {
+        margin-top: 40px;
+        margin-left: 70px;
+    }
+    .instructions__container ul {
+        font-size: 15px;
+        width: 750px;
+    }
+    .instructions__container button {
+        position: absolute;
+        left: 440px;
+        top: 550px;
+    }
+    /*BATTELGROUND*/
+    .question__container {
+        bottom: 60px;
+    }
+    .battle__char__img {
+        top: 100px;
+    }
+    /* CHARACTERS*/
+    .ul__gods li a {
+        font-size: 12px;
+    }
+    .back__button {
+        position: relative;
+        bottom: 100px;
+        left: 415px;
+        font-size: 16px;
+    }
+    /*VICTORY*/
+    .h1__winner {
+        margin-left: 60px;
+    }
+    .section__wide-scroll {
+        width: 600px;
+        height: 350px;
+        margin-left: 125px;
+    }
+    .p__credits {
+        position: absolute;
+        width: 400px;
+        padding-top: 75px;
+        padding-left: 65px;
     }
 }
