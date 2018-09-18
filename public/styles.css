@@ -498,7 +498,7 @@ section .button__intro:hover,
     flex-direction: column;
     width: 90%;
     text-align: center;
-    background: url(/public/img/wide-scroll.png);
+    background: url(public/img/wide-scroll.png);
     background-size: 100% 100%;
     opacity: 0.8;
     background-position: center center;
