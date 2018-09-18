@@ -14,13 +14,15 @@ const intro = {
     `,
     controller: ["$location", "PlayerService", function($location, PlayerService) {
         const vm = this;
-        PlayerService.battles >= 0 ? PlayerService.introAudio.play() : console.log(`Not Playing`);
+        PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
+        PlayerService.introAudio.loop;
         
         PlayerService.battles > 0 ? vm.playButton = "CONTINUE" : vm.playButton = "PLAY";
         
         vm.play = () => {
             $location.url("/map");
             PlayerService.introAudio.pause();
+            PlayerService.introAudio.currentTime = 0;
         }
         
         vm.instructions = () => $location.url("/instructions");
