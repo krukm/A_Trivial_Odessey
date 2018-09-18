@@ -896,13 +896,20 @@ section.answers button:hover {
         margin: .1%;
     }
 
+    #logo__map {
+        top: 20px;
+        left: 10px;
+        width: 300px;
+        height: 30px;
+    }
+
     .story__container {
-        width: 93%;
-        background: none;;
+        width: 100%;
+        background-size: 100%;
     }
 
     .story__container .story {
-        padding: 0px 20px 20px 60px;
+        padding: 35px 20px 20px 82px;
         line-height: 1.25;
         font-size: 18px;
         color: #FFB046;
@@ -910,7 +917,7 @@ section.answers button:hover {
     }
 
     .story__container button.fight {
-        bottom: 30px;
+        bottom: 40px;
         left: 150px;
     }
 
