@@ -102,8 +102,7 @@ body {
     height: 40px;
 }
 
-.img__canvas {
-    display: none;
+#img__canvas {
     width: 70px;
     height: 70px;
     position: absolute;
