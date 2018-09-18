@@ -3,7 +3,7 @@
 const map = {
     template: `
     <section class="map__canvas">
-            <img id="logo__map" src="./img/logo2.png">
+            <img id="logo__map" src="/public/img/logo2.png">
             <canvas id="canvas"></canvas>
         <section class="img__container">
             <section class="section__health" id="id__health">
@@ -158,7 +158,7 @@ const map = {
 
                 vm.storyText = EnemyService.cerberus;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/Cerebrus.png";
+                vm.logoImg.src = "/public/img/Cerebrus.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 50, 430, 70, 70);
                 }
@@ -166,7 +166,7 @@ const map = {
             case 1:
                 vm.storyText = EnemyService.hades;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/Hades.png";
+                vm.logoImg.src = "/public/img/Hades.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 125, 325, 70, 70);
                 }
@@ -179,7 +179,7 @@ const map = {
                 vm.gctx.stroke();
                 vm.draw(160, 365, 220, 260);
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/siren-assets/siren.png";
+                vm.logoImg.src = "/public/img/siren-assets/siren.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 180, 215, 70, 70);
                 }
@@ -187,7 +187,7 @@ const map = {
                 break;
             case 3:
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/poseidon.png";
+                vm.logoImg.src = "/public/img/poseidon.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 10, 215, 70, 70);
                 }
@@ -200,7 +200,7 @@ const map = {
                 break;
             case 4:
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/athena.png";
+                vm.logoImg.src = "/public/img/athena.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 75, 150, 70, 70);
                 }
@@ -214,7 +214,7 @@ const map = {
                 break;
             case 5:
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/achilles.png";
+                vm.logoImg.src = "/public/img/achilles.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 370, 280, 70, 70);
                 }
@@ -230,7 +230,7 @@ const map = {
                 break;
             case 6:
                 vm.logoImg = new Image();
-                vm.logoImg.src = "./img/polyphemus.png";
+                vm.logoImg.src = "/public/img/polyphemus.png";
                 vm.logoImg.onload = function () {
                     vm.gctx.drawImage(vm.logoImg, 500, 480, 70, 70);
                 }
@@ -246,7 +246,7 @@ const map = {
                 break;
             case 7:
             vm.logoImg = new Image();
-            vm.logoImg.src = "./img/warrior.png";
+            vm.logoImg.src = "/public/img/warrior.png";
             vm.logoImg.onload = function () {
                 vm.gctx.drawImage(vm.logoImg, 700, 480, 70, 70);
             }
@@ -263,7 +263,7 @@ const map = {
                 break;
             case 8:
             vm.logoImg = new Image();
-            vm.logoImg.src = "./img/zeus.png";
+            vm.logoImg.src = "/public/img/zeus.png";
             vm.logoImg.onload = function () {
                 vm.gctx.drawImage(vm.logoImg, 705, 240, 70, 70);
             }
