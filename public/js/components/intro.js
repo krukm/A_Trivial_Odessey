@@ -41,11 +41,15 @@ const intro = {
 
         vm.play = () => {
             $location.url("/map");
-            PlayerService.introAudio.pause();
             PlayerService.introAudio.currentTime = 0;
+            PlayerService.introAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
-        vm.instructions = () => $location.url("/instructions");
+        vm.instructions = () => {
+            $location.url("/instructions");
+            PlayerService.buttonSound.play();
+        }
     }]
 }
 angular.module('app').component('intro', intro);

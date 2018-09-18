@@ -24,6 +24,7 @@ const instructions = {
         vm.back = () => {
           $location.url('/map');
           PlayerService.introAudio.pause();
+          PlayerService.buttonSound.play();
         }
     }]
 }

@@ -56,8 +56,7 @@ const battleGround = {
         vm.answerArray = [];
         vm.currentQuestion = null;
         vm.correctAnswer = null;
-        vm.changedHealth = false;
-        PlayerService.currentTime = 0;  
+        vm.changedHealth = false; 
         vm.rightAnswerArr = [
             "Your a genius, keep up the good work!",
             "The Gods stand no chance at defeating you!",
@@ -207,6 +206,11 @@ const battleGround = {
 
                 if (PlayerService.playerHealth === 0) {
                     vm.gameOver = true;
+                    PlayerService.gameOverSound.currentTime = 0;
+                    PlayerService.gameOverSound.volume = .6;
+                    PlayerService.gameOverSound.play();
+                    PlayerService.battleAudio.pause();
+                    PlayerService.awwAudio.pause();
 
                     $timeout(() => {
                         PlayerService.resetPlayer();
@@ -223,6 +227,7 @@ const battleGround = {
             vm.getNextQuestion();
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
         vm.continue = () => {
@@ -231,6 +236,7 @@ const battleGround = {
             PlayerService.battleAudio.pause();
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();
+            PlayerService.buttonSound.play();
         };
 
         switch (PlayerService.battles) {

@@ -64,7 +64,7 @@ const map = {
         
         PlayerService.mapAudio.currentTime = 0;
         PlayerService.mapAudio.play();
-        PlayerService.mapAudio.loop;
+        PlayerService.mapAudio.loop = true;
 
         vm.questionObj = {
             question: "In most traditions, who was the wife of Zeus?",
@@ -118,6 +118,7 @@ const map = {
             vm.showInstructions = false;
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
         vm.fight = () => {
@@ -128,15 +129,24 @@ const map = {
         vm.intro = () => {
             $location.url("/intro");
             PlayerService.mapAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
-        vm.instructions = () => $location.url('/instructions');
+        vm.instructions = () => {
+            $location.url('/instructions');
+            PlayerService.buttonSound.play();
+        }           
+            
 
-        vm.info = () => $location.url('/characters');
+        vm.info = () => {
+            $location.url('/characters');
+            PlayerService.buttonSound.play();
+        }
 
         vm.skip = () => {
             vm.fightButton = true;
             vm.speed = 0;
+            PlayerService.buttonSound.play();
         }
 
         vm.draw = (startX, startY, endX, endY) => {
