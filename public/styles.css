@@ -86,7 +86,7 @@ body {
     position: relative;
 }
 
-#logo__map {
+.logo__map {
     position: absolute;
     top: 30px;
     left: 20px;
@@ -769,7 +769,6 @@ section.answers button:hover {
     /*Intro*/
     .logo {
         margin-top: 5px;
-        ;
         width: 80%;
     }
     .intro_container p.intro_text {
@@ -786,13 +785,22 @@ section.answers button:hover {
         width: 400px;
         margin: .1%;
     }
+
+    .logo__map {
+        top: 20px;
+        left: 10px;
+        width: 200px;
+        height: 20px;
+    }
+
     .img__container {
         display: flex;
         flex-direction: column;
     }
     .section__health {
-        display: none;
+        
     }
+
     .story__container {
         background: none;
         width: 400px;
