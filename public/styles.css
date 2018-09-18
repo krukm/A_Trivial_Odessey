@@ -748,18 +748,9 @@ section.answers button:hover {
     }
 }
 
-
-/* portrait */
-
-@media screen and (orientation:portrait) {
-    /* portrait-specific styles */
-}
-
-
-/* landscape */
+/* media queries */
 
 @media screen and (max-width: 767px) and (orientation: landscape) {
-    
     /*Intro*/
     .logo {
         margin-top: 5px;
@@ -774,23 +765,27 @@ section.answers button:hover {
         padding: 0.5rem;
         font-size: 13px;
     }
-
     /*map*/
     #canvas {
         height: 300px;
         width: 400px;
         margin: .1%;
     }
-    
+
+    #logo__map {
+        top: 10px;
+        left: 10px;
+        width: 300px;
+        height: 30px;
+    }
+
     .img__container {
         display: flex;
         flex-direction: column;
     }
-    
     .section__health {
         display: none;
     }
-    
     .story__container {
         background: none;
         width: 400px;
@@ -798,7 +793,6 @@ section.answers button:hover {
         padding-bottom: 0px;
         margin-bottom: 10px;
     }
-    
     .story__container .story {
         padding: 0px 20px 20px 60px;
         line-height: 1.25;
@@ -806,12 +800,10 @@ section.answers button:hover {
         color: #FFB046;
         width: 40%;
     }
-    
     .story__container button.fight {
         bottom: -40px;
         left: 80px;
     }
-    
     section .button__intro,
     .button__instructions,
     .button__info,
@@ -820,14 +812,12 @@ section.answers button:hover {
         padding: 10px 10px;
         font-size: 10px;
     }
-    
     .heart__instructions {
         left: 50px;
         bottom: -100px;
         width: 600px;
         height: 400px;
     }
-
     /*battle-ground*/
     .battle__char__img {
         height: 150px;
@@ -867,13 +857,64 @@ section.answers button:hover {
         margin-top: 20px;
     }
     .section__instructions {
-        height: 375px;
-        width: 500px;
+        margin-left: 60px;
+        width: 660px;
+        height: 360px;
+    }
+    .instructions__container {
+        padding-left: 15px;
+        padding-top: 55px;
+    }
+    .instructions__container h1 {
+        position: absolute;
+        font-size: 16px;
+        margin-top: 0;
+        left: 165px;
+    }
+    .instructions__container li {
+        margin-bottom: 10px;
+        left: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+    .instructions__container ul {
+        font-size: 10px;
+        width: 400px;
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+    .instructions__container button {
+        position: absolute;
+        left: 218px;
+        font-size: 10px;
+        padding: 12px;
+    }
+    .character__title {
+        margin-left: 350px;
+        width: 655px;
+    }
+    .bio {
+        margin-left: 235px;
+    }
+    .ul__gods {
+        padding-left: 3px;
+    }
+    .section__wide-scroll {
+        position: absolute;
+        width: 350px;
+        height: 225px;
+        top: 50px;
+    }
+    .p__credits {
+        font-size: 10px;
+    }
+    .h1__winner {
+        font-size: 40px;
+        margin-top: 50px;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    
     /*Intro*/
     .logo {
         margin-top: 90px;
@@ -888,7 +929,6 @@ section.answers button:hover {
         margin-top: 1rem;
         padding: 1.5rem;
     }
-    
     /*map*/
     #canvas {
         height: 500px;
@@ -907,7 +947,6 @@ section.answers button:hover {
         width: 100%;
         background-size: 100%;
     }
-
     .story__container .story {
         padding: 35px 20px 20px 82px;
         line-height: 1.25;
@@ -915,12 +954,10 @@ section.answers button:hover {
         color: #FFB046;
         width: 60%;
     }
-
     .story__container button.fight {
         bottom: 40px;
         left: 150px;
     }
-
     .section__health {
         display: flex;
         flex-direction: row;
@@ -928,14 +965,12 @@ section.answers button:hover {
         margin-right: 30px;
         padding-top: 2%;
     }
-
     .heart__instructions {
         left: 200px;
         bottom: 100px;
         width: 600px;
         height: 400px;
     }
-
     /*instructions*/
     .section__instructions {
         background-size: contain;
@@ -953,7 +988,7 @@ section.answers button:hover {
         margin-left: 70px;
     }
     .instructions__container ul {
-        font-size: 20px;
+        font-size: 15px;
         width: 750px;
     }
     .instructions__container button {
@@ -961,5 +996,27 @@ section.answers button:hover {
         left: 440px;
         top: 550px;
     }
-
+    .ul__gods li a {
+        font-size: 12px;
+    }
+    .back__button {
+        position: relative;
+        bottom: 100px;
+        left: 440px;
+        font-size: 16px;
+    }
+    .section__wide-scroll {
+        width: 600px;
+        height: 350px;
+        margin-left: 125px;
+    }
+    .h1__winner {
+        margin-left: 60px;
+    }
+    .p__credits {
+        position: absolute;
+        width: 400px;
+        padding-top: 75px;
+        padding-left: 65px;
+    }
 }
