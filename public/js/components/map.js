@@ -56,6 +56,10 @@ const map = {
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
+        vm.opponentOnMap = "";
+        vm.showMonster = false;
+        vm.monsterTop = "";
+        vm.monsterLeft = "";
         
         PlayerService.battles >= 0 ? PlayerService.mapAudio.play() : console.log(`Not Playing`);
         PlayerService.mapAudio.loop;
@@ -136,7 +140,7 @@ const map = {
             $interval(() => {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
-                // vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
                 vm.gctx.strokeStyle = "red";
                 vm.gctx.setLineDash([5, 5]);
                 vm.gctx.lineWidth = 5;
