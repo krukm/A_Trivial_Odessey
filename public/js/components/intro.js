@@ -10,41 +10,27 @@ const intro = {
         <button class="button__instructions--intro" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
     </section>
     </section>
-
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>
     `,
     controller: ["$location", "PlayerService", function($location, PlayerService) {
         const vm = this;
-        PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
+        PlayerService.introAudio.currentTime = 0;
+        PlayerService.introAudio.play();
         PlayerService.introAudio.loop;
-        
-        // Find matches
-        vm.mql = window.matchMedia("(orientation: landscape)");
-
-        // If there are matches, we're in portrait
-        if (vm.mql.matches) {
-            // Portrait orientation
-        } else {
-            // Landscape orientation
-        }
-
-        // Add a media query change listener
-        vm.mql.addListener(function(m) {
-            if (m.matches) {
-                // Changed to portrait
-            } else {
-                // Changed to landscape
-            }
-        });
 
         PlayerService.battles > 0 ? vm.playButton = "CONTINUE" : vm.playButton = "PLAY";
 
         vm.play = () => {
             $location.url("/map");
-            PlayerService.introAudio.pause();
             PlayerService.introAudio.currentTime = 0;
+            PlayerService.introAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
-        vm.instructions = () => $location.url("/instructions");
+        vm.instructions = () => {
+            $location.url("/instructions");
+            PlayerService.buttonSound.play();
+        }
     }]
 }
 angular.module('app').component('intro', intro);
