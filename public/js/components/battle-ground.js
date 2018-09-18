@@ -57,8 +57,6 @@ const battleGround = {
         vm.currentQuestion = null;
         vm.correctAnswer = null;
         vm.changedHealth = false;
-        vm.audio = new Audio("./sounds/battle-2.mp3");
-        vm.applause = new Audio("./sounds/applause.mp3");
         vm.rightAnswerArr = [
             "Your a genius, keep up the good work!",
             "The Gods stand no chance at defeating you!",
@@ -112,7 +110,8 @@ const battleGround = {
         }
 
         vm.timer = () => {
-            vm.audio.play();
+            PlayerService.battleAudio.volume = .3;
+            PlayerService.battleAudio.play();
             vm.counter = 20;
             vm.countDown = $interval(() => {
                 vm.counter--;
@@ -183,7 +182,7 @@ const battleGround = {
                 vm.answerText = "You answered correctly. Great job";
                 vm.correctAnswers++;
                 vm.getRandomResponse(vm.rightAnswerArr);
-                vm.applause.play();
+                PlayerService.applauseAudio.play();
 
                 if (vm.correctAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
@@ -196,6 +195,7 @@ const battleGround = {
                 vm.answerText = `You answered the question incorrectly! The correct answer was`;
                 vm.incorrectAnswers++;
                 vm.getRandomResponse(vm.wrongAnswerArr);
+                PlayerService.awwAudio.play();
 
                 if (vm.incorrectAnswers === 2) {
                     PlayerService.setPlayerHealth(PlayerService.playerHealth -= 1);
@@ -218,13 +218,15 @@ const battleGround = {
         vm.nextQuestion = () => {
             vm.answered = false;
             vm.getNextQuestion();
-            vm.applause.pause();
+            PlayerService.awwAudio.pause();
+            PlayerService.applauseAudio.pause();
         }
 
         vm.continue = () => {
             vm.changedHealth ? $location.path("/map").search({ "updateHealth": "true" }) : $location.path("/map");
-            vm.audio.pause();
-            vm.applause.pause();
+            PlayerService.battleAudio.pause();
+            PlayerService.awwAudio.pause();
+            PlayerService.applauseAudio.pause();
         };
         
         switch (PlayerService.battles) {

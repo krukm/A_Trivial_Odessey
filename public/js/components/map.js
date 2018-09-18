@@ -54,14 +54,14 @@ const map = {
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
-        vm.map_music = new Audio("./sounds/map.mp3");
-
-        PlayerService.battles >= 0 ? vm.map_music.play() : console.log(`Not Playing`);
+        
+        PlayerService.battles >= 0 ? PlayerService.mapAudio.play() : console.log(`Not Playing`);
+        PlayerService.mapAudio.loop;
 
         vm.questionObj = {
-                question: "In most traditions, who was the wife of Zeus?",
-                incorrect_answers: ["Aphrodite", "Athena", "Hestia"],
-                correct_answer: "Hera"
+            question: "In most traditions, who was the wife of Zeus?",
+            incorrect_answers: ["Aphrodite", "Athena", "Hestia"],
+            correct_answer: "Hera"
         }
 
         vm.question = vm.questionObj.question;
@@ -85,28 +85,34 @@ const map = {
 
         vm.evaluateAnswer = answer => {
             if (answer === vm.correctAnswer) {
+                PlayerService.applauseAudio.play();
                 vm.showOutCome = true;
                 vm.correct = true;
                 PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
                 vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
+                PlayerService.awwAudio.play();
                 vm.showOutCome = true;
                 vm.incorrect = true;
                 vm.message_3 = "Oh no, You answered wrong, don't loose all your hearts or you'll die!";
             }
         }
         
-        vm.hideInstructions = () => vm.showInstructions = false;
+        vm.hideInstructions = () => {
+            vm.showInstructions = false;
+            PlayerService.awwAudio.pause();
+            PlayerService.applauseAudio.pause();
+        }
 
         vm.fight = () => {
             $location.url("/battle-ground");
-            vm.map_music.pause();
+            PlayerService.mapAudio.pause();
         }
         
         vm.intro = () => {
             $location.url("/intro");
-            vm.map_music.pause();
+            PlayerService.mapAudio.pause();
         }
 
         vm.instructions = () => $location.url('/instructions');
