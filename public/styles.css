@@ -749,18 +749,10 @@ section.answers button:hover {
     }
 }
 
-
-/* portrait */
-
-@media screen and (orientation:portrait) {
-    /* portrait-specific styles */
-}
-
-
-/* landscape */
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 767px) and (orientation: landscape) {
-    /*Intro*/
+    /*INTRO*/
     .logo {
         margin-top: 5px;
         ;
@@ -774,12 +766,20 @@ section.answers button:hover {
         padding: 0.5rem;
         font-size: 13px;
     }
-    /*map*/
+    /*MAP*/
     #canvas {
         height: 300px;
         width: 400px;
         margin: .1%;
     }
+
+    #logo__map {
+        top: 10px;
+        left: 10px;
+        width: 300px;
+        height: 30px;
+    }
+
     .img__container {
         display: flex;
         flex-direction: column;
@@ -819,7 +819,7 @@ section.answers button:hover {
         width: 600px;
         height: 400px;
     }
-    /*battle-ground*/
+    /*BATTLE-GROUND*/
     .battle__char__img {
         height: 150px;
         top: 15%;
@@ -931,7 +931,7 @@ section.answers button:hover {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    /*Intro*/
+    /*INTRO*/
     .logo {
         margin-top: 90px;
         width: 80%;
@@ -945,26 +945,33 @@ section.answers button:hover {
         margin-top: 1rem;
         padding: 1.5rem;
     }
-    /*map*/
+    /*MAP*/
     #canvas {
         height: 500px;
         width: 600px;
         margin: .1%;
     }
+
+    #logo__map {
+        top: 20px;
+        left: 10px;
+        width: 300px;
+        height: 30px;
+    }
+
     .story__container {
-        width: 93%;
-        background: none;
-        ;
+        width: 100%;
+        background-size: 100%;
     }
     .story__container .story {
-        padding: 0px 20px 20px 60px;
+        padding: 35px 20px 20px 82px;
         line-height: 1.25;
         font-size: 18px;
         color: #FFB046;
         width: 60%;
     }
     .story__container button.fight {
-        bottom: 30px;
+        bottom: 40px;
         left: 150px;
     }
     .section__health {
@@ -980,7 +987,7 @@ section.answers button:hover {
         width: 600px;
         height: 400px;
     }
-    /*instructions*/
+    /*INSTRUCTIONS*/
     .section__instructions {
         background-size: contain;
         background-repeat: no-repeat;
