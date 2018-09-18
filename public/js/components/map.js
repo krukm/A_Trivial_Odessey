@@ -40,7 +40,7 @@ const map = {
     <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>
     `,
 
-    controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", "$window", function(PlayerService, EnemyService, $location, $timeout, $interval, $window) {
+    controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, $location, $timeout, $interval) {
 
         const vm = this;
         vm.id = "id__health";
