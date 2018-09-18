@@ -785,7 +785,7 @@ section.answers button:hover {
         width: 400px;
         margin: .1%;
     }
-    #logo__map {
+    .logo__map {
         top: 10px;
         left: 15px;
         width: 200px;
@@ -796,26 +796,39 @@ section.answers button:hover {
         flex-direction: column;
     }
     .section__health {
-        
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-right: 0px;
+        padding-top: 2%;
+    }
+    .img__heart {
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     .story__container {
         background: none;
-        width: 400px;
+        width: 425px;
         height: 250px;
-        padding-bottom: 0px;
+        /* padding-bottom: 0px; */
         margin-bottom: 10px;
     }
     .story__container .story {
-        padding: 0px 20px 20px 60px;
+        padding: 0px 0px 0px 10px;
         line-height: 1.25;
         font-size: 11px;
         color: #FFB046;
-        width: 40%;
+        width: 55%;
     }
     .story__container button.fight {
-        bottom: -40px;
-        left: 80px;
+        bottom: 0px;
+        left: 75px;
+        font-size: 11px;
+    }
+    .bottom__map--nav {
+        display: flex;
+        justify-content: space-between;
     }
     section .button__intro,
     .button__instructions,
@@ -823,7 +836,10 @@ section.answers button:hover {
     .skip__button {
         margin-left: 5px;
         padding: 10px 10px;
-        font-size: 10px;
+        font-size: 8.5px;
+    }
+    .skip__button {
+        margin-right: 98px;
     }
     .heart__instructions {
         left: 50px;
