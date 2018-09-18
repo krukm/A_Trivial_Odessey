@@ -749,10 +749,10 @@ section.answers button:hover {
     }
 }
 
-/* media queries */
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 767px) and (orientation: landscape) {
-    /*Intro*/
+    /*INTRO*/
     .logo {
         margin-top: 5px;
         ;
@@ -766,7 +766,7 @@ section.answers button:hover {
         padding: 0.5rem;
         font-size: 13px;
     }
-    /*map*/
+    /*MAP*/
     #canvas {
         height: 300px;
         width: 400px;
@@ -819,7 +819,7 @@ section.answers button:hover {
         width: 600px;
         height: 400px;
     }
-    /*battle-ground*/
+    /*BATTLE-GROUND*/
     .battle__char__img {
         height: 150px;
         top: 15%;
@@ -930,7 +930,7 @@ section.answers button:hover {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    /*Intro*/
+    /*INTRO*/
     .logo {
         margin-top: 90px;
         width: 80%;
@@ -944,7 +944,7 @@ section.answers button:hover {
         margin-top: 1rem;
         padding: 1.5rem;
     }
-    /*map*/
+    /*MAP*/
     #canvas {
         height: 500px;
         width: 600px;
@@ -986,7 +986,7 @@ section.answers button:hover {
         width: 600px;
         height: 400px;
     }
-    /*instructions*/
+    /*INSTRUCTIONS*/
     .section__instructions {
         background-size: contain;
         background-repeat: no-repeat;
