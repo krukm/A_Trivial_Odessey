@@ -19,15 +19,5 @@ function EnemyService() {
     vm.hercules = "You release Prometheus and he guides you to Mt. Olympus, home of the gods. The ominous mountain looms before you.";
 
     vm.zeus = "Zeus has followed your journey from the Underworld to his doorstep. “I did not expect you to make it this far, mere mortal”. A lighting bolt grows out of his hand. Zeus is the last thing standing between you and your loved ones!";
-
-
-
-
-
 }
-
-
-
-angular
-    .module("app")
-    .service("EnemyService", EnemyService);
+angular.module("app").service("EnemyService", EnemyService);

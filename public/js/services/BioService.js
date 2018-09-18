@@ -20,9 +20,5 @@ function BioService() {
     vm.Siren = 'Bio: The Sirens were beautiful but dangerous creatures that lured the sailors with their beautiful voices to their doom, causing the ships to crash on the reefs near their island. Although closely linked to marine environments, they were not considered sea deities.';
 
     vm.Zeus = 'Bio: Roman name: Jupiter or Jove. The sky-god Zeus rules Mount Olympus. His weapon is the thunderbolt and his bird is the eagle. The central figure of the myths, Zeus epitomizes their complexity. At times he is divine and represents a pure, eternal sense of justice; at other times, he is capricious and cruel.';
-
 }
-
-angular
-    .module("app")
-    .service("BioService", BioService);
+angular.module("app").service("BioService", BioService);
