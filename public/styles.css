@@ -16,7 +16,7 @@ body {
 /************************/
 
 .intro_container {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(public/img/Intro.png);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('img/Intro.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -101,7 +101,7 @@ body {
 }
 
 #canvas {
-    background-image: url('/img/map.png');
+    background-image: url('img/map.png');
     height: 600px;
     width: 800px;
     margin: .5%;
@@ -125,7 +125,7 @@ body {
 }
 
 .story__container {
-    background: url('/img/wide-scroll-rotate.png');
+    background: url('img/wide-scroll-rotate.png');
     background-size: 82%;
     width: 475px;
     height: 575px;
@@ -219,7 +219,7 @@ section .button__intro:hover,
 }
 
 .heart__instructions {
-    background: url('/img/wide-scroll.png');
+    background: url('img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 100;
@@ -290,7 +290,7 @@ section .button__intro:hover,
 /******************************/
 
 .section__instructions {
-    background: url('/img/wide-scroll.png');
+    background: url('img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
     height: 900px;
@@ -369,7 +369,7 @@ section .button__intro:hover,
 
 .bio {
     margin: 0 auto;
-    background: url('/img/wide-scroll.png');
+    background: url('img/wide-scroll.png');
     background-size: contain;
     background-repeat: no-repeat;
     height: 700px;
@@ -498,7 +498,7 @@ section .button__intro:hover,
     flex-direction: column;
     width: 90%;
     text-align: center;
-    background: url('/img/wide-scroll.png');
+    background: url('img/wide-scroll.png');
     background-size: 100% 100%;
     opacity: 0.8;
     background-position: center center;
@@ -603,7 +603,7 @@ section.answers button:hover {
 
 .section__victory {
     display: flex;
-    background-image: url('/img/Olympus2.png');
+    background-image: url('img/Olympus2.png');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -622,7 +622,7 @@ section.answers button:hover {
 .section__wide-scroll {
     width: 40%;
     height: 400px;
-    background-image: url('/img/wide-scroll.png');
+    background-image: url('img/wide-scroll.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
