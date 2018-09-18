@@ -101,7 +101,7 @@ body {
 }
 
 #canvas {
-    background-image: url('/public/img/map.png');
+    background-image: url('public/img/map.png');
     height: 600px;
     width: 800px;
     margin: .5%;
@@ -125,7 +125,7 @@ body {
 }
 
 .story__container {
-    background: url("/public/img/wide-scroll-rotate.png");
+    background: url("public/img/wide-scroll-rotate.png");
     background-size: 82%;
     width: 475px;
     height: 575px;
