@@ -86,7 +86,7 @@ body {
     position: relative;
 }
 
-#logo__map {
+.logo__map {
     position: absolute;
     top: 30px;
     left: 20px;
@@ -769,7 +769,6 @@ section.answers button:hover {
     /*Intro*/
     .logo {
         margin-top: 5px;
-        ;
         width: 80%;
     }
     .intro_container p.intro_text {
@@ -797,8 +796,9 @@ section.answers button:hover {
         flex-direction: column;
     }
     .section__health {
-        display: none;
+        
     }
+
     .story__container {
         background: none;
         width: 400px;
