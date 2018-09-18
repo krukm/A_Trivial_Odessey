@@ -63,8 +63,9 @@ const map = {
         vm.monsterTop = "";
         vm.monsterLeft = "";
         
-        PlayerService.battles >= 0 ? PlayerService.mapAudio.play() : console.log(`Not Playing`);
-        PlayerService.mapAudio.loop;
+        PlayerService.mapAudio.currentTime = 0;
+        PlayerService.mapAudio.play();
+        PlayerService.mapAudio.loop = true;
 
         vm.questionObj = {
             question: "In most traditions, who was the wife of Zeus?",
@@ -98,6 +99,7 @@ const map = {
 
         vm.evaluateAnswer = answer => {
             if (answer === vm.correctAnswer) {
+                PlayerService.applauseAudio.currentTime = 0;
                 PlayerService.applauseAudio.play();
                 vm.showOutCome = true;
                 vm.correct = true;
@@ -105,6 +107,7 @@ const map = {
                 vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
+                PlayerService.awwAudio.currentTime = 0;
                 PlayerService.awwAudio.play();
                 vm.showOutCome = true;
                 vm.incorrect = true;
@@ -116,6 +119,7 @@ const map = {
             vm.showInstructions = false;
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
         vm.fight = () => {
@@ -126,15 +130,24 @@ const map = {
         vm.intro = () => {
             $location.url("/intro");
             PlayerService.mapAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
-        vm.instructions = () => $location.url('/instructions');
+        vm.instructions = () => {
+            $location.url('/instructions');
+            PlayerService.buttonSound.play();
+        }           
+            
 
-        vm.info = () => $location.url('/characters');
+        vm.info = () => {
+            $location.url('/characters');
+            PlayerService.buttonSound.play();
+        }
 
         vm.skip = () => {
             vm.fightButton = true;
             vm.speed = 0;
+            PlayerService.buttonSound.play();
         }
 
         vm.draw = (startX, startY, endX, endY) => {

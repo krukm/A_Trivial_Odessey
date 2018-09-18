@@ -39,9 +39,13 @@ const characters = {
             { name: 'Zeus' }
         ];
 
-        vm.back = () => $location.url('/map');
+        vm.back = () => {
+            $location.url('/map');
+            PlayerService.buttonSound.play();
+        }
         
         vm.selectCharacter = hit => {
+            PlayerService.buttonSound.play();
             vm.selectBio = true;
             vm.bioShow = true;
 

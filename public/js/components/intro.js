@@ -14,18 +14,23 @@ const intro = {
     `,
     controller: ["$location", "PlayerService", function($location, PlayerService) {
         const vm = this;
-        PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
+        PlayerService.introAudio.currentTime = 0;
+        PlayerService.introAudio.play();
         PlayerService.introAudio.loop;
 
         PlayerService.battles > 0 ? vm.playButton = "CONTINUE" : vm.playButton = "PLAY";
 
         vm.play = () => {
             $location.url("/map");
-            PlayerService.introAudio.pause();
             PlayerService.introAudio.currentTime = 0;
+            PlayerService.introAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
-        vm.instructions = () => $location.url("/instructions");
+        vm.instructions = () => {
+            $location.url("/instructions");
+            PlayerService.buttonSound.play();
+        }
     }]
 }
 angular.module('app').component('intro', intro);
