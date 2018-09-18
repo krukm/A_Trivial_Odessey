@@ -102,6 +102,13 @@ body {
     height: 40px;
 }
 
+.img__canvas {
+    display: none;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+}
+
 #canvas {
     background-image: url('/public/img/map.png');
     height: 600px;
