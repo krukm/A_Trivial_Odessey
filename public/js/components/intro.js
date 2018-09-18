@@ -14,7 +14,8 @@ const intro = {
     `,
     controller: ["$location", "PlayerService", function($location, PlayerService) {
         const vm = this;
-        PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
+        PlayerService.introAudio.currentTime = 0;
+        PlayerService.introAudio.play();
         PlayerService.introAudio.loop;
         
         // Find matches

@@ -57,6 +57,7 @@ const battleGround = {
         vm.currentQuestion = null;
         vm.correctAnswer = null;
         vm.changedHealth = false;
+        PlayerService.currentTime = 0;  
         vm.rightAnswerArr = [
             "Your a genius, keep up the good work!",
             "The Gods stand no chance at defeating you!",
@@ -182,6 +183,7 @@ const battleGround = {
                 vm.answerText = "You answered correctly. Great job";
                 vm.correctAnswers++;
                 vm.getRandomResponse(vm.rightAnswerArr);
+                PlayerService.applauseAudio.currentTime = 0;
                 PlayerService.applauseAudio.play();
 
                 if (vm.correctAnswers === 2) {
@@ -195,6 +197,7 @@ const battleGround = {
                 vm.answerText = `You answered the question incorrectly! The correct answer was`;
                 vm.incorrectAnswers++;
                 vm.getRandomResponse(vm.wrongAnswerArr);
+                PlayerService.awwAudio.currentTime = 0;
                 PlayerService.awwAudio.play();
 
                 if (vm.incorrectAnswers === 2) {
@@ -224,6 +227,7 @@ const battleGround = {
 
         vm.continue = () => {
             vm.changedHealth ? $location.path("/map").search({ "updateHealth": "true" }) : $location.path("/map");
+            PlayerService.battleAudio.currentTime = 0;
             PlayerService.battleAudio.pause();
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();

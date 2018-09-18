@@ -62,7 +62,8 @@ const map = {
         vm.monsterTop = "";
         vm.monsterLeft = "";
         
-        PlayerService.battles >= 0 ? PlayerService.mapAudio.play() : console.log(`Not Playing`);
+        PlayerService.mapAudio.currentTime = 0;
+        PlayerService.mapAudio.play();
         PlayerService.mapAudio.loop;
 
         vm.questionObj = {
@@ -97,6 +98,7 @@ const map = {
 
         vm.evaluateAnswer = answer => {
             if (answer === vm.correctAnswer) {
+                PlayerService.applauseAudio.currentTime = 0;
                 PlayerService.applauseAudio.play();
                 vm.showOutCome = true;
                 vm.correct = true;
@@ -104,6 +106,7 @@ const map = {
                 vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
+                PlayerService.awwAudio.currentTime = 0;
                 PlayerService.awwAudio.play();
                 vm.showOutCome = true;
                 vm.incorrect = true;
