@@ -14,7 +14,9 @@ const intro = {
     `,
     controller: ["$location", "PlayerService", function($location, PlayerService) {
         const vm = this;
-
+        PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
+        PlayerService.introAudio.loop;
+        
         // Find matches
         vm.mql = window.matchMedia("(orientation: landscape)");
 
@@ -34,21 +36,15 @@ const intro = {
             }
         });
 
-
-        vm.audio = new Audio("./sounds/intro.mp3");
-
-        PlayerService.battles >= 0 ? vm.audio.play() : console.log(`Not Playing`);
-
         PlayerService.battles > 0 ? vm.playButton = "CONTINUE" : vm.playButton = "PLAY";
 
         vm.play = () => {
             $location.url("/map");
-            vm.audio.pause();
+            PlayerService.introAudio.pause();
+            PlayerService.introAudio.currentTime = 0;
         }
 
         vm.instructions = () => $location.url("/instructions");
-
-
     }]
 }
 angular.module('app').component('intro', intro);

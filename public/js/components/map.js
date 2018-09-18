@@ -52,15 +52,18 @@ const map = {
         vm.canvas.width = 800;
         vm.canvas.height = 600;
         vm.gctx = vm.canvas.getContext("2d");
-
         vm.questions;
         vm.showInstructions = false;
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
-        vm.map_music = new Audio("./sounds/map.mp3");
-
-        PlayerService.battles >= 0 ? vm.map_music.play() : console.log(`Not Playing`);
+        vm.opponentOnMap = "";
+        vm.showMonster = false;
+        vm.monsterTop = "";
+        vm.monsterLeft = "";
+        
+        PlayerService.battles >= 0 ? PlayerService.mapAudio.play() : console.log(`Not Playing`);
+        PlayerService.mapAudio.loop;
 
         vm.questionObj = {
             question: "In most traditions, who was the wife of Zeus?",
@@ -68,17 +71,15 @@ const map = {
             correct_answer: "Hera"
         }
 
+        vm.question = vm.questionObj.question;
+        vm.correctAnswer = vm.questionObj.correct_answer;
+        vm.answers = vm.questionObj.incorrect_answers;
+        vm.answers.push(vm.correctAnswer);
         vm.opponentOnMap = "";
         vm.showMonster = false;
         vm.monsterTop = "";
         vm.monsterLeft = "";
 
-
-
-        vm.question = vm.questionObj.question;
-        vm.correctAnswer = vm.questionObj.correct_answer;
-        vm.answers = vm.questionObj.incorrect_answers;
-        vm.answers.push(vm.correctAnswer);
 
         if (PlayerService.battles === 1) {
             vm.showInstructions = true;
@@ -96,28 +97,34 @@ const map = {
 
         vm.evaluateAnswer = answer => {
             if (answer === vm.correctAnswer) {
+                PlayerService.applauseAudio.play();
                 vm.showOutCome = true;
                 vm.correct = true;
                 PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
                 vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
+                PlayerService.awwAudio.play();
                 vm.showOutCome = true;
                 vm.incorrect = true;
                 vm.message_3 = "Oh no, You answered wrong, don't loose all your hearts or you'll die!";
             }
         }
-
-        vm.hideInstructions = () => vm.showInstructions = false;
+        
+        vm.hideInstructions = () => {
+            vm.showInstructions = false;
+            PlayerService.awwAudio.pause();
+            PlayerService.applauseAudio.pause();
+        }
 
         vm.fight = () => {
             $location.url("/battle-ground");
-            vm.map_music.pause();
+            PlayerService.mapAudio.pause();
         }
 
         vm.intro = () => {
             $location.url("/intro");
-            vm.map_music.pause();
+            PlayerService.mapAudio.pause();
         }
 
         vm.instructions = () => $location.url('/instructions');
@@ -134,7 +141,7 @@ const map = {
             $interval(() => {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
-                // vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
                 vm.gctx.strokeStyle = "red";
                 vm.gctx.setLineDash([5, 5]);
                 vm.gctx.lineWidth = 5;

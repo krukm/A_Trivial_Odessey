@@ -21,7 +21,10 @@ const instructions = {
         
         PlayerService.battles === 0 ? vm.button = "PLAY" : vm.button = "BACK";
     
-        vm.back = () => $location.url('/map');
+        vm.back = () => {
+          $location.url('/map');
+          PlayerService.introAudio.pause();
+        }
     }]
 }
 angular.module("app").component("instructions", instructions);
