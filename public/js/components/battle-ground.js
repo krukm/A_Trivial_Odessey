@@ -60,7 +60,7 @@ const battleGround = {
         vm.audio = new Audio("/public/sounds/battle-2.mp3");
         vm.applause = new Audio("/public/sounds/applause.mp3");
         vm.rightAnswerArr = [
-            "Your a genius, keep up the good work!",
+            "You're a genius, keep up the good work!",
             "The Gods stand no chance at defeating you!",
             "Wow, You got it right!",
             "I am sparta!",
@@ -70,7 +70,7 @@ const battleGround = {
         vm.wrongAnswerArr = [
             "Nope! Try Again!",
             "Wrong, Wrong, Wrong",
-            "You need to study more",
+            "You need to study more!",
             "Nice Try, Maybe next time",
             "We all make mistakes"
         ];
