@@ -801,8 +801,60 @@ section.answers button:hover {
         margin-top: 20px;
     }
     .section__instructions {
-        height: 375px;
-        width: 500px;
+        margin-left: 60px;
+        width: 660px;
+        height: 360px;
+    }
+    .instructions__container {
+        padding-left: 15px;
+        padding-top: 55px;
+    }
+    .instructions__container h1 {
+        position: absolute;
+        font-size: 16px;
+        margin-top: 0;
+        left: 165px;
+    }
+    .instructions__container li {
+        margin-bottom: 10px;
+        left: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+    .instructions__container ul {
+        font-size: 10px;
+        width: 400px;
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+    .instructions__container button {
+        position: absolute;
+        left: 218px;
+        font-size: 10px;
+        padding: 12px;
+    }
+    .character__title {
+        margin-left: 350px;
+        width: 655px;
+    }
+    .bio {
+        margin-left: 235px;
+    }
+    .ul__gods {
+        padding-left: 3px;
+    }
+    .section__wide-scroll {
+        position: absolute;
+        width: 350px;
+        height: 225px;
+        top: 50px;
+    }
+    .p__credits {
+        font-size: 10px;
+    }
+    .h1__winner {
+        font-size: 40px;
+        margin-top: 50px;
     }
 }
 
@@ -836,12 +888,35 @@ section.answers button:hover {
         margin-left: 70px;
     }
     .instructions__container ul {
-        font-size: 20px;
+        font-size: 15px;
         width: 750px;
     }
     .instructions__container button {
         position: absolute;
         left: 440px;
         top: 550px;
+    }
+    .ul__gods li a {
+        font-size: 12px;
+    }
+    .back__button {
+        position: relative;
+        bottom: 100px;
+        left: 440px;
+        font-size: 16px;
+    }
+    .section__wide-scroll {
+        width: 600px;
+        height: 350px;
+        margin-left: 125px;
+    }
+    .h1__winner {
+        margin-left: 60px;
+    }
+    .p__credits {
+        position: absolute;
+        width: 400px;
+        padding-top: 75px;
+        padding-left: 65px;
     }
 }
