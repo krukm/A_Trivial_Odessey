@@ -7,7 +7,7 @@ const victory = {
         <section class="section__wide-scroll">
             <p class="p__credits" id="id__credits"></p>   
         </section>
-        <button class="button__play-again" type="button" ng-click="$ctrl.resetGame();">Play again?</button>
+        <button class="button__play-again" type="button" ng-click="$ctrl.resetGame();">PLAY AGAIN?</button>
     </section>
     `,
     controller: ['$location', 'PlayerService', function($location, PlayerService) {

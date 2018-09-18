@@ -250,10 +250,14 @@ section .button__intro:hover,
 .instructions__container h1 {
     text-align: center;
     color: #DD2020;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    font-size: 25px;
 }
 
-.instructions__container p {
+.instructions__container li {
     color: #000;
+    margin-bottom: 30px;
 }
 
 .instructions__container button {
@@ -298,6 +302,7 @@ section .button__intro:hover,
 .ul__gods li a {
     text-decoration: none;
     color: #fff;
+    font-size: 18px;
 }
 
 .ul__gods li a:hover {
@@ -469,7 +474,7 @@ section .button__intro:hover,
 section.answers button {
     padding: 10px;
     max-width: 175px;
-    border-radius: 3px;
+    border-radius: .25 rem;
     background: #FFB046;
     color: #000;
     border: 3px solid black;
@@ -533,6 +538,7 @@ section.answers button:hover {
     text-align: center;
     animation: blinkingText 0.8s infinite;
     margin: 8rem 0 3rem 0;
+    font-size: 50px;
 }
 
 .section__wide-scroll {
@@ -558,11 +564,15 @@ section.answers button:hover {
     background-color: #409edb;
     color: #fff;
     border: 3px solid #000;
+    font-size: 16px
 }
 
 .button__play-again:hover {
     background-color: #337eaf;
 }
+
+
+/* Animations */
 
 @keyframes blinkingText {
     0% {
