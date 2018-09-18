@@ -609,7 +609,7 @@ section.answers button:hover {
 .h1__winner {
     text-align: center;
     animation: blinkingText 0.8s infinite;
-    margin: 8rem 0 3rem 0;
+    margin: 5rem 0 3rem 0;
     font-size: 50px;
 }
 
@@ -912,6 +912,7 @@ section.answers button:hover {
         font-size: 10px;
         width: 250px;
         margin-left: 40px;
+        padding-top: 0;
     }
     .section__wide-scroll {
         position: absolute;
