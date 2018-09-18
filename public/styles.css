@@ -91,6 +91,21 @@ body {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    position: relative;
+}
+
+#logo__map {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 400px;
+    height: 40px;
+}
+
+#img__canvas {
+    width: 70px;
+    height: 70px;
+    position: absolute;
 }
 
 #canvas {
