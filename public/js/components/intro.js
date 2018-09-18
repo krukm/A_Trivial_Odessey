@@ -12,8 +12,9 @@ const intro = {
     </section>
 
     `,
-    controller: ["$location", "PlayerService", function($location, PlayerService) {
+    controller: ["$location", "PlayerService", "$window", function($location, PlayerService, $window) {
         const vm = this;
+        $window.screen.orientation.lock('landscape');
         PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
         PlayerService.introAudio.loop;
         
