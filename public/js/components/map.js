@@ -38,7 +38,8 @@ const map = {
             <button class="button__info" ng-click="$ctrl.info()">CHARACTER BIO'S</button>
         </section>
         <button class="skip__button" ng-click="$ctrl.skip()">SKIP</button>
-    </section>   
+    </section>
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>
     `,
 
     controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, $location, $timeout, $interval) {

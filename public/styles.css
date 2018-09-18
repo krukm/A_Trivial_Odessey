@@ -6,6 +6,10 @@ body {
     background: #000;
 }
 
+.portrait {
+    display: none;
+}
+
 
 /************************/
 
@@ -767,9 +771,39 @@ section.answers button:hover {
 
 /* portrait */
 
-@media screen and (orientation:portrait) {
-    /* portrait-specific styles */
-}
+@media screen and (orientation: portrait) {
+    .portrait {
+        display: block;
+        margin: 0 auto;
+        color: #FFB046;
+        line-height: 1.5;
+        background: #000;
+        margin: 20% 10%;
+        width: 80%;
+        z-index: 100;
+    }
+    .intro_container {
+        display: none;
+    }
+    .map__canvas {
+        display: none;
+    }
+    .bottom__map--nav {
+        display: none;
+    }
+    .battle__container {
+        display: none;
+    }
+    .section__instructions {
+        display: none;
+    }
+    .character__container {
+        display: none;
+    }
+    .section__victory {
+        display: none;
+    }
+ }
 
 
 /* landscape */

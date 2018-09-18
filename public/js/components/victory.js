@@ -9,6 +9,7 @@ const victory = {
         </section>
         <button class="button__play-again" type="button" ng-click="$ctrl.resetGame();">PLAY AGAIN?</button>
     </section>
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>
     `,
     controller: ['$location', 'PlayerService', "$timeout", function($location, PlayerService, $timeout) {
         const vm = this;

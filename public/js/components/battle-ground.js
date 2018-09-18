@@ -36,7 +36,8 @@ const battleGround = {
                 </section>
             </section>
         </section>
-    </section>    
+    </section>
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>  
     `,
 
     controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", function(TriviaService, PlayerService, $location, $timeout, $interval) {

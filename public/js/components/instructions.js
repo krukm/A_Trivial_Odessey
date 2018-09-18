@@ -15,6 +15,7 @@ const instructions = {
         <button type="button" ng-click="$ctrl.back();">{{ $ctrl.button }}</button>
       </section>
     </section>
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>
   `,
     controller: ['$location', 'PlayerService', function($location, PlayerService) {
         const vm = this;

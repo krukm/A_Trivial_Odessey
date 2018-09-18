@@ -2,23 +2,25 @@
 
 const characters = {
     template: `
-    <h1 class="character__title">CHARACTER BIOGRAPHY</h1>
-    <section>
-        <ul class="ul__gods">
-            <li ng-repeat="character in $ctrl.characters" ng-click="$ctrl.selectCharacter(character.name);">
-                <a href="">{{ character.name }}</a>
-            </li>
-        </ul>
-        <section class="bio">
-            <p ng-if="$ctrl.selectBio === false" class="select__bio">SELECT A CHARACTER ABOVE.</p>
-            <section class="bio__info" ng-if="$ctrl.bioShow">
-                <img ng-src=" {{ $ctrl.pic }}">
-                <p>{{ $ctrl.bio }}</p>
+    <section class="character__container">
+        <h1 class="character__title">CHARACTER BIOGRAPHY</h1>
+        <section>
+            <ul class="ul__gods">
+                <li ng-repeat="character in $ctrl.characters" ng-click="$ctrl.selectCharacter(character.name);">
+                    <a href="">{{ character.name }}</a>
+                </li>
+            </ul>
+            <section class="bio">
+                <p ng-if="$ctrl.selectBio === false" class="select__bio">SELECT A CHARACTER ABOVE.</p>
+                <section class="bio__info" ng-if="$ctrl.bioShow">
+                    <img ng-src=" {{ $ctrl.pic }}">
+                    <p>{{ $ctrl.bio }}</p>
+                </section>
             </section>
         </section>
-    </section>
-    <button class="back__button" ng-click="$ctrl.back()">BACK</button>
-
+        <button class="back__button" ng-click="$ctrl.back()">BACK</button>
+    </section>    
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>
     `,
     controller: ["BioService", "$location", function(BioService, $location) {
         const vm = this;
