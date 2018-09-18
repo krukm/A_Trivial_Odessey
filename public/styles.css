@@ -786,6 +786,12 @@ section.answers button:hover {
         width: 400px;
         margin: .1%;
     }
+    #logo__map {
+        top: 10px;
+        left: 15px;
+        width: 200px;
+        height: 25px;
+    }
     .img__container {
         display: flex;
         flex-direction: column;
