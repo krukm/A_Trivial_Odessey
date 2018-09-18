@@ -32,7 +32,7 @@ const map = {
         </section>
     </section>                            
     <section class="bottom__map--nav">
-        <section>
+        <section class="bottom__map--buttons">
             <button class="button__intro" ng-click="$ctrl.intro()">INTRO</button>
             <button class="button__instructions" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
             <button class="button__info" ng-click="$ctrl.info()">CHARACTER BIO'S</button>
