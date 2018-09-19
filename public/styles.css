@@ -567,8 +567,6 @@ section.answers button:hover {
     color: #DD2020;
 }
 
-
-
 .next_question_button {
     padding: 20px 30px;
     border-radius: 3px;
@@ -601,6 +599,7 @@ section.answers button:hover {
 .incorrect {
     animation: randomResponseWrong 0.8s infinite;
 }
+
 
 /***************************/
 
@@ -794,19 +793,27 @@ section.answers button:hover {
         width: 400px;
         margin: .1%;
     }
-
     .logo__map {
         top: 20px;
         left: 10px;
         width: 200px;
         height: 20px;
     }
-
     .img__container {
         display: flex;
         flex-direction: column;
     }
-
+    .section__health {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-right: 0px;
+        padding-top: 2%;
+    }
+    .img__heart {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
     .story__container {
         background: none;
         width: 400px;
