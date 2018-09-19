@@ -120,7 +120,7 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                        vm.incorrect = true;
+                    vm.incorrect = true;
                     vm.correct = false;
 
                     vm.evaluateAnswerCounter();
@@ -129,6 +129,9 @@ const battleGround = {
                         vm.answered = true;
                         vm.correct = false;
                         vm.answerText = `You ran out of time. The correct answer was`;
+                        PlayerService.awwAudio.currentTime = 0;
+                        PlayerService.awwAudio.play();
+                        vm.getRandomResponse(vm.wrongAnswerArr);
                     }, 0);
                 }
             }, 1000);
