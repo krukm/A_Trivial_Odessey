@@ -58,17 +58,17 @@ const battleGround = {
         vm.correctAnswer = null;
         vm.changedHealth = false;
         vm.rightAnswerArr = [
-            "Your a genius, keep up the good work!",
+            "You're a genius, keep up the good work!",
             "The Gods stand no chance at defeating you!",
-            "Wow, You got it right!",
+            "Wow, you got it right!",
             "I am sparta!",
-            "Keep getting questions right and you may get a cookie!"
+            "Great job! You got it right!"
         ];
 
         vm.wrongAnswerArr = [
             "Nope! Try Again!",
             "Wrong, Wrong, Wrong",
-            "You need to study more",
+            "You may need to study more...",
             "Nice Try, Maybe next time",
             "We all make mistakes"
         ];
@@ -78,7 +78,7 @@ const battleGround = {
             vm.response = array[vm.randomIndex];
         }
 
-
+        //array from service
         if (PlayerService.battles === 0) {
             TriviaService.getEasyQuestions().then(response => {
                 vm.easyQuestions = response;

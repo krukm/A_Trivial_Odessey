@@ -567,8 +567,6 @@ section.answers button:hover {
     color: #DD2020;
 }
 
-
-
 .next_question_button {
     padding: 20px 30px;
     border-radius: 3px;
@@ -601,6 +599,7 @@ section.answers button:hover {
 .incorrect {
     animation: randomResponseWrong 0.8s infinite;
 }
+
 
 /***************************/
 
@@ -815,12 +814,10 @@ section.answers button:hover {
         width: 1.5rem;
         height: 1.5rem;
     }
-
     .story__container {
         background: none;
         width: 425px;
         height: 250px;
-        /* padding-bottom: 0px; */
         margin-bottom: 10px;
     }
     .story__container .story {
@@ -851,11 +848,40 @@ section.answers button:hover {
         margin-right: 98px;
     }
     .heart__instructions {
-        left: 50px;
-        bottom: -100px;
-        width: 600px;
-        height: 400px;
+        left: 125px;
+        width: 400px;
+        height: 300px;
+        bottom: -30px;
     }
+    .heart__question {
+        position: relative;
+        height: 300px;
+        width: 300px;
+        padding: 5px;
+        font-size: 10px;
+        margin-left: 45px;
+        margin-top: 50px;
+    }
+    .heart__question button {
+        font-size: 8px;
+        border: solid black 2px;
+    }
+    .incorrect__map,
+    .correct__map {
+        position: absolute;
+        margin-top: 10px;
+        height: 250px;
+        width: 250px;
+    }
+    .x__button {
+        position: absolute;
+        bottom: 100px;
+        right: 100px;
+    }
+    /* .heart__question button.x__button {
+        position: absolute;
+        bottom: 100px;
+    } */
     /*battle-ground*/
     .battle__char__img {
         height: 150px;
@@ -893,6 +919,10 @@ section.answers button:hover {
     }
     .random__response p {
         margin-top: 20px;
+        font-size: 25px;
+    }
+    .text_container p.answer_text {
+        font-size: 15px;
     }
     /*INSTRUCTIONS*/
     .section__instructions {
@@ -983,26 +1013,49 @@ section.answers button:hover {
         padding: 1.5rem;
     }
     /*map*/
+    .logo__map {
+        top: 15px;
+        width: 300px;
+    }
     #canvas {
-        height: 500px;
-        width: 600px;
+        height: 487px;
+        width: 650px;
         margin: .1%;
+    }
+    .map__canvas {
+        height: 600px;
+    }
+    .section__health {
+        position: absolute;
+        right: 0px;
     }
     .story__container {
         width: 93%;
         background: none;
-        ;
     }
     .story__container .story {
-        padding: 0px 20px 20px 60px;
-        line-height: 1.25;
-        font-size: 18px;
+        padding: 0px 0px 0px 40px;
+        line-height: 1.5;
+        font-size: 16px;
         color: #FFB046;
-        width: 60%;
+        width: 85%;
+        margin-right: 0px;
+        margin-top: 60px;
     }
     .story__container button.fight {
-        bottom: 30px;
-        left: 150px;
+        bottom: 20px;
+        left: 115px;
+        font-size: 15px;
+        padding: 15px;
+    }
+    section .button__intro,
+    .button__instructions,
+    .button__info,
+    .skip__button {
+        font-size: 14.5px;
+    }
+    .skip__button {
+        margin-right: 128px;
     }
     .section__health {
         display: flex;

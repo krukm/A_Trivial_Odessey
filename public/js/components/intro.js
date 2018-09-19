@@ -7,7 +7,7 @@ const intro = {
     <p class="intro_text">Zeus has banished you to the Underworld and capriciously imprisoned your loved ones at Mt. Olympus. The gods it seems have made you their plaything! They will move heaven and earth so that you don’t see your family again. Use your cunning, strength and bravery to defy the gods and foil their schemes.</p>
     <section class="button__intro--section">
         <button class="button__play" ng-click="$ctrl.play()">{{ $ctrl.playButton }}</button>
-        <button class="button__instructions--intro" ng-click="$ctrl.instructions()">INSTUCTIONS</button>
+        <button class="button__instructions--intro" ng-click="$ctrl.instructions()">INSTRUCTIONS</button>
     </section>
     </section>
 
@@ -16,7 +16,7 @@ const intro = {
         const vm = this;
         PlayerService.introAudio.paused ? PlayerService.introAudio.play() : PlayerService.introAudio.play();
         PlayerService.introAudio.loop;
-        
+
         // Find matches
         vm.mql = window.matchMedia("(orientation: landscape)");
 

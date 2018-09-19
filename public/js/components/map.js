@@ -61,7 +61,7 @@ const map = {
         vm.showMonster = false;
         vm.monsterTop = "";
         vm.monsterLeft = "";
-        
+
         PlayerService.battles >= 0 ? PlayerService.mapAudio.play() : console.log(`Not Playing`);
         PlayerService.mapAudio.loop;
 
@@ -101,16 +101,16 @@ const map = {
                 vm.showOutCome = true;
                 vm.correct = true;
                 PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
-                vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
+                vm.message_3 = "You Gained an extra heart. Don't lose them all or you'll die!";
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
                 PlayerService.awwAudio.play();
                 vm.showOutCome = true;
                 vm.incorrect = true;
-                vm.message_3 = "Oh no, You answered wrong, don't loose all your hearts or you'll die!";
+                vm.message_3 = "Oh no, you answered wrong! Don't loose all your hearts or you'll die!";
             }
         }
-        
+
         vm.hideInstructions = () => {
             vm.showInstructions = false;
             PlayerService.awwAudio.pause();
@@ -159,11 +159,11 @@ const map = {
                 vm.monsterLeft = "60px";
                 vm.monsterTop = "440px";
                 vm.opponentOnMap = "Cerebrus"
-                // vm.logoImg = new Image();
-                // vm.logoImg.src = "./img/Cerebrus.png";
-                // vm.logoImg.onload = function () {
-                //     vm.gctx.drawImage(vm.logoImg, 50, 430, 70, 70);
-                // }
+                    // vm.logoImg = new Image();
+                    // vm.logoImg.src = "./img/Cerebrus.png";
+                    // vm.logoImg.onload = function () {
+                    //     vm.gctx.drawImage(vm.logoImg, 50, 430, 70, 70);
+                    // }
                 break;
             case 1:
                 vm.storyText = EnemyService.hades;
@@ -171,7 +171,7 @@ const map = {
                 vm.opponentOnMap = "Hades";
                 vm.monsterLeft = "133px";
                 vm.monsterTop = "305px";
-                
+
                 // vm.logoImg = new Image();
                 // vm.logoImg.src = "./img/Hades.png";
                 // vm.logoImg.onload = function () {
@@ -280,11 +280,11 @@ const map = {
                 break;
             case 7:
 
-            // vm.logoImg = new Image();
-            // vm.logoImg.src = "./img/warrior.png";
-            // vm.logoImg.onload = function () {
-            //     vm.gctx.drawImage(vm.logoImg, 700, 480, 70, 70);
-            // }
+                // vm.logoImg = new Image();
+                // vm.logoImg.src = "./img/warrior.png";
+                // vm.logoImg.onload = function () {
+                //     vm.gctx.drawImage(vm.logoImg, 700, 480, 70, 70);
+                // }
 
                 vm.storyText = EnemyService.hercules;
                 vm.showMonster = true;
@@ -303,11 +303,11 @@ const map = {
                 break;
             case 8:
 
-            // vm.logoImg = new Image();
-            // vm.logoImg.src = "./img/zeus.png";
-            // vm.logoImg.onload = function () {
-            //     vm.gctx.drawImage(vm.logoImg, 705, 240, 70, 70);
-            // }
+                // vm.logoImg = new Image();
+                // vm.logoImg.src = "./img/zeus.png";
+                // vm.logoImg.onload = function () {
+                //     vm.gctx.drawImage(vm.logoImg, 705, 240, 70, 70);
+                // }
 
                 vm.storyText = EnemyService.zeus;
                 vm.showMonster = true;
@@ -324,7 +324,7 @@ const map = {
                 vm.gctx.lineTo(730, 520);
                 vm.gctx.stroke();
                 vm.draw(730, 520, 740, 55);
-             // vm.draw(740, 300, 740, 55);
+                // vm.draw(740, 300, 740, 55);
                 break;
         }
 
