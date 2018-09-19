@@ -19,10 +19,6 @@ const victory = {
         PlayerService.victory.play();
         PlayerService.mapAudio.pause();
         PlayerService.battleAudio.pause();
-        PlayerService.
-        PlayerService.
-        PlayerService.
-        PlayerService.
 
         vm.resetGame = () => {
             PlayerService.resetPlayer();
