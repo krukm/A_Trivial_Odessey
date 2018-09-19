@@ -19,7 +19,7 @@ const map = {
     </section>       
     <section class="popup">
         <section ng-if="$ctrl.showInstructions" class="heart__instructions">
-            <section class="heart__question">
+            <section class="heart__question" ng-blur="$ctrl.showOutCome = false">
                 <p ng-if="!$ctrl.showOutCome">{{ $ctrl.message }}</png>
                 <p ng-if="!$ctrl.showOutCome">{{ $ctrl.message_2 }}</p>
                 <p ng-if="!$ctrl.showOutCome">{{ $ctrl.question }}</p>
@@ -27,7 +27,6 @@ const map = {
                     <button class="answers" ng-click="$ctrl.evaluateAnswer(answer)" ng-repeat="answer in $ctrl.answers">{{ answer }}</button>
                 </section>
                 <p class="out_come" ng-class="{'correct__map':$ctrl.correct, 'incorrect__map':$ctrl.incorrect}" ng-if="$ctrl.showOutCome">{{ $ctrl.message_3 }}</p>
-                <button class="x__button" ng-click="$ctrl.hideInstructions()"><i class="fas fa-times"></i></button>
             </section>
         </section>
     </section>                            
@@ -43,7 +42,6 @@ const map = {
     `,
 
     controller: ["PlayerService", "EnemyService", "$location", "$timeout", "$interval", function(PlayerService, EnemyService, $location, $timeout, $interval) {
-
         const vm = this;
         vm.id = "id__health";
         vm.i = 0;
@@ -95,28 +93,32 @@ const map = {
         };
 
         vm.evaluateAnswer = answer => {
+            vm.showOutCome = true;
             if (answer === vm.correctAnswer) {
                 PlayerService.applauseAudio.currentTime = 0;
                 PlayerService.applauseAudio.play();
-                vm.showOutCome = true;
                 vm.correct = true;
                 PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
-                vm.message_3 = "You Gained an extra heart. Don't lose them all or you'll die!";
+
+                vm.message_3 = "You gained an extra heart. Don't lose them all or you'll die!";
+
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
                 PlayerService.awwAudio.currentTime = 0;
                 PlayerService.awwAudio.play();
-                vm.showOutCome = true;
                 vm.incorrect = true;
                 vm.message_3 = "Oh no, you answered wrong! Don't loose all your hearts or you'll die!";
             }
+
+            vm.hideInstructions();
         }
 
         vm.hideInstructions = () => {
-            vm.showInstructions = false;
-            PlayerService.awwAudio.pause();
-            PlayerService.applauseAudio.pause();
-            PlayerService.buttonSound.play();
+            $timeout(() => {
+                vm.showInstructions = false;
+                PlayerService.awwAudio.pause();
+                PlayerService.applauseAudio.pause();
+            }, 3000);
         }
 
         vm.fight = () => {
@@ -143,7 +145,7 @@ const map = {
 
         vm.skip = () => {
             vm.fightButton = true;
-            vm.speed = 0;
+            vm.speed = -2000;
             PlayerService.buttonSound.play();
         }
 
@@ -257,7 +259,9 @@ const map = {
                 vm.logoImg = new Image();
                 vm.logoImg.src = "public/img/Hercules.png";
                 vm.logoImg.onload = function() {
-                    vm.gctx.drawImage(vm.logoImg, 680, 440, 90, 90);
+
+                    vm.gctx.drawImage(vm.logoImg, 690, 210, 90, 90);
+
                 }
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
@@ -267,7 +271,9 @@ const map = {
                 vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(530, 540);
                 vm.gctx.stroke();
-                vm.draw(530, 540, 730, 520);
+
+                vm.draw(530, 540, 740, 300);
+
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
@@ -283,9 +289,10 @@ const map = {
                 vm.gctx.lineTo(115, 195);
                 vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(530, 540);
-                vm.gctx.lineTo(730, 520);
+                vm.gctx.lineTo(740, 300);
                 vm.gctx.stroke();
-                vm.draw(730, 520, 740, 55);
+                vm.draw(740, 300, 740, 55);
+
                 break;
         }
 

@@ -16,7 +16,7 @@ function EnemyService() {
 
     vm.prometheus = "A great eagle swoops down and rests upon a shadowy figure imprisioned on a boulder. It’s Prometheus! Help him and he may help you...";
 
-    vm.hercules = "You release Prometheus and he guides you to Mt. Olympus, home of the gods. The ominous mountain looms before you. ";
+    vm.hercules = "You release Prometheus and he guides you to Mt. Olympus, home of the gods. The ominous mountain looms before you. You think you are close, but Hercules has other plans for you!";
 
     vm.zeus = "Zeus has followed your journey from the Underworld to his doorstep. “I did not expect you to make it this far, mere mortal”. A lighting bolt grows out of his hand. Zeus is the last thing standing between you and your loved ones!";
 }

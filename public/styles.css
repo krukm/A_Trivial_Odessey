@@ -907,6 +907,10 @@ map.ng-enter.ng-enter-active {
         font-size: 8px;
         border: solid #000 2px;
     }
+    .heart__question .x__button {
+        position: absolute;
+        bottom: 100px;
+    }
     .incorrect__map,
     .correct__map {
         position: absolute;
@@ -914,9 +918,6 @@ map.ng-enter.ng-enter-active {
         height: 250px;
         width: 250px;
     }
-    /* .x__button {
-
-    } */
     /*battle-ground*/
     .battle__char__img {
         height: 150px;
