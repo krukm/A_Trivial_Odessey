@@ -565,8 +565,6 @@ section.answers button:hover {
     color: #DD2020;
 }
 
-
-
 .next_question_button {
     padding: 20px 30px;
     border-radius: 3px;
@@ -599,6 +597,7 @@ section.answers button:hover {
 .incorrect {
     animation: randomResponseWrong 0.8s infinite;
 }
+
 
 /***************************/
 
@@ -763,14 +762,16 @@ section.answers button:hover {
 }
 
 map.ng-enter {
-    transition:0.5s linear all;
-    opacity:0;
-  }
-  
-  /* The finishing CSS styles for the enter animation */
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+
+/* The finishing CSS styles for the enter animation */
+
 map.ng-enter.ng-enter-active {
-    opacity:1;
-  }
+    opacity: 1;
+}
 
 
 /* portrait comments */
@@ -807,7 +808,7 @@ map.ng-enter.ng-enter-active {
     .section__victory {
         display: none;
     }
- }
+}
 
 
 /* landscape */
@@ -888,11 +889,34 @@ map.ng-enter.ng-enter-active {
         margin-right: 98px;
     }
     .heart__instructions {
-        left: 50px;
-        bottom: -100px;
-        width: 600px;
-        height: 400px;
+        left: 125px;
+        width: 400px;
+        height: 300px;
+        bottom: -30px;
     }
+    .heart__question {
+        position: relative;
+        height: 300px;
+        width: 300px;
+        padding: 5px;
+        font-size: 10px;
+        margin-left: 45px;
+        margin-top: 50px;
+    }
+    .heart__question button {
+        font-size: 8px;
+        border: solid #000 2px;
+    }
+    .incorrect__map,
+    .correct__map {
+        position: absolute;
+        margin-top: 10px;
+        height: 250px;
+        width: 250px;
+    }
+    /* .x__button {
+
+    } */
     /*battle-ground*/
     .battle__char__img {
         height: 150px;
@@ -930,6 +954,10 @@ map.ng-enter.ng-enter-active {
     }
     .random__response p {
         margin-top: 20px;
+        font-size: 25px;
+    }
+    .text_container p.answer_text {
+        font-size: 15px;
     }
     /*INSTRUCTIONS*/
     .section__instructions {
