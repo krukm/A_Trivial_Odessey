@@ -172,7 +172,7 @@ const map = {
             case 1:
                 vm.storyText = EnemyService.hades;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "public/img/Hades.png";
+                vm.logoImg.src = "public/img/hades.png";
                 vm.logoImg.onload = function() {
                     vm.gctx.drawImage(vm.logoImg, 115, 300, 90, 90);
                 }
@@ -194,7 +194,7 @@ const map = {
             case 3:
                 vm.storyText = EnemyService.poseidon;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "public/img/poseidon.png";
+                vm.logoImg.src = "public/img/Poseidon.png";
                 vm.logoImg.onload = function() {
                     vm.gctx.drawImage(vm.logoImg, 0, 180, 90, 90);
                 }
@@ -208,7 +208,7 @@ const map = {
 
                 vm.storyText = EnemyService.achilles;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "public/img/athena.png";
+                vm.logoImg.src = "public/img/Athena.png";
                 vm.logoImg.onload = function() {
                     vm.gctx.drawImage(vm.logoImg, 75, 125, 90, 90);
                 }
@@ -222,7 +222,7 @@ const map = {
             case 5:
                 vm.storyText = EnemyService.polyphemus;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "public/img/polyphemus.png";
+                vm.logoImg.src = "public/img/Polyphemus.png";
                 vm.logoImg.onload = function() {
                     vm.gctx.drawImage(vm.logoImg, 355, 250, 90, 90);
                 }
@@ -237,7 +237,7 @@ const map = {
             case 6:
                 vm.storyText = EnemyService.prometheus;
                 vm.logoImg = new Image();
-                vm.logoImg.src = "public/img/achilles.png";
+                vm.logoImg.src = "public/img/Achilles.png";
                 vm.logoImg.onload = function() {
                     vm.gctx.drawImage(vm.logoImg, 485, 450, 90, 90);
                 }
