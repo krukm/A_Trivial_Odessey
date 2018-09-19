@@ -6,6 +6,10 @@ body {
     background: #000;
 }
 
+.portrait {
+    display: none;
+}
+
 
 /************************/
 
@@ -92,12 +96,6 @@ body {
     left: 20px;
     width: 400px;
     height: 40px;
-}
-
-#img__canvas {
-    width: 70px;
-    height: 70px;
-    position: absolute;
 }
 
 #canvas {
@@ -778,8 +776,7 @@ map.ng-enter.ng-enter-active {
 
 /* portrait comments */
 
-@media screen and (orientation:portrait) {
-    /* portrait-specific styles */
+@media screen and (orientation: portrait) {
     .portrait {
         display: block;
         margin: 0 auto;
@@ -837,10 +834,10 @@ map.ng-enter.ng-enter-active {
         margin: .1%;
     }
     .logo__map {
-        top: 20px;
-        left: 10px;
+        top: 10px;
+        left: 15px;
         width: 200px;
-        height: 20px;
+        height: 25px;
     }
     .img__container {
         display: flex;
@@ -859,21 +856,26 @@ map.ng-enter.ng-enter-active {
     }
     .story__container {
         background: none;
-        width: 400px;
+        width: 425px;
         height: 250px;
-        padding-bottom: 0px;
+        /* padding-bottom: 0px; */
         margin-bottom: 10px;
     }
     .story__container .story {
-        padding: 0px 20px 20px 60px;
+        padding: 0px 0px 0px 10px;
         line-height: 1.25;
         font-size: 11px;
         color: #FFB046;
-        width: 40%;
+        width: 55%;
     }
     .story__container button.fight {
-        bottom: -40px;
-        left: 80px;
+        bottom: 0px;
+        left: 75px;
+        font-size: 11px;
+    }
+    .bottom__map--nav {
+        display: flex;
+        justify-content: space-between;
     }
     section .button__intro,
     .button__instructions,
@@ -881,14 +883,16 @@ map.ng-enter.ng-enter-active {
     .skip__button {
         margin-left: 5px;
         padding: 10px 10px;
-        font-size: 10px;
+        font-size: 8.5px;
+    }
+    .skip__button {
+        margin-right: 98px;
     }
     .heart__instructions {
         left: 125px;
         width: 400px;
         height: 300px;
         bottom: -30px;
-
     }
     .heart__question {
         position: relative;
@@ -903,6 +907,10 @@ map.ng-enter.ng-enter-active {
         font-size: 8px;
         border: solid #000 2px;
     }
+    .heart__question .x__button {
+        position: absolute;
+        bottom: 100px;
+    }
     .incorrect__map,
     .correct__map {
         position: absolute;
@@ -910,8 +918,6 @@ map.ng-enter.ng-enter-active {
         height: 250px;
         width: 250px;
     }
-    /* .x__button {
-    } */
     /*battle-ground*/
     .battle__char__img {
         height: 150px;
@@ -1043,49 +1049,26 @@ map.ng-enter.ng-enter-active {
         padding: 1.5rem;
     }
     /*map*/
-    .logo__map {
-        top: 15px;
-        width: 300px;
-    }
     #canvas {
-        height: 487px;
-        width: 650px;
+        height: 500px;
+        width: 600px;
         margin: .1%;
-    }
-    .map__canvas {
-        height: 600px;
-    }
-    .section__health {
-        position: absolute;
-        right: 0px;
     }
     .story__container {
         width: 93%;
         background: none;
+        ;
     }
     .story__container .story {
-        padding: 0px 0px 0px 40px;
-        line-height: 1.5;
-        font-size: 16px;
+        padding: 0px 20px 20px 60px;
+        line-height: 1.25;
+        font-size: 18px;
         color: #FFB046;
-        width: 85%;
-        margin-right: 0px;
-        margin-top: 60px;
+        width: 60%;
     }
     .story__container button.fight {
-        bottom: 20px;
-        left: 115px;
-        font-size: 15px;
-        padding: 15px;
-    }
-    section .button__intro,
-    .button__instructions,
-    .button__info,
-    .skip__button {
-        font-size: 14.5px;
-    }
-    .skip__button {
-        margin-right: 128px;
+        bottom: 30px;
+        left: 150px;
     }
     .section__health {
         display: flex;
