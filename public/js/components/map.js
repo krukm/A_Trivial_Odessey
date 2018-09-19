@@ -4,6 +4,8 @@ const map = {
     template: `
     <section class="map__canvas">
             <img class="logo__map" src='public/img/logo2.png'>
+            <img src="{{ 'public/img/' + $ctrl.opponentOnMap + '.png' }}" id="img__canvas" style="{{$ctrl.showMonster?'display:block':'display:none'}}; left: {{$ctrl.monsterLeft}}; top: {{$ctrl.monsterTop}};" >
+
             <canvas id="canvas"></canvas>
         <section class="img__container">
             <section class="section__health" id="id__health">
@@ -55,6 +57,7 @@ const map = {
         vm.correct = false;
         vm.incorrect = false;
 
+
         PlayerService.mapAudio.currentTime = 0;
         PlayerService.mapAudio.play();
         PlayerService.mapAudio.loop = true;
@@ -69,6 +72,10 @@ const map = {
         vm.correctAnswer = vm.questionObj.correct_answer;
         vm.answers = vm.questionObj.incorrect_answers;
         vm.answers.push(vm.correctAnswer);
+        vm.opponentOnMap = "";
+        vm.showMonster = false;
+        vm.monsterTop = "";
+        vm.monsterLeft = "";
 
 
         if (PlayerService.battles === 1) {
@@ -92,7 +99,9 @@ const map = {
                 PlayerService.applauseAudio.play();
                 vm.correct = true;
                 PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
+
                 vm.message_3 = "You gained an extra heart. Don't lose them all or you'll die!";
+
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
                 PlayerService.awwAudio.currentTime = 0;
@@ -145,7 +154,7 @@ const map = {
             $interval(() => {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
-                // vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
                 vm.gctx.strokeStyle = "red";
                 vm.gctx.setLineDash([5, 5]);
                 vm.gctx.lineWidth = 5;
@@ -250,7 +259,9 @@ const map = {
                 vm.logoImg = new Image();
                 vm.logoImg.src = "public/img/Hercules.png";
                 vm.logoImg.onload = function() {
+
                     vm.gctx.drawImage(vm.logoImg, 690, 210, 90, 90);
+
                 }
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
@@ -260,7 +271,9 @@ const map = {
                 vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(530, 540);
                 vm.gctx.stroke();
+
                 vm.draw(530, 540, 740, 300);
+
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
@@ -279,6 +292,7 @@ const map = {
                 vm.gctx.lineTo(740, 300);
                 vm.gctx.stroke();
                 vm.draw(740, 300, 740, 55);
+
                 break;
         }
 

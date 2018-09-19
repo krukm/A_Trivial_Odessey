@@ -38,9 +38,8 @@ const characters = {
             { name: 'Siren' },
             { name: 'Zeus' }
         ];
-
         vm.back = () => $location.url('/map');
-
+      
         vm.selectCharacter = hit => {
             vm.selectBio = true;
             vm.bioShow = true;
