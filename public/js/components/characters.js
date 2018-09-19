@@ -41,14 +41,12 @@ const characters = {
 
         vm.back = () => {
             $location.url('/map');
-            PlayerService.buttonSound.play();
+            
         }
         
         vm.selectCharacter = hit => {
-            PlayerService.buttonSound.play();
             vm.selectBio = true;
             vm.bioShow = true;
-
             vm.pic = `public/img/${hit}.png`;
             vm.bio = BioService[hit];
         }
