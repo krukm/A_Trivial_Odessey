@@ -36,7 +36,8 @@ const battleGround = {
                 </section>
             </section>
         </section>
-    </section>    
+    </section>
+    <section class="portrait"><h1>!!!This game is intended for landscape only - please rotate to play!!!</h1></section>  
     `,
 
     controller: ["TriviaService", "PlayerService", "$location", "$timeout", "$interval", function(TriviaService, PlayerService, $location, $timeout, $interval) {
@@ -56,7 +57,7 @@ const battleGround = {
         vm.answerArray = [];
         vm.currentQuestion = null;
         vm.correctAnswer = null;
-        vm.changedHealth = false;
+        vm.changedHealth = false; 
         vm.rightAnswerArr = [
             "You're a genius, keep up the good work!",
             "The Gods stand no chance at defeating you!",
@@ -119,7 +120,7 @@ const battleGround = {
                 if (vm.counter <= 0) {
                     $interval.cancel(vm.countDown);
                     vm.answerCounter++
-                        vm.incorrect = true;
+                    vm.incorrect = true;
                     vm.correct = false;
 
                     vm.evaluateAnswerCounter();
@@ -128,6 +129,9 @@ const battleGround = {
                         vm.answered = true;
                         vm.correct = false;
                         vm.answerText = `You ran out of time. The correct answer was`;
+                        PlayerService.awwAudio.currentTime = 0;
+                        PlayerService.awwAudio.play();
+                        vm.getRandomResponse(vm.wrongAnswerArr);
                     }, 0);
                 }
             }, 1000);
@@ -182,6 +186,7 @@ const battleGround = {
                 vm.answerText = "You answered correctly. Great job";
                 vm.correctAnswers++;
                 vm.getRandomResponse(vm.rightAnswerArr);
+                PlayerService.applauseAudio.currentTime = 0;
                 PlayerService.applauseAudio.play();
 
                 if (vm.correctAnswers === 2) {
@@ -195,6 +200,7 @@ const battleGround = {
                 vm.answerText = `You answered the question incorrectly! The correct answer was`;
                 vm.incorrectAnswers++;
                 vm.getRandomResponse(vm.wrongAnswerArr);
+                PlayerService.awwAudio.currentTime = 0;
                 PlayerService.awwAudio.play();
 
                 if (vm.incorrectAnswers === 2) {
@@ -204,6 +210,11 @@ const battleGround = {
 
                 if (PlayerService.playerHealth === 0) {
                     vm.gameOver = true;
+                    PlayerService.gameOverSound.currentTime = 0;
+                    PlayerService.gameOverSound.volume = .6;
+                    PlayerService.gameOverSound.play();
+                    PlayerService.battleAudio.pause();
+                    PlayerService.awwAudio.pause();
 
                     $timeout(() => {
                         PlayerService.resetPlayer();
@@ -220,13 +231,16 @@ const battleGround = {
             vm.getNextQuestion();
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();
+            PlayerService.buttonSound.play();
         }
 
         vm.continue = () => {
             vm.changedHealth ? $location.path("/map").search({ "updateHealth": "true" }) : $location.path("/map");
+            PlayerService.battleAudio.currentTime = 0;
             PlayerService.battleAudio.pause();
             PlayerService.awwAudio.pause();
             PlayerService.applauseAudio.pause();
+            PlayerService.buttonSound.play();
         };
 
         switch (PlayerService.battles) {
