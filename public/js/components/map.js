@@ -56,7 +56,7 @@ const map = {
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
-        
+
         PlayerService.mapAudio.currentTime = 0;
         PlayerService.mapAudio.play();
         PlayerService.mapAudio.loop = true;
@@ -94,17 +94,17 @@ const map = {
                 vm.showOutCome = true;
                 vm.correct = true;
                 PlayerService.setPlayerHealth(PlayerService.playerHealth += 1);
-                vm.message_3 = "Yay, You Gained an extra heart. Don't lose them all or you'll die!";
+                vm.message_3 = "You Gained an extra heart. Don't lose them all or you'll die!";
                 console.log(`Player health: ${PlayerService.playerHealth}`);
             } else {
                 PlayerService.awwAudio.currentTime = 0;
                 PlayerService.awwAudio.play();
                 vm.showOutCome = true;
                 vm.incorrect = true;
-                vm.message_3 = "Oh no, You answered wrong, don't loose all your hearts or you'll die!";
+                vm.message_3 = "Oh no, you answered wrong! Don't loose all your hearts or you'll die!";
             }
         }
-        
+
         vm.hideInstructions = () => {
             vm.showInstructions = false;
             PlayerService.awwAudio.pause();
@@ -126,8 +126,8 @@ const map = {
         vm.instructions = () => {
             $location.url('/instructions');
             PlayerService.buttonSound.play();
-        }           
-            
+        }
+
 
         vm.info = () => {
             $location.url('/characters');
@@ -155,132 +155,132 @@ const map = {
             }, 50);
         }
 
-            switch (PlayerService.battles) {
-                case 0:
-                    vm.storyText = EnemyService.cerberus;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/Cerebrus.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 50, 430, 90, 90);
-                    }
-                    break;
-                case 1:
-                    vm.storyText = EnemyService.hades;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/Hades.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 115, 300, 90, 90);
-                    }
-                    vm.draw(80, 470, 160, 365);
-                    break;
-                case 2:
-                    vm.storyText = EnemyService.sirens;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/Siren.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 180, 215, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.stroke();
-                    vm.draw(160, 365, 220, 260);
-    
-                    break;
-                case 3:
-                    vm.storyText = EnemyService.poseidon;   
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/poseidon.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 0, 180, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
-                    vm.gctx.stroke();
-                    vm.draw(220, 260, 45, 260);
-                    break;
-                case 4:
-    
-                    vm.storyText = EnemyService.achilles;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/athena.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 75, 125, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
-                    vm.gctx.lineTo(45, 260);
-                    vm.gctx.stroke();
-                    vm.draw(45, 260, 115, 195);
-                    break;
-                case 5:
-                    vm.storyText = EnemyService.polyphemus;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/polyphemus.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 355, 250, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
-                    vm.gctx.lineTo(45, 260);
-                    vm.gctx.lineTo(115, 195);
-                    vm.gctx.stroke();
-                    vm.draw(115, 195, 395, 330);
-                    break;
-                case 6:
-                    vm.storyText = EnemyService.prometheus;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/achilles.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 485, 450, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
-                    vm.gctx.lineTo(45, 260);
-                    vm.gctx.lineTo(115, 195);
-                    vm.gctx.bezierCurveTo(115, 195, 300, 20, 395, 330)
-                    vm.gctx.stroke();
-                    vm.draw(395, 330, 530, 540);
-                    break;
-                case 7:
-                    vm.storyText = EnemyService.hercules;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/Hercules.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 680, 440, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
-                    vm.gctx.lineTo(45, 260);
-                    vm.gctx.lineTo(115, 195);
-                    vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
-                    vm.gctx.lineTo(530, 540);
-                    vm.gctx.stroke();
-                    vm.draw(530, 540, 730, 520);
-                    break;
-                case 8:
-                    vm.storyText = EnemyService.zeus;
-                    vm.logoImg = new Image();
-                    vm.logoImg.src = "public/img/zeus.png";
-                    vm.logoImg.onload = function () {
-                        vm.gctx.drawImage(vm.logoImg, 685, 0, 90, 90);
-                    }
-                    vm.gctx.moveTo(80, 470);
-                    vm.gctx.lineTo(160, 365);
-                    vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
-                    vm.gctx.lineTo(45, 260);
-                    vm.gctx.lineTo(115, 195);
-                    vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
-                    vm.gctx.lineTo(530, 540);
-                    vm.gctx.lineTo(730, 520);
-                    vm.gctx.stroke();
-                    vm.draw(730, 520, 740, 55);
-                    break;
-            }
+        switch (PlayerService.battles) {
+            case 0:
+                vm.storyText = EnemyService.cerberus;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/Cerebrus.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 50, 430, 90, 90);
+                }
+                break;
+            case 1:
+                vm.storyText = EnemyService.hades;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/Hades.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 115, 300, 90, 90);
+                }
+                vm.draw(80, 470, 160, 365);
+                break;
+            case 2:
+                vm.storyText = EnemyService.sirens;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/Siren.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 180, 215, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.stroke();
+                vm.draw(160, 365, 220, 260);
+
+                break;
+            case 3:
+                vm.storyText = EnemyService.poseidon;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/poseidon.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 0, 180, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.stroke();
+                vm.draw(220, 260, 45, 260);
+                break;
+            case 4:
+
+                vm.storyText = EnemyService.achilles;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/athena.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 75, 125, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.stroke();
+                vm.draw(45, 260, 115, 195);
+                break;
+            case 5:
+                vm.storyText = EnemyService.polyphemus;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/polyphemus.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 355, 250, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.stroke();
+                vm.draw(115, 195, 395, 330);
+                break;
+            case 6:
+                vm.storyText = EnemyService.prometheus;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/achilles.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 485, 450, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.bezierCurveTo(115, 195, 300, 20, 395, 330)
+                vm.gctx.stroke();
+                vm.draw(395, 330, 530, 540);
+                break;
+            case 7:
+                vm.storyText = EnemyService.hercules;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/Hercules.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 680, 440, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
+                vm.gctx.lineTo(530, 540);
+                vm.gctx.stroke();
+                vm.draw(530, 540, 730, 520);
+                break;
+            case 8:
+                vm.storyText = EnemyService.zeus;
+                vm.logoImg = new Image();
+                vm.logoImg.src = "public/img/zeus.png";
+                vm.logoImg.onload = function() {
+                    vm.gctx.drawImage(vm.logoImg, 685, 0, 90, 90);
+                }
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
+                vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
+                vm.gctx.lineTo(530, 540);
+                vm.gctx.lineTo(730, 520);
+                vm.gctx.stroke();
+                vm.draw(730, 520, 740, 55);
+                break;
+        }
 
         vm.typeWriter = () => {
             if (vm.i < vm.storyText.length) {
