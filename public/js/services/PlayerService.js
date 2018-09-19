@@ -12,6 +12,7 @@ function PlayerService() {
     vm.introAudio = new Audio("public/sounds/intro.mp3");
     vm.gameOverSound = new Audio("public/sounds/game-over-2.mp3");
     vm.buttonSound = new Audio("public/sounds/buttonSound.mp3");
+    vm.victory = new Audio("public/sounds/victory.mp3");
 
     vm.getPlayerHealth = () => {
         return vm.playerHealth;
