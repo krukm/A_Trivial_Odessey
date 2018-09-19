@@ -764,14 +764,16 @@ section.answers button:hover {
 }
 
 map.ng-enter {
-    transition:0.5s linear all;
-    opacity:0;
-  }
-  
-  /* The finishing CSS styles for the enter animation */
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+
+/* The finishing CSS styles for the enter animation */
+
 map.ng-enter.ng-enter-active {
-    opacity:1;
-  }
+    opacity: 1;
+}
 
 
 /* portrait comments */
@@ -886,6 +888,7 @@ map.ng-enter.ng-enter-active {
         width: 400px;
         height: 300px;
         bottom: -30px;
+
     }
     .heart__question {
         position: relative;
@@ -898,7 +901,7 @@ map.ng-enter.ng-enter-active {
     }
     .heart__question button {
         font-size: 8px;
-        border: solid black 2px;
+        border: solid #000 2px;
     }
     .incorrect__map,
     .correct__map {
@@ -907,14 +910,7 @@ map.ng-enter.ng-enter-active {
         height: 250px;
         width: 250px;
     }
-    .x__button {
-        position: absolute;
-        bottom: 100px;
-        right: 100px;
-    }
-    /* .heart__question button.x__button {
-        position: absolute;
-        bottom: 100px;
+    /* .x__button {
     } */
     /*battle-ground*/
     .battle__char__img {
