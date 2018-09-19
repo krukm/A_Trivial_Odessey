@@ -22,6 +22,7 @@ const victory = {
         vm.resetGame = () => {
             PlayerService.resetPlayer();
             $location.path('/intro');
+            PlayerService.applauseAudio.pause();
         }
 
         vm.storyText = "You've completed your quest! The gods stood no chance before your awesome might. You delight in your family's reunion, and look to the horizon...";
