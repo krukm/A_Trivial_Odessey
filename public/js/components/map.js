@@ -4,6 +4,8 @@ const map = {
     template: `
     <section class="map__canvas">
             <img class="logo__map" src='public/img/logo2.png'>
+            <img src="{{ 'public/img/' + $ctrl.opponentOnMap + '.png' }}" id="img__canvas" style="{{$ctrl.showMonster?'display:block':'display:none'}}; left: {{$ctrl.monsterLeft}}; top: {{$ctrl.monsterTop}};" >
+
             <canvas id="canvas"></canvas>
         <section class="img__container">
             <section class="section__health" id="id__health">
@@ -56,7 +58,6 @@ const map = {
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
-
         PlayerService.mapAudio.currentTime = 0;
         PlayerService.mapAudio.play();
         PlayerService.mapAudio.loop = true;
@@ -71,6 +72,10 @@ const map = {
         vm.correctAnswer = vm.questionObj.correct_answer;
         vm.answers = vm.questionObj.incorrect_answers;
         vm.answers.push(vm.correctAnswer);
+        vm.opponentOnMap = "";
+        vm.showMonster = false;
+        vm.monsterTop = "";
+        vm.monsterLeft = "";
 
 
         if (PlayerService.battles === 1) {
@@ -145,7 +150,7 @@ const map = {
             $interval(() => {
                 vm.amount += 0.01; // change to alter duration
                 if (vm.amount > 1) vm.amount = 1;
-                // vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
+                vm.gctx.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
                 vm.gctx.strokeStyle = "red";
                 vm.gctx.setLineDash([5, 5]);
                 vm.gctx.lineWidth = 5;
@@ -279,6 +284,7 @@ const map = {
                 vm.gctx.lineTo(730, 520);
                 vm.gctx.stroke();
                 vm.draw(730, 520, 740, 55);
+                // vm.draw(740, 300, 740, 55);
                 break;
         }
 
