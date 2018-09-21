@@ -5,6 +5,8 @@ function PlayerService() {
 
     vm.playerHealth = 3;
     vm.battles = 0;
+    vm.showInstructions = false;
+    vm.showInstructionsCounter = 0;
     vm.mapAudio = new Audio("public/sounds/map.mp3");
     vm.battleAudio = new Audio("public/sounds/battle.mp3");
     vm.awwAudio = new Audio("public/sounds/aww.mp3");

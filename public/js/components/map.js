@@ -50,7 +50,7 @@ const map = {
         vm.canvas.height = 600;
         vm.gctx = vm.canvas.getContext("2d");
         vm.questions;
-        vm.showInstructions = false;
+        vm.showInstructions = PlayerService.showInstructions;
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
@@ -71,7 +71,9 @@ const map = {
 
 
         if (PlayerService.battles === 1) {
-            vm.showInstructions = true;
+            PlayerService.showInstructionsCounter++;
+            if (PlayerService.showInstructionsCounter < 2) vm.showInstructions = true;
+            console.log(`Counter: ${PlayerService.showInstructionsCounter}`);
             if (PlayerService.playerHealth < 3) {
                 vm.message = "Did you notice you lost a heart?";
                 vm.message_2 = "Answer this question right and you can get your heart back!";
@@ -236,6 +238,7 @@ const map = {
                 vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
+                vm.gctx.bezierCurveTo(115, 195, 300, 20, 395, 330);
                 vm.gctx.lineTo(395, 330);
                 vm.gctx.stroke();
                 // vm.draw(115, 195, 395, 330);
