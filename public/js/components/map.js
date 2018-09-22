@@ -50,7 +50,7 @@ const map = {
         vm.canvas.height = 600;
         vm.gctx = vm.canvas.getContext("2d");
         vm.questions;
-        vm.showInstructions = false;
+        vm.showInstructions = PlayerService.showInstructions;
         vm.showOutCome = false;
         vm.correct = false;
         vm.incorrect = false;
@@ -71,7 +71,9 @@ const map = {
 
 
         if (PlayerService.battles === 1) {
-            vm.showInstructions = true;
+            PlayerService.showInstructionsCounter++;
+            if (PlayerService.showInstructionsCounter < 2) vm.showInstructions = true;
+            console.log(`Counter: ${PlayerService.showInstructionsCounter}`);
             if (PlayerService.playerHealth < 3) {
                 vm.message = "Did you notice you lost a heart?";
                 vm.message_2 = "Answer this question right and you can get your heart back!";
@@ -153,6 +155,10 @@ const map = {
             }, 50);
         }
 
+        vm.gctx.strokeStyle = "red";
+        vm.gctx.setLineDash([5, 5]);
+        vm.gctx.lineWidth = 5;
+
         switch (PlayerService.battles) {
             case 0:
                 vm.storyText = EnemyService.cerberus;
@@ -169,7 +175,10 @@ const map = {
                 vm.logoImg.onload = function() {
                     vm.gctx.drawImage(vm.logoImg, 115, 300, 90, 90);
                 }
-                vm.draw(80, 470, 160, 365);
+                // vm.draw(80, 470, 160, 365);
+                vm.gctx.moveTo(80, 470);
+                vm.gctx.lineTo(160, 365);
+                vm.gctx.stroke();
                 break;
             case 2:
                 vm.storyText = EnemyService.sirens;
@@ -180,8 +189,10 @@ const map = {
                 }
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
+                vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(220, 260);
                 vm.gctx.stroke();
-                vm.draw(160, 365, 220, 260);
+                // vm.draw(160, 365, 220, 260);
 
                 break;
             case 3:
@@ -194,8 +205,10 @@ const map = {
                 vm.gctx.moveTo(80, 470);
                 vm.gctx.lineTo(160, 365);
                 vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
+                vm.gctx.lineTo(220, 260)
+                vm.gctx.lineTo(45, 260);
                 vm.gctx.stroke();
-                vm.draw(220, 260, 45, 260);
+                // vm.draw(220, 260, 45, 260);
                 break;
             case 4:
 
@@ -209,8 +222,9 @@ const map = {
                 vm.gctx.lineTo(160, 365);
                 vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
+                vm.gctx.lineTo(115, 195);
                 vm.gctx.stroke();
-                vm.draw(45, 260, 115, 195);
+                // vm.draw(45, 260, 115, 195);
                 break;
             case 5:
                 vm.storyText = EnemyService.polyphemus;
@@ -224,8 +238,10 @@ const map = {
                 vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
+                vm.gctx.bezierCurveTo(115, 195, 300, 20, 395, 330);
+                vm.gctx.lineTo(395, 330);
                 vm.gctx.stroke();
-                vm.draw(115, 195, 395, 330);
+                // vm.draw(115, 195, 395, 330);
                 break;
             case 6:
                 vm.storyText = EnemyService.prometheus;
@@ -239,9 +255,11 @@ const map = {
                 vm.gctx.bezierCurveTo(160, 365, 10, 350, 220, 260);
                 vm.gctx.lineTo(45, 260);
                 vm.gctx.lineTo(115, 195);
-                vm.gctx.bezierCurveTo(115, 195, 300, 20, 395, 330)
+                vm.gctx.bezierCurveTo(115, 195, 300, 20, 395, 330);
+                vm.gctx.lineTo(395, 330);
+                vm.gctx.lineTo(530, 540);
                 vm.gctx.stroke();
-                vm.draw(395, 330, 530, 540);
+                // vm.draw(395, 330, 530, 540);
                 break;
             case 7:
                 vm.storyText = EnemyService.hercules;
@@ -257,8 +275,9 @@ const map = {
                 vm.gctx.lineTo(115, 195);
                 vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(530, 540);
+                vm.gctx.lineTo(740, 300);
                 vm.gctx.stroke();
-                vm.draw(530, 540, 740, 300);
+                // vm.draw(530, 540, 740, 300);
                 break;
             case 8:
                 vm.storyText = EnemyService.zeus;
@@ -275,8 +294,9 @@ const map = {
                 vm.gctx.bezierCurveTo(115, 195, 350, 20, 395, 330)
                 vm.gctx.lineTo(530, 540);
                 vm.gctx.lineTo(740, 300);
+                vm.gctx.lineTo(740, 55);
                 vm.gctx.stroke();
-                vm.draw(740, 300, 740, 55);
+                // vm.draw(740, 300, 740, 55);
                 break;
         }
 
